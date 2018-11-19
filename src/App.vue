@@ -1,29 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <header>
+      <div class="container has-text-centered">
+        <figure class="image">
+          <img src="./assets/title_banner.jpg">
+        </figure>
+      </div>
+    </header>
+    <div class="container has-text-centered">
+      <router-view/>
     </div>
-    <router-view/>
+    <footer class="footer has-text-grey">
+      <div class="container has-text-centered">
+        <p><b>Updates Wednesdays</b>. Like the comic? Support us on
+          <a href="https://www.patreon.com/elitetrick" class="has-text-patreon" target="_blank"><i class="fab fa-patreon"></i> Patreon</a></p>
+        <p>Copyright &copy; 2018 Steven Lloyd. All rights reserved</p>
+      </div>
+    </footer>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
