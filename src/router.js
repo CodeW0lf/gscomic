@@ -14,13 +14,12 @@ export default new Router({
       props: true
     },
     {
-      path: "/comic",
-      name: "comicDefault",
-      component: Home
+      path: "/",
+      component: Home,
     },
     {
       path: "*",
-      redirect: "/comic"
+      redirect: "/"
     }
   ]
 });

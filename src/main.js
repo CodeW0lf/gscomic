@@ -3,14 +3,13 @@ import App from "./App.vue";
 import router from "./router";
 
 import vueScrollTo from "vue-scrollto";
-import vueTouch from "vue-directive-touch";
 import axios from "axios";
 
 import "./assets/main.scss";
 
 if (process.env.NODE_ENV !== "production") {
   Vue.prototype.$axios = axios.create({
-    baseURL: "http://localhost:63342/god-slayers-api"
+    baseURL: "http://localhost:63343/god-slayers-api"
   });
 } else {
   Vue.prototype.$axios = axios.create({
@@ -20,7 +19,6 @@ if (process.env.NODE_ENV !== "production") {
 
 Vue.config.productionTip = false;
 Vue.use(vueScrollTo);
-Vue.use(vueTouch);
 
 new Vue({
   router,

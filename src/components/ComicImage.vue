@@ -5,7 +5,7 @@
         <i class="fas fa-circle-notch fa-spin"></i>
       </span>
     </div>
-    <figure v-else class="image is-3by4">
+    <figure @touchstart="startDrag" @touchmove="dragComic" @touchstop="stopDrag" v-else class="image is-3by4">
       <img :src="src">
     </figure>
   </transition>
@@ -17,7 +17,9 @@ export default {
   props: ["src"],
   data() {
     return {
-      loading: true
+      loading: true,
+      dragging: false,
+      startX: 0
     };
   },
   mounted() {
@@ -41,6 +43,35 @@ export default {
       };
 
       img.src = this.src;
+    },
+    startDrag(e) {
+      if (this.loading) {
+        return;
+      }
+      e = e.changedTouches ? e.changedTouches[0] : e;
+      this.dragging = true;
+      this.startX = e.pageX;
+    },
+    stopDrag() {
+      this.dragging = false;
+      this.startX = 0;
+    },
+    dragComic(e) {
+      if (this.loading) {
+        return;
+      }
+      let moveDist = 0;
+      e = e.changedTouches ? e.changedTouches[0] : e;
+      if (this.dragging) {
+        moveDist = e.pageX - this.startX;
+        if (moveDist >= 200) {
+          this.$emit('prev-comic');
+          this.dragging = false;
+        } else if (moveDist <= -200) {
+          this.$emit('next-comic');
+          this.dragging = false;
+        }
+      }
     }
   }
 };

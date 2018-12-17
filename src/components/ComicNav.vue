@@ -37,7 +37,7 @@
       </div>
       <div class="level-right">
         <div class="level-item is-size-5 has-text-weight-bold">
-          <router-link to="comicDefault">Comic</router-link>
+          <router-link to="/">Comic</router-link>
         </div>
         <div class="level-item is-size-5 has-text-weight-bold has-text-grey-dark tooltip is-tooltip-black"
           data-tooltip="Coming Soon">
@@ -45,11 +45,11 @@
         </div>
       </div>
     </div>
-    <comic-image v-touch:left="nextComic" v-touch:right="prevComic" :src="'/comics/' + comicList[comicId]"></comic-image>
+    <comic-image v-on:prev-comic="prevComic" v-on:next-comic="nextComic" :src="'/comics/' + comicList[comicId]"></comic-image>
     <div class="level is-mobile">
       <div class="level-left">
         <div class="level-item">
-          <a href="https://www.patreon.com/elitetrick" target="_blank" class="patreon-button">
+          <a href="https://www.patreon.com/elitetrick" @click="patreonClick" target="_blank" class="patreon-button">
             <img src="../assets/become_a_patron_button@2x.png">
           </a>
         </div>
@@ -91,10 +91,10 @@
     </div>
     <span class="has-text-grey has-text-weight-bold">{{ comicId }} / {{ comicList["latest"] }}</span><br>
     <span class="icon is-large is-size-3">
-      <a :href="shareUrl" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+      <a :href="shareUrl" @click="twitterClick" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
     </span>
     <span class="icon is-large is-size-3">
-      <a href="https://discord.gg/HKZmH3U" target="_blank" class="discord"><i class="fab fa-discord"></i></a>
+      <a href="https://discord.gg/HKZmH3U" @click="discordClick" target="_blank" class="discord"><i class="fab fa-discord"></i></a>
     </span>
   </section>
 </template>
@@ -119,7 +119,7 @@ export default {
       let comicId = parseInt(this.id, 10);
       if (isNaN(comicId) || comicId <= 0 || !(comicId in this.comicList)) {
         comicId = this.comicList["latest"];
-        this.$router.replace({ path: `/comic/${comicId}` });
+        this.$router.push({ path: "/" });
       }
       return comicId;
     },
@@ -144,6 +144,15 @@ export default {
     },
     firstComic() {
       this.$router.push({ path: `/comic/1` });
+    },
+    discordClick() {
+      gtag("event", "Discord", {event_category: "Social"});
+    },
+    twitterClick() {
+      gtag("event", "Twitter", {event_category: "Social"});
+    },
+    patreonClick() {
+      gtag("event", "Patreon", {event_category: "Social"});
     }
   },
   computed: {
