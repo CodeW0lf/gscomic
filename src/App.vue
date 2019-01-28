@@ -3,7 +3,7 @@
     <header>
       <div class="container has-text-centered">
         <figure class="image">
-          <img src="./assets/title_banner.jpg">
+          <img src="./assets/title_banner.jpg" alt="God Slayers Comic">
         </figure>
       </div>
     </header>

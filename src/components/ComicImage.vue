@@ -6,7 +6,7 @@
       </span>
     </div>
     <figure @touchstart="startDrag" @touchmove="dragComic" @touchstop="stopDrag" v-else class="image is-3by4">
-      <img :src="src">
+      <img :src="src" alt="Comic">
     </figure>
   </transition>
 </template>

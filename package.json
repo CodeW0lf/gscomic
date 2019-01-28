@@ -11,18 +11,18 @@
     "axios": "^0.18.0",
     "bulma": "^0.7.2",
     "bulma-tooltip": "^2.0.2",
-    "vue": "^2.5.21",
+    "vue": "^2.5.22",
     "vue-router": "^3.0.2",
     "vue-scrollto": "^2.13.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-plugin-eslint": "^3.2.1",
-    "@vue/cli-service": "^3.2.0",
+    "@vue/cli-plugin-babel": "^3.3.0",
+    "@vue/cli-plugin-eslint": "^3.3.0",
+    "@vue/cli-service": "^3.3.1",
     "@vue/eslint-config-prettier": "^3.0.5",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.22"
   },
   "eslintConfig": {
     "root": true,

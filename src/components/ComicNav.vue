@@ -15,12 +15,16 @@
           </template>
         </div>
         <div class="level-item">
-          <span v-if="false" class="icon is-large is-size-3-mobile is-size-3point5 has-text-primary">
-            <a href="#" class="tooltip is-tooltip-black" data-tooltip="Chapter Start"><i class="fas fa-step-backward"></i></a>
-          </span>
-          <span v-else class="icon is-large is-size-3-mobile is-size-3point5 has-text-grey-dark">
-            <i class="fas fa-step-backward"></i>
-          </span>
+          <template v-if="hasPrevChapter()">
+            <span class="icon is-large is-size-3-mobile is-size-3point5 has-text-primary">
+              <a @click="prevChapter" class="tooltip is-tooltip-black" data-tooltip="Chapter Start"><i class="fas fa-step-backward"></i></a>
+            </span>
+          </template>
+          <template v-else>
+            <span class="icon is-large is-size-3-mobile is-size-3point5 has-text-grey-dark">
+              <i class="fas fa-step-backward"></i>
+            </span>
+          </template>
         </div>
         <div class="level-item">
           <template v-if="hasPrevComic()">
@@ -68,12 +72,16 @@
           </template>
         </div>
         <div class="level-item">
-          <span v-if="false" class="icon is-large is-size-3-mobile is-size-3point5 has-text-primary">
-            <a href="#" class="tooltip is-tooltip-bottom is-tooltip-black" data-tooltip="Next Chapter"><i class="fas fa-step-forward"></i></a>
-          </span>
-          <span v-else class="icon is-large is-size-3-mobile is-size-3point5 has-text-grey-dark">
-            <i class="fas fa-step-forward"></i>
-          </span>
+          <template v-if="hasNextChapter()">
+            <span class="icon is-large is-size-3-mobile is-size-3point5 has-text-primary">
+              <a @click="nextChapter" v-scroll-to="'#comic-top'" class="tooltip is-tooltip-bottom is-tooltip-black" data-tooltip="Next Chapter"><i class="fas fa-step-forward"></i></a>
+            </span>
+          </template>
+          <template v-else>
+            <span class="icon is-large is-size-3-mobile is-size-3point5 has-text-grey-dark">
+              <i class="fas fa-step-forward"></i>
+            </span>
+          </template>
         </div>
         <div class="level-item">
           <template v-if="hasNextComic()">
@@ -111,7 +119,8 @@ export default {
       comicList: {
         1: 1,
         latest: 1
-      }
+      },
+      chapters: []
     };
   },
   methods: {
@@ -138,6 +147,40 @@ export default {
     },
     hasPrevComic() {
       return this.comicId - 1 in this.comicList;
+    },
+    hasNextChapter() {
+      for (let val of this.chapters) {
+        if (this.comicId < val) {
+          return true;
+        }
+      }
+      return false;
+    },
+    hasPrevChapter() {
+      for (let val of this.chapters) {
+        if (this.comicId > (val + 1)) {
+          return true;
+        }
+      }
+      return false;
+    },
+    nextChapter() {
+      for (let val of this.chapters) {
+        if (this.comicId < val) {
+          this.$router.push({ path: `/comic/${val}` });
+          break;
+        }
+      }
+    },
+    prevChapter() {
+      let latest = 1;
+      for (let val of this.chapters) {
+        if (this.comicId > val) {
+          latest = val;
+        }
+      }
+      latest = latest + 1; // Val represents end of chapter, inc by 1 for beginning
+      this.$router.push({ path: `/comic/${latest}` })
     },
     latestComic() {
       this.$router.replace({ path: `/comic/${this.comicList["latest"]}` });
@@ -179,6 +222,7 @@ export default {
   mounted() {
     this.$axios.get("get-comics.php").then(res => {
       this.comicList = res.data;
+      this.chapters = this.comicList.chapters;
       this.comicId = this.getComicId();
     });
   }
