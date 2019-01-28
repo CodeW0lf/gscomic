@@ -1,4 +1,5 @@
-# god-slayers
+# god-slayers-comic
+https://www.godslayerscomic.com
 
 ## Project setup
 ```
