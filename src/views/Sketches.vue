@@ -34,7 +34,17 @@
         if (this.sketchList.length < this.allSketches.length) {
           let idx = this.sketchList.length;
           this.sketchList.push(...this.allSketches.slice(idx, idx + sketchesToAdd));
-          $state.loaded();
+          let p = new Promise((resolve, reject) => {
+            let img = new Image();
+            img.onload = () => {
+              resolve();
+            };
+            img.onerror = reject;
+            img.src = '/sketch_files/' + this.sketchList[this.sketchList.length - 1].src;
+          });
+          p.then(() => {
+            $state.loaded();
+          });
         } else {
           $state.complete();
         }

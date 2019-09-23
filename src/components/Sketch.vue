@@ -1,14 +1,14 @@
 <template>
   <div class="card">
+    <div class="card-header">
+      <p class="card-header-title">Posted on {{ date | moment }}</p>
+    </div>
     <div class="card-image">
       <a :href="src" target="_blank">
         <figure class="image">
           <img :src="src" alt="Sketch">
         </figure>
       </a>
-    </div>
-    <div class="card-content">
-      Posted on {{ date | moment }}
     </div>
   </div>
 </template>
