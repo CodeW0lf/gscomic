@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import Lore from "./views/Lore.vue";
+import Sketches from "@/views/Sketches";
 
 Vue.use(Router);
 
@@ -12,6 +14,16 @@ export default new Router({
       name: "comic",
       component: Home,
       props: true
+    },
+    {
+      path: "/lore",
+      name: "lore",
+      component: Lore
+    },
+    {
+      path: "/sketches",
+      name: "sketches",
+      component: Sketches
     },
     {
       path: "/",

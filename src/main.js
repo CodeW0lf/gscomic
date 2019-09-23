@@ -9,7 +9,7 @@ import "./assets/main.scss";
 
 if (process.env.NODE_ENV !== "production") {
   Vue.prototype.$axios = axios.create({
-    baseURL: "http://localhost:63343/god-slayers-api"
+    baseURL: "http://localhost:88/"
   });
 } else {
   Vue.prototype.$axios = axios.create({

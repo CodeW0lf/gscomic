@@ -4,9 +4,9 @@
       <div class="level-left">
         <div class="level-item">
           <template v-if="hasPrevComic()">
-          <span class="icon is-large is-size-3-mobile is-size-2 has-text-primary">
-            <a @click="firstComic" class="tooltip is-tooltip-black" data-tooltip="First Comic"><i class="fas fa-fast-backward"></i></a>
-          </span>
+            <span class="icon is-large is-size-3-mobile is-size-2 has-text-primary">
+              <a @click="firstComic" class="tooltip is-tooltip-black" data-tooltip="First Comic"><i class="fas fa-fast-backward"></i></a>
+            </span>
           </template>
           <template v-else>
             <span class="icon is-large is-size-3-mobile is-size-2 has-text-grey-dark">
@@ -39,22 +39,14 @@
           </template>
         </div>
       </div>
-      <div class="level-right">
-        <div class="level-item is-size-5 has-text-weight-bold">
-          <router-link to="/">Comic</router-link>
-        </div>
-        <div class="level-item is-size-5 has-text-weight-bold has-text-grey-dark tooltip is-tooltip-black"
-          data-tooltip="Coming Soon">
-          Lore
-        </div>
-      </div>
+      <SiteNav></SiteNav>
     </div>
     <comic-image v-on:prev-comic="prevComic" v-on:next-comic="nextComic" :src="'/comics/' + comicList[comicId]"></comic-image>
     <div class="level is-mobile">
       <div class="level-left">
         <div class="level-item">
           <a href="https://www.patreon.com/elitetrick" @click="patreonClick" target="_blank" class="patreon-button">
-            <img src="../assets/become_a_patron_button@2x.png">
+            <img alt="patreon" src="../assets/become_a_patron_button@2x.png">
           </a>
         </div>
       </div>
@@ -98,17 +90,14 @@
       </div>
     </div>
     <span class="has-text-grey has-text-weight-bold">{{ comicId }} / {{ comicList["latest"] }}</span><br>
-    <span class="icon is-large is-size-3">
-      <a :href="shareUrl" @click="twitterClick" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
-    </span>
-    <span class="icon is-large is-size-3">
-      <a href="https://discord.gg/HKZmH3U" @click="discordClick" target="_blank" class="discord"><i class="fab fa-discord"></i></a>
-    </span>
+    <SocialLinks></SocialLinks>
   </section>
 </template>
 
 <script>
 import ComicImage from "@/components/ComicImage.vue";
+import SiteNav from "@/components/SiteNav.vue";
+import SocialLinks from "@/components/SocialLinks";
 
 export default {
   name: "ComicNav",
@@ -173,9 +162,9 @@ export default {
       }
     },
     prevChapter() {
-      let latest = 1;
+      let latest = 0;
       for (let val of this.chapters) {
-        if (this.comicId > val) {
+        if (this.comicId - 1 > val) {
           latest = val;
         }
       }
@@ -188,12 +177,6 @@ export default {
     firstComic() {
       this.$router.push({ path: `/comic/1` });
     },
-    discordClick() {
-      gtag("event", "Discord", {event_category: "Social"});
-    },
-    twitterClick() {
-      gtag("event", "Twitter", {event_category: "Social"});
-    },
     patreonClick() {
       gtag("event", "Patreon", {event_category: "Social"});
     }
@@ -201,7 +184,7 @@ export default {
   computed: {
     shareUrl() {
       let message = encodeURIComponent(
-        "Check out this God Slayers Comic post!"
+        "Check out God Slayers Comic (@ComicSlayers)!"
       );
       return (
         "https://twitter.com/intent/tweet?url=https://www.godslayerscomic.com" +
@@ -212,7 +195,9 @@ export default {
     }
   },
   components: {
-    ComicImage
+    SocialLinks,
+    ComicImage,
+    SiteNav
   },
   watch: {
     $route() {
@@ -262,17 +247,5 @@ export default {
 .comic-section {
   margin: 20px auto;
   max-width: 900px;
-}
-.discord {
-  color: #7289da;
-  &:hover {
-    color: #99aab5;
-  }
-}
-.twitter {
-  color: rgb(27, 149, 224);
-  &:hover {
-    color: #99aab5;
-  }
 }
 </style>
