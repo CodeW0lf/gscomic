@@ -12,7 +12,7 @@
     </div>
     <footer class="footer has-text-grey">
       <div class="container has-text-centered">
-        <p><b>The next chapter is coming! <a href="https://www.patreon.com/posts/future-of-god-26711178">Read more here</a></b>.<br/>
+        <p><b>The next chapter is coming November 1st! <a href="https://www.patreon.com/posts/31206987">Read more here</a></b>.<br/>
           Like the comic? Support us on
           <a href="https://www.patreon.com/elitetrick" class="has-text-patreon" target="_blank"><i class="fab fa-patreon"></i> Patreon</a></p>
         <p>Copyright &copy; 2018-2019 Steven Lloyd. All rights reserved</p>
