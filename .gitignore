@@ -21,3 +21,4 @@ yarn-error.log*
 *.sln
 *.sw*
 /public/sketch_files/
+/public/patreon/
