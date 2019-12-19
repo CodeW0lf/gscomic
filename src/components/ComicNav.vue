@@ -117,7 +117,9 @@ export default {
       let comicId = parseInt(this.id, 10);
       if (isNaN(comicId) || comicId <= 0 || !(comicId in this.comicList)) {
         comicId = this.comicList["latest"];
-        this.$router.push({ path: "/" });
+        if (this.$route.path !== "/") {
+          this.$router.replace({path: "/"});
+        }
       }
       return comicId;
     },
