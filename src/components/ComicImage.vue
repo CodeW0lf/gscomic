@@ -5,7 +5,7 @@
         <i class="fas fa-circle-notch fa-spin"></i>
       </span>
     </div>
-    <figure @touchstart="startDrag" @touchmove="dragComic" @touchstop="stopDrag" v-else class="image is-3by4">
+    <figure @touchstart.passive="startDrag" @touchmove.passive="dragComic" @touchstop.passive="stopDrag" v-else class="image is-3by4">
       <img :src="src" alt="Comic">
     </figure>
   </transition>
@@ -78,10 +78,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active {
-  transition: opacity 0.5s;
-}
-.fade-enter {
-  opacity: 0;
-}
+  .fade-enter-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter {
+    opacity: 0;
+  }
 </style>

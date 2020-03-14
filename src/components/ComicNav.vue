@@ -217,37 +217,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.patreon-button {
-  width: 148px;
-  height: 34px;
+  @import "@/assets/main.scss";
 
-  img {
-    border-radius: 4px;
+  a:hover {
+    color: $primary;
   }
-  &:hover {
-    opacity: 0.8;
+  .patreon-button {
+    width: 148px;
+    height: 34px;
+
+    img {
+      border-radius: 4px;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
   }
-}
-.image {
-  img {
-    border-radius: 4px;
+  .image {
+    img {
+      border-radius: 4px;
+    }
   }
-}
-.nav-button {
-  width: 40px;
-}
-.is-size-0 {
-  font-size: 3.5rem;
-  line-height: 1rem;
-}
-.is-size-3point5 {
-  font-size: 2.3rem;
-}
-.level {
-  margin: 0 10px 0 15px !important;
-}
-.comic-section {
-  margin: 20px auto;
-  max-width: 900px;
-}
+  .nav-button {
+    width: 40px;
+  }
+  .is-size-0 {
+    font-size: 3.5rem;
+    line-height: 1rem;
+  }
+  .is-size-3point5 {
+    font-size: 2.3rem;
+  }
+  .level {
+    margin: 0 10px 0 15px !important;
+  }
+  .comic-section {
+    margin: 20px auto;
+    max-width: 900px;
+  }
 </style>
