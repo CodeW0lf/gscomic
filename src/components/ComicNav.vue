@@ -217,7 +217,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "@/assets/main.scss";
+  @import "~@/assets/main.scss";
 
   a:hover {
     color: $primary;
