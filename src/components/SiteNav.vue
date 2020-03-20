@@ -1,18 +1,10 @@
 <template>
   <div class="level-right">
-    <div class="level-item is-size-5 is-size-6-mobile has-text-weight-bold">
+    <div class="level-item page-link is-size-5 is-size-6-mobile has-text-weight-bold">
       <router-link to="/">Comic</router-link>
-    </div>
-    <div class="level-item is-size-5 is-size-6-mobile has-text-weight-bold has-text-grey-dark">
-      |
-    </div>
-    <div class="level-item is-size-5 is-size-6-mobile has-text-weight-bold">
+      <span class="page-link has-text-grey-dark">|</span>
       <router-link to="/sketches">Sketches</router-link>
-    </div>
-    <div class="level-item is-size-5 is-size-6-mobile has-text-weight-bold has-text-grey-dark">
-      |
-    </div>
-    <div class="level-item is-size-5 is-size-6-mobile has-text-weight-bold">
+      <span class="page-link has-text-grey-dark">|</span>
       <router-link to="/lore">Lore</router-link>
     </div>
   </div>
@@ -24,6 +16,9 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+  .page-link {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 </style>

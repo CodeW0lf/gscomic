@@ -1,7 +1,9 @@
 <template>
   <section class="sketches-section">
-    <div id="sketches-top" class="level is-mobile sketches-level">
-      <div class="level-left"></div>
+    <div id="sketches-top" class="level sketches-level">
+      <div class="level-left">
+        <div class="level-item"></div>
+      </div>
       <SiteNav></SiteNav>
     </div>
     <transition-group name="fade">
@@ -69,11 +71,8 @@
     margin: 20px auto;
     max-width: 900px;
   }
-  .sketches-level {
-    height: 48px;
-  }
   .level {
-    margin: 0 10px 0 15px !important;
+    margin: 1.5rem;
   }
   .fade-enter-active {
     transition: opacity 0.5s;
