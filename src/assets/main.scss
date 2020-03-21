@@ -39,5 +39,19 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 $link-hover: $white-ter;
 
+.patreon-button {
+  width: 148px;
+  height: 34px;
+  transition: all 0.3s ease;
+
+  img {
+    border-radius: 4px;
+  }
+  &:hover {
+    transform: scale(1.07);
+    filter: hue-rotate(180deg);
+  }
+}
+
 @import "~bulma";
 @import "~bulma-tooltip";

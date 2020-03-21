@@ -1,8 +1,12 @@
 <template>
   <section class="sketches-section">
-    <div id="sketches-top" class="level sketches-level">
+    <div id="sketches-top" class="level">
       <div class="level-left">
-        <div class="level-item"></div>
+        <div class="level-item">
+          <a href="https://www.patreon.com/elitetrick" target="_blank" class="patreon-button">
+            <img alt="patreon" src="../assets/become_a_patron_button@2x.png">
+          </a>
+        </div>
       </div>
       <SiteNav></SiteNav>
     </div>

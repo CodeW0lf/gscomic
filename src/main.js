@@ -19,6 +19,7 @@ if (process.env.NODE_ENV !== "production") {
 
 Vue.config.productionTip = false;
 Vue.use(vueScrollTo);
+Vue.directive('scrollTo', scrollTo);
 
 new Vue({
   router,

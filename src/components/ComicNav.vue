@@ -228,24 +228,10 @@ export default {
   a:hover {
     color: $primary;
   }
-  .patreon-button {
-    width: 148px;
-    height: 34px;
-
-    img {
-      border-radius: 4px;
-    }
-    &:hover {
-      opacity: 0.8;
-    }
-  }
   .image {
     img {
       border-radius: 4px;
     }
-  }
-  .nav-button {
-    width: 40px;
   }
   .is-size-0 {
     font-size: 3.5rem;

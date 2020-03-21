@@ -1,7 +1,13 @@
 <template>
   <section class="lore-section">
-    <div id="lore-top" class="level is-mobile lore-level">
-      <div class="level-left"></div>
+    <div id="lore-top" class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <a href="https://www.patreon.com/elitetrick" target="_blank" class="patreon-button">
+            <img alt="patreon" src="../assets/become_a_patron_button@2x.png">
+          </a>
+        </div>
+      </div>
       <SiteNav></SiteNav>
     </div>
     Coming Soon.
@@ -68,15 +74,12 @@
 </script>
 
 <style scoped>
+  .level {
+    margin: 1.5rem;
+  }
   .lore-section {
     margin: 20px auto;
     max-width: 900px;
-  }
-  .lore-level {
-    height: 48px;
-  }
-  .level {
-    margin: 0 10px 0 15px !important;
   }
   .speech-bubble {
     position: absolute;
