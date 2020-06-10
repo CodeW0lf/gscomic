@@ -6,7 +6,7 @@
           <a href="https://www.patreon.com/elitetrick" @click="patreonClick" target="_blank" class="patreon-button">
             <img alt="patreon" src="../assets/become_a_patron_button@2x.png">
           </a>
-          <span v-if="!hasNextComic()" class="animated bounceIn delay-1s go-patreon has-text-grey has-text-weight-bold"><i class="fas fa-arrow-left"></i> Read the next 5 comics for only $1!</span>
+          <span v-if="!hasNextComic()" class="animate__animated animate__bounceIn animate__delay-1s go-patreon has-text-grey has-text-weight-bold"><i class="fas fa-arrow-left"></i> Read the next 5 comics for only $1!</span>
         </div>
       </div>
       <SiteNav></SiteNav>

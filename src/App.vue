@@ -3,7 +3,7 @@
     <header class="hero">
       <div class="hero-body is-marginless is-paddingless has-text-centered">
         <img class="image is-fullwidth" src="./assets/title_banner.png" alt="God Slayers Comic">
-        <a href="#" v-scroll-to="'#top'" class="test is-size-1"><i class="fas fa-chevron-down animated pulse infinite slower"></i></a>
+        <a href="#" v-scroll-to="'#top'" class="scroll-down-arrow is-size-1"><i class="fas fa-chevron-down animate__animated animate__pulse animate__infinite animate__slower"></i></a>
       </div>
     </header>
     <div class="container has-text-centered" id="top">
@@ -11,8 +11,8 @@
     </div>
     <footer class="footer has-text-grey">
       <div class="container has-text-centered">
-        <p><b>Posting schedule resumed! <a href="https://www.patreon.com/posts/32457373">Read more here</a></b>.<br/>
-          Like the comic? Support us on
+        <p><b>Comic updates (most) Wednesdays. Sketches posted Friday.</b><br/>
+          Like the comic? Support me on
           <a href="https://www.patreon.com/elitetrick" class="has-text-patreon" target="_blank"><i class="fab fa-patreon"></i> Patreon</a></p>
         <p>Copyright &copy; {{ new Date().getFullYear() }} Steven Lloyd. All rights reserved</p>
       </div>
@@ -21,7 +21,7 @@
 </template>
 
 <style scoped lang="scss">
-  .test {
+  .scroll-down-arrow {
     position: relative;
     bottom: 50px;
     color: #fff;
