@@ -1,20 +1,28 @@
 <template>
-  <transition name="fade" mode="out-in">
-    <div class="image is-3by4" v-if="loading">
-      <span style="font-size: 48px; position:absolute; top: 40%;">
-        <i class="fas fa-circle-notch fa-spin"></i>
-      </span>
-    </div>
-    <figure @touchstart.passive="startDrag" @touchmove.passive="dragComic" @touchstop.passive="stopDrag" v-else class="image">
-      <img :src="src" alt="Comic">
-    </figure>
-  </transition>
+  <div class="text-center mx-auto relative w-full" style="padding-top:135%">
+    <transition mode="out-in"
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut faster">
+      <div v-if="loading" key="spinner" class="absolute inset-0 w-full"  style="top: 40%">
+        <spinner></spinner>
+      </div>
+      <div v-else @touchstart.passive="startDrag" @touchmove.passive="dragComic" @touchstop.passive="stopDrag"
+           key="image" class="absolute inset-0 w-full">
+        <img :src="src" alt="Comic Image">
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
+import Spinner from "@/components/Spinner"
+
 export default {
   name: "ComicImage",
   props: ["src"],
+  components: {
+    Spinner
+  },
   data() {
     return {
       loading: true,
@@ -77,11 +85,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-  .fade-enter-active {
-    transition: opacity 0.5s;
-  }
-  .fade-enter {
-    opacity: 0;
-  }
+<style scoped>
 </style>

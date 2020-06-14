@@ -1,253 +1,75 @@
 <template>
-  <section class="comic-section" id="comic-top" ref="comicTop">
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <a href="https://www.patreon.com/elitetrick" @click="patreonClick" target="_blank" class="patreon-button">
-            <img alt="patreon" src="../assets/become_a_patron_button@2x.png">
-          </a>
-          <span v-if="!hasNextComic()" class="animate__animated animate__bounceIn animate__delay-1s go-patreon has-text-grey has-text-weight-bold"><i class="fas fa-arrow-left"></i> Read the next 5 comics for only $1!</span>
-        </div>
-      </div>
-      <SiteNav></SiteNav>
+  <section class="flex justify-between items-center mx-4 text-primary">
+    <div>
+      <a @click="$emit('first-comic')">
+        <svg class="navBtn transform rotate-180" :class="{'text-gray-800': !hasPrevComic}"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <title>First Comic</title>
+          <path d="M13 5h3v10h-3V5zM4 5l9 5-9 5V5z"/>
+        </svg>
+      </a>
+      <a @click="$emit('prev-chapter')">
+        <svg class="navBtn transform rotate-180" :class="{'text-gray-800': !hasPrevChapter}"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <title>Previous Chapter</title>
+          <path d="M1 5l9 5-9 5V5zm9 0l9 5-9 5V5z"/>
+        </svg>
+      </a>
+      <a @click="$emit('prev-comic')">
+        <svg class="navBtn transform rotate-180" :class="{'text-gray-800': !hasPrevComic}"
+             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <title>Previous Comic</title>
+          <path d="M4 4l12 6-12 6z"/>
+        </svg>
+      </a>
     </div>
 
-    <comic-image v-on:prev-comic="prevComic" v-on:next-comic="nextComic" :src="'/comics/' + comicList[comicId]"></comic-image>
-
-    <div class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
-          <template v-if="hasPrevComic()">
-            <span class="icon is-large is-size-3-mobile is-size-2 has-text-primary">
-              <a @click="firstComic" class="tooltip is-tooltip-black" data-tooltip="First Comic"><i class="fas fa-fast-backward"></i></a>
-            </span>
-          </template>
-          <template v-else>
-            <span class="icon is-large is-size-3-mobile is-size-2 has-text-grey-dark">
-              <i class="fas fa-fast-backward"></i>
-            </span>
-          </template>
-
-          <template v-if="hasPrevChapter()">
-            <span class="icon is-large is-size-3-mobile is-size-3point5 has-text-primary">
-              <a @click="prevChapter" class="tooltip is-tooltip-black" data-tooltip="Chapter Start"><i class="fas fa-step-backward"></i></a>
-            </span>
-          </template>
-          <template v-else>
-            <span class="icon is-large is-size-3-mobile is-size-3point5 has-text-grey-dark">
-              <i class="fas fa-step-backward"></i>
-            </span>
-          </template>
-
-          <template v-if="hasPrevComic()">
-            <span class="icon is-large is-size-1-mobile is-size-0 has-text-primary">
-              <a @click="prevComic" class="tooltip is-tooltip-black" data-tooltip="Prev Comic"><i class="fas fa-caret-left"></i></a>
-            </span>
-          </template>
-          <template v-else>
-            <span class="icon is-large is-size-1-mobile is-size-0 has-text-grey-dark">
-              <i class="fas fa-caret-left"></i>
-            </span>
-          </template>
-        </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item">
-          <template v-if="hasNextComic()">
-            <span class="icon is-large is-size-1-mobile is-size-0 has-text-primary">
-              <a @click="nextComic" class="tooltip is-tooltip-bottom is-tooltip-black" data-tooltip="Next Comic"><i class="fas fa-caret-right"></i></a>
-            </span>
-          </template>
-          <template v-else>
-            <span class="icon is-large is-size-1-mobile is-size-0 has-text-grey-dark">
-              <i class="fas fa-caret-right"></i>
-            </span>
-          </template>
-
-          <template v-if="hasNextChapter()">
-            <span class="icon is-large is-size-3-mobile is-size-3point5 has-text-primary">
-              <a @click="nextChapter" class="tooltip is-tooltip-bottom is-tooltip-black" data-tooltip="Next Chapter"><i class="fas fa-step-forward"></i></a>
-            </span>
-          </template>
-          <template v-else>
-            <span class="icon is-large is-size-3-mobile is-size-3point5 has-text-grey-dark">
-              <i class="fas fa-step-forward"></i>
-            </span>
-          </template>
-
-          <template v-if="hasNextComic()">
-            <span class="icon is-large is-size-3-mobile is-size-2 has-text-primary">
-              <a @click="latestComic" class="tooltip is-tooltip-bottom is-tooltip-black" data-tooltip="Latest Comic"><i class="fas fa-fast-forward"></i></a>
-            </span>
-          </template>
-          <template v-else>
-            <span class="icon is-large is-size-3-mobile is-size-2 has-text-grey-dark">
-              <i class="fas fa-fast-forward"></i>
-            </span>
-          </template>
-        </div>
-      </div>
+    <div>
+      <a @click="$emit('next-comic')">
+        <svg class="navBtn" :class="{'text-gray-800': !hasNextComic}" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 20 20">
+          <title>Next Comic</title>
+          <path d="M4 4l12 6-12 6z"/>
+        </svg>
+      </a>
+      <a @click="$emit('next-chapter')">
+        <svg class="navBtn" :class="{'text-gray-800': !hasNextChapter}" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 20 20">
+          <title>Next Chapter</title>
+          <path d="M1 5l9 5-9 5V5zm9 0l9 5-9 5V5z"/>
+        </svg>
+      </a>
+      <a @click="$emit('latest-comic')">
+        <svg class="navBtn" :class="{'text-gray-800': !hasNextComic}" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 20 20">
+          <title>Latest Comic</title>
+          <path d="M13 5h3v10h-3V5zM4 5l9 5-9 5V5z"/>
+        </svg>
+      </a>
     </div>
-    <span class="has-text-grey has-text-weight-bold">{{ comicId }} / {{ comicList["latest"] }}</span><br>
-    <SocialLinks></SocialLinks>
   </section>
 </template>
 
 <script>
-import ComicImage from "@/components/ComicImage.vue";
-import SiteNav from "@/components/SiteNav.vue";
-import SocialLinks from "@/components/SocialLinks";
-
 export default {
   name: "ComicNav",
-  props: ["id"],
-  data() {
-    return {
-      comicId: 1,
-      comicList: {
-        1: 1,
-        latest: 1
-      },
-      chapters: []
-    };
-  },
-  methods: {
-    getComicId() {
-      let comicId = parseInt(this.id, 10);
-      if (isNaN(comicId) || comicId <= 0 || !(comicId in this.comicList)) {
-        comicId = this.comicList["latest"];
-        if (this.$route.path !== "/") {
-          this.$router.replace({path: "/"});
-        }
-      }
-      return comicId;
-    },
-    nextComic() {
-      if (this.hasNextComic()) {
-        this.$router.push({ path: `/comic/${this.comicId + 1}` });
-        this.$scrollTo(this.$refs.comicTop);
-        gtag("event", "NextComic", {event_category: "Comic"})
-      }
-    },
-    prevComic() {
-      if (this.hasPrevComic()) {
-        this.$router.push({ path: `/comic/${this.comicId - 1}` });
-        gtag("event", "PrevComic", {event_category: "Comic"})
-      }
-    },
-    hasNextComic() {
-      return this.comicId + 1 in this.comicList;
-    },
-    hasPrevComic() {
-      return this.comicId - 1 in this.comicList;
-    },
-    hasNextChapter() {
-      for (let val of this.chapters) {
-        if (this.comicId < val) {
-          return true;
-        }
-      }
-      return false;
-    },
-    hasPrevChapter() {
-      for (let val of this.chapters) {
-        if (this.comicId > (val + 1)) {
-          return true;
-        }
-      }
-      return false;
-    },
-    nextChapter() {
-      for (let val of this.chapters) {
-        if (this.comicId < val) {
-          this.$router.push({ path: `/comic/${val}` });
-          this.$scrollTo(this.$refs.comicTop);
-          break;
-        }
-      }
-    },
-    prevChapter() {
-      let latest = 0;
-      for (let val of this.chapters) {
-        if (this.comicId - 1 > val) {
-          latest = val;
-        }
-      }
-      latest = latest + 1; // Val represents end of chapter, inc by 1 for beginning
-      this.$router.push({ path: `/comic/${latest}` })
-    },
-    latestComic() {
-      this.$router.replace({ path: `/comic/${this.comicList["latest"]}` });
-      this.$scrollTo(this.$refs.comicTop);
-    },
-    firstComic() {
-      this.$router.push({ path: `/comic/1` });
-      this.$scrollTo(this.$refs.comicTop);
-      gtag("event", "FirstComic", {event_category: "Comic"})
-    },
-    patreonClick() {
-      gtag("event", "Patreon", {event_category: "Social"});
-    }
-  },
-  computed: {
-    shareUrl() {
-      let message = encodeURIComponent(
-        "Check out God Slayers Comic (@ComicSlayers)!"
-      );
-      return (
-        "https://twitter.com/intent/tweet?url=https://www.godslayerscomic.com" +
-        this.$route.path +
-        "&text=" +
-        message
-      );
-    }
-  },
-  components: {
-    SocialLinks,
-    ComicImage,
-    SiteNav
-  },
-  watch: {
-    $route() {
-      this.comicId = this.getComicId();
-    }
-  },
-  mounted() {
-    this.$axios.get("get-comics.php").then(res => {
-      this.comicList = res.data;
-      this.chapters = this.comicList.chapters;
-      this.comicId = this.getComicId();
-    });
-  }
+  props: [
+    "hasNextComic",
+    "hasNextChapter",
+    "hasPrevComic",
+    "hasPrevChapter"
+  ]
 };
 </script>
 
-<style lang="scss" scoped>
-  @import "~@/assets/main.scss";
+<style>
+.navBtn {
+  @apply fill-current cursor-pointer w-10 inline-block mx-1;
+}
 
-  a:hover {
-    color: $primary;
+@screen sm {
+  .navBtn {
+    @apply w-12;
   }
-  .image {
-    img {
-      border-radius: 4px;
-    }
-  }
-  .is-size-0 {
-    font-size: 3.5rem;
-    line-height: 1rem;
-  }
-  .is-size-3point5 {
-    font-size: 2.3rem;
-  }
-  .level {
-    margin: 1.5rem;
-  }
-  .comic-section {
-    margin: 20px auto;
-    max-width: 900px;
-  }
-  .go-patreon {
-    margin-left: 15px;
-  }
+}
 </style>

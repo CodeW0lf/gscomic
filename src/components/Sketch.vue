@@ -1,13 +1,9 @@
 <template>
-  <div class="card">
-    <div class="card-header">
-      <p class="card-header-title">Posted on {{ date | moment }}</p>
-    </div>
-    <div class="card-image">
+  <div class="flex flex-col justify-center items-center">
+    <p class="text-sm text-gray-600 font-semibold self-start mb-2">Posted on {{ date | moment }}</p>
+    <div class="w-full mb-6">
       <a :href="src" target="_blank">
-        <figure class="image">
-          <img :src="src" alt="Sketch">
-        </figure>
+        <img class="w-full" :src="src" alt="Sketch">
       </a>
     </div>
   </div>
@@ -27,8 +23,5 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  .card {
-    margin-bottom: 10px;
-  }
+<style scoped>
 </style>

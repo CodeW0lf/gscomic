@@ -1,22 +1,11 @@
 <template>
-  <section class="sketches-section">
-    <div id="sketches-top" class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <a href="https://www.patreon.com/elitetrick" target="_blank" class="patreon-button">
-            <img alt="patreon" src="../assets/become_a_patron_button@2x.png">
-          </a>
-        </div>
-      </div>
-      <SiteNav></SiteNav>
-    </div>
-    <transition-group name="fade">
+  <section>
+    <transition-group enter-active-class="animated fadeIn">
       <div v-for="item in sketchList" :key="item.src">
-          <sketch :src="'/sketch_files/' + item.src" :date="item.date"></sketch>
+        <sketch :src="'/sketch_files/' + item.src" :date="item.date"></sketch>
       </div>
     </transition-group>
     <infinite-loading @infinite="loadHandler" :identifier="allSketches.length" spinner="spiral"></infinite-loading>
-    <SocialLinks></SocialLinks>
   </section>
 </template>
 
@@ -26,7 +15,7 @@
   import Sketch from "@/components/Sketch";
   import InfiniteLoading from "vue-infinite-loading";
 
-  const sketchesToAdd = 2;
+  const sketchesToAdd = 1;
   export default {
     name: "Sketches",
     data() {
@@ -37,9 +26,7 @@
     },
     methods: {
       loadHandler($state) {
-        if (this.sketchList.length < this.allSketches.length) {
-          let idx = this.sketchList.length;
-          this.sketchList.push(...this.allSketches.slice(idx, idx + sketchesToAdd));
+        if (this.addSketches()) {
           let p = new Promise((resolve, reject) => {
             let img = new Image();
             img.onload = () => {
@@ -54,6 +41,14 @@
         } else {
           $state.complete();
         }
+      },
+      addSketches() {
+        if (this.sketchList.length < this.allSketches.length) {
+          let idx = this.sketchList.length;
+          this.sketchList.push(...this.allSketches.slice(idx, idx + sketchesToAdd));
+          return true;
+        }
+        return false;
       }
     },
     components: {
@@ -65,23 +60,11 @@
     mounted() {
       this.$axios.get("get-sketches.php").then(res => {
         this.allSketches = res.data;
+        this.addSketches();
       });
     }
   }
 </script>
 
-<style lang="scss" scoped>
-  .sketches-section {
-    margin: 20px auto;
-    max-width: 900px;
-  }
-  .level {
-    margin: 1.5rem;
-  }
-  .fade-enter-active {
-    transition: opacity 0.5s;
-  }
-  .fade-enter {
-    opacity: 0;
-  }
+<style scoped>
 </style>

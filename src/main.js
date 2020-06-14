@@ -5,7 +5,7 @@ import router from "./router";
 import vueScrollTo from "vue-scrollto";
 import axios from "axios";
 
-import "./assets/main.scss";
+import "./assets/main.css";
 
 if (process.env.NODE_ENV !== "production") {
   Vue.prototype.$axios = axios.create({

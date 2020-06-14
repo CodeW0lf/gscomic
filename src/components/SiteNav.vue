@@ -1,24 +1,26 @@
 <template>
-  <div class="level-right">
-    <div class="level-item page-link is-size-5 is-size-6-mobile has-text-weight-bold">
-      <router-link to="/">Comic</router-link>
-      <span class="page-link has-text-grey-dark">|</span>
-      <router-link to="/sketches">Sketches</router-link>
-      <span class="page-link has-text-grey-dark">|</span>
-      <router-link to="/lore">Lore</router-link>
+  <nav class="flex flex-col justify-between items-center w-full my-2 px-4 md:flex-row">
+    <patreon-link></patreon-link>
+    <div class="text-size-md text-primary font-bold">
+      <router-link class="hover:text-white" to="/">Comic</router-link>
+      <span class="px-2 text-gray-600">|</span>
+      <router-link class="hover:text-white" to="/sketches">Sketches</router-link>
+      <span class="px-2 text-gray-600">|</span>
+      <router-link class="hover:text-white" to="/lore">Lore</router-link>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
-  export default {
-    name: "SiteNav"
+import PatreonLink from "@/components/PatreonLink";
+
+export default {
+  name: "SiteNav",
+  components: {
+    PatreonLink
   }
+}
 </script>
 
-<style lang="scss" scoped>
-  .page-link {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+<style scoped>
 </style>
