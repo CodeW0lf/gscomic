@@ -91,6 +91,9 @@ export default {
       return false;
     },
     nextChapter() {
+      if (!this.hasNextChapter()) {
+        return;
+      }
       for (let val of this.chapters) {
         if (this.comicId < val) {
           this.$router.push({path: `/comic/${val}`});
@@ -99,6 +102,9 @@ export default {
       }
     },
     prevChapter() {
+      if (!this.hasPrevChapter()) {
+        return;
+      }
       let latest = 0;
       for (let val of this.chapters) {
         if (this.comicId - 1 > val) {
@@ -109,9 +115,15 @@ export default {
       this.$router.push({path: `/comic/${latest}`})
     },
     latestComic() {
+      if (!this.hasNextComic()) {
+        return;
+      }
       this.$router.replace({path: `/comic/${this.comicList["latest"]}`});
     },
     firstComic() {
+      if (!this.hasPrevComic()) {
+        return;
+      }
       this.$router.push({path: `/comic/1`});
       gtag("event", "FirstComic", {event_category: "Comic"})
     },
