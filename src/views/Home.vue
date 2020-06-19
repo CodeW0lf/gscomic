@@ -1,7 +1,8 @@
 <template>
-  <section class="text-center w-full">
+  <section class="text-center w-full relative">
     <comic-image v-on:prev-comic="prevComic" v-on:next-comic="nextComic" :src="comicUrl"></comic-image>
     <comic-nav
+        class="relative z-10"
         :has-next-chapter="hasNextChapter()"
         :has-next-comic="hasNextComic()"
         :has-prev-chapter="hasPrevChapter()"

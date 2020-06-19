@@ -15,7 +15,7 @@
       <router-view />
       <SocialLinks></SocialLinks>
       <footer class="text-gray-500 mt-16 text-center py-2">
-        <p class="font-semibold">Comic updates (most) Wednesdays. Sketches posted Friday.</p>
+        <p class="font-semibold">Comic updates (most) Wednesdays. <br class="sm:hidden"/>Sketches posted Friday.</p>
         <p>Like the comic? Support me on
           <a href="https://www.patreon.com/elitetrick" target="_blank" class="text-patreon hover:text-white">
             <svg class="fill-current inline-block w-4 h-4 align-text-top" role="img" viewBox="0 0 24 24"

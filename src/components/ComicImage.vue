@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center mx-auto relative w-full" style="padding-top:135%">
+  <div class="text-center mx-auto relative w-full" style="padding-top:136%">
     <transition mode="out-in"
         enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut faster">

@@ -10,8 +10,6 @@
 </template>
 
 <script>
-  import SiteNav from "@/components/SiteNav";
-  import SocialLinks from "@/components/SocialLinks";
   import Sketch from "@/components/Sketch";
   import InfiniteLoading from "vue-infinite-loading";
 
@@ -53,8 +51,6 @@
     },
     components: {
       InfiniteLoading,
-      SocialLinks,
-      SiteNav,
       Sketch
     },
     mounted() {
