@@ -28,6 +28,7 @@
     "@vue/cli-plugin-vuex": "^4.4.5",
     "@vue/cli-service": "^4.4.5",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "autoprefixer": "^9.8.2",
     "eslint": "^7.3.0",
     "vue-template-compiler": "^2.6.11"
   },
