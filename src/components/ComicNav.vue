@@ -70,7 +70,7 @@ export default {
 
 <style>
 .navBtn {
-  @apply fill-current w-10 inline-block mx-1;
+  @apply fill-current h-10 w-10 inline-block mx-1;
 }
 
 @screen sm {

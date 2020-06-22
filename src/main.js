@@ -6,6 +6,7 @@ import vueScrollTo from "vue-scrollto";
 import axios from "axios";
 
 import "./assets/main.css";
+import store from './store'
 
 if (process.env.NODE_ENV !== "production") {
   Vue.prototype.$axios = axios.create({
@@ -23,5 +24,6 @@ Vue.directive('scrollTo', scrollTo);
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount("#app");
