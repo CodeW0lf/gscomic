@@ -1,7 +1,7 @@
 <template>
   <section>
     <transition-group enter-active-class="animated fadeIn">
-      <div v-for="item in sketchList" :key="item.src">
+      <div class="mx-4" v-for="item in sketchList" :key="item.src">
         <sketch :src="'/sketch_files/' + item.src" :date="item.date"></sketch>
       </div>
     </transition-group>

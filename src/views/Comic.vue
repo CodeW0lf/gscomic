@@ -31,6 +31,7 @@ export default {
     ]),
     ...mapState([
         'comicId',
+        'latestComicId'
     ])
   },
   methods: {
@@ -57,7 +58,11 @@ export default {
     this.$store.dispatch('loadComics').then(() => {
       this.$store.dispatch('updateComicId', this.id).then(() => {
         if (parseInt(this.id, 10) !== this.comicId) {
-          this.$router.replace({path: `/comic/${this.comicId}`})
+          if (this.$router.currentRoute.path !== '/' && this.comicId === this.latestComicId) {
+            this.$router.replace({path: `/`})
+          } else {
+            this.$router.replace({path: `/comic/${this.comicId}`})
+          }
         }
       })
     })
