@@ -12,6 +12,7 @@
 <script>
   import Sketch from "@/components/Sketch";
   import InfiniteLoading from "vue-infinite-loading";
+  import ComicsService from "@/services/ComicsService";
 
   const sketchesToAdd = 1;
   export default {
@@ -54,7 +55,7 @@
       Sketch
     },
     mounted() {
-      this.$axios.get("get-sketches.php").then(res => {
+      ComicsService.getSketches().then(res => {
         this.allSketches = res.data;
         this.addSketches();
       });

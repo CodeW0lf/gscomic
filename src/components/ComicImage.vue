@@ -16,10 +16,18 @@
 
 <script>
 import Spinner from "@/components/Spinner"
+import { mapGetters } from "vuex"
 
 export default {
   name: "ComicImage",
-  props: ["src"],
+  computed: {
+    ...mapGetters([
+        "getComicFileName"
+    ]),
+    src() {
+      return '/comics/' + this.getComicFileName
+    }
+  },
   components: {
     Spinner
   },

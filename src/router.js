@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Comic from "./views/Comic.vue";
 import Lore from "./views/Lore.vue";
 import Sketches from "@/views/Sketches";
 
@@ -12,7 +12,7 @@ export default new Router({
     {
       path: "/comic/:id",
       name: "comic",
-      component: Home,
+      component: Comic,
       props: true
     },
     {
@@ -27,7 +27,7 @@ export default new Router({
     },
     {
       path: "/",
-      component: Home,
+      component: Comic,
     },
     {
       path: "*",
