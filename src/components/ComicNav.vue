@@ -57,68 +57,20 @@
 </template>
 
 <script>
-import {mapGetters, mapState} from "vuex";
+import {mapGetters} from "vuex";
+import ComicNavMixin from "@/mixins/ComicNavMixin";
 
 export default {
   name: "ComicNav",
+  mixins: [ComicNavMixin],
   computed: {
-    ...mapState([
-      'comicId',
-      'chapters'
-    ]),
     ...mapGetters([
-      'getComicFileName',
       'hasNextComic',
       'hasPrevComic',
       'hasNextChapter',
       'hasPrevChapter'
     ])
   },
-  methods: {
-    nextComic() {
-      this.$emit('next-comic');
-    },
-    prevComic() {
-      this.$emit('prev-comic');
-    },
-    nextChapter() {
-      if (!this.hasNextChapter) {
-        return;
-      }
-      for (let val of this.chapters) {
-        if (this.comicId < val) {
-          this.$router.push({path: `/comic/${val}`});
-          break;
-        }
-      }
-    },
-    prevChapter() {
-      if (!this.hasPrevChapter) {
-        return;
-      }
-      let latest = 0;
-      for (let val of this.chapters) {
-        if (this.comicId - 1 > val) {
-          latest = val;
-        }
-      }
-      latest = latest + 1; // Val represents end of chapter, inc by 1 for beginning
-      this.$router.push({path: `/comic/${latest}`})
-    },
-    latestComic() {
-      if (!this.hasNextComic) {
-        return;
-      }
-      this.$router.replace({path: `/comic`});
-    },
-    firstComic() {
-      if (!this.hasPrevComic) {
-        return;
-      }
-      this.$router.push({path: `/comic/1`});
-      gtag("event", "FirstComic", {event_category: "Comic"})
-    },
-  }
 };
 </script>
 

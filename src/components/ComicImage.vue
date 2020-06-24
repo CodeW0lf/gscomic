@@ -1,8 +1,8 @@
 <template>
   <div class="text-center mx-auto relative w-full" style="padding-top:136%">
     <transition mode="out-in"
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut faster">
+        enter-active-class="animated fadeIn fade-duration"
+        leave-active-class="animated fadeOut fade-duration">
       <div v-if="loading" key="spinner" class="absolute inset-0 w-full"  style="top: 40%">
         <spinner></spinner>
       </div>
@@ -94,4 +94,7 @@ export default {
 </script>
 
 <style scoped>
+  .fade-duration {
+    animation-duration: 250ms;
+  }
 </style>
