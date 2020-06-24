@@ -25,7 +25,7 @@ export default {
         "getComicFileName"
     ]),
     src() {
-      return '/comics/' + this.getComicFileName
+      return '/img/comics/' + this.getComicFileName
     }
   },
   components: {

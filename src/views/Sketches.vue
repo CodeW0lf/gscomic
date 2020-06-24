@@ -2,7 +2,7 @@
   <section>
     <transition-group enter-active-class="animated fadeIn">
       <div class="mx-4" v-for="item in sketchList" :key="item.src">
-        <sketch :src="'/sketch_files/' + item.src" :date="item.date"></sketch>
+        <sketch :src="'/img/sketch_files/' + item.src" :date="item.date"></sketch>
       </div>
     </transition-group>
     <infinite-loading @infinite="loadHandler" :identifier="allSketches.length" spinner="spiral"></infinite-loading>
@@ -32,7 +32,7 @@
               resolve();
             };
             img.onerror = reject;
-            img.src = '/sketch_files/' + this.sketchList[this.sketchList.length - 1].src;
+            img.src = '/img/sketch_files/' + this.sketchList[this.sketchList.length - 1].src;
           });
           p.then(() => {
             $state.loaded();

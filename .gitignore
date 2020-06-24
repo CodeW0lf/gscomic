@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-/public/comics
+/public/img/comics
 
 # local env files
 .env.local
@@ -20,5 +20,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
-/public/sketch_files/
+/public/img/sketch_files/
 /public/patreon/
