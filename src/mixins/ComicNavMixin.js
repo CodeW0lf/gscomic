@@ -60,6 +60,7 @@ export default {
         return
       }
       this.$router.push({ path: `/comic/1` })
+      // eslint-disable-next-line no-undef
       gtag('event', 'FirstComic', { event_category: 'Comic' })
     },
   },

@@ -43,6 +43,7 @@ export default {
   name: 'PatreonLink',
   methods: {
     patreonClick() {
+      // eslint-disable-next-line no-undef
       gtag('event', 'Patreon', { event_category: 'Social' })
     },
   },
