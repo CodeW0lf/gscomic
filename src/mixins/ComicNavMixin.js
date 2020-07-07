@@ -1,67 +1,66 @@
-import {mapGetters, mapState} from "vuex";
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState([
-      'comicId',
-      'chapters'
-    ]),
+    ...mapState(['comicId', 'chapters']),
     ...mapGetters([
       'hasNextComic',
       'hasPrevComic',
       'hasNextChapter',
-      'hasPrevChapter'
-    ])
+      'hasPrevChapter',
+    ]),
   },
   methods: {
     nextComic() {
       if (this.hasNextComic) {
-        this.$router.push({path: `/comic/${this.comicId + 1}`});
-        gtag("event", "NextComic", {event_category: "Comic"})
+        this.$router.push({ path: `/comic/${this.comicId + 1}` })
+        // eslint-disable-next-line no-undef
+        gtag('event', 'NextComic', { event_category: 'Comic' })
       }
     },
     prevComic() {
       if (this.hasPrevComic) {
-        this.$router.push({path: `/comic/${this.comicId - 1}`});
-        gtag("event", "PrevComic", {event_category: "Comic"})
+        this.$router.push({ path: `/comic/${this.comicId - 1}` })
+        // eslint-disable-next-line no-undef
+        gtag('event', 'PrevComic', { event_category: 'Comic' })
       }
     },
     nextChapter() {
       if (!this.hasNextChapter) {
-        return;
+        return
       }
       for (let val of this.chapters) {
         if (this.comicId < val) {
-          this.$router.push({path: `/comic/${val}`});
-          break;
+          this.$router.push({ path: `/comic/${val}` })
+          break
         }
       }
     },
     prevChapter() {
       if (!this.hasPrevChapter) {
-        return;
+        return
       }
-      let latest = 0;
+      let latest = 0
       for (let val of this.chapters) {
         if (this.comicId - 1 > val) {
-          latest = val;
+          latest = val
         }
       }
-      latest = latest + 1; // Val represents end of chapter, inc by 1 for beginning
-      this.$router.push({path: `/comic/${latest}`})
+      latest = latest + 1 // Val represents end of chapter, inc by 1 for beginning
+      this.$router.push({ path: `/comic/${latest}` })
     },
     latestComic() {
       if (!this.hasNextComic) {
-        return;
+        return
       }
-      this.$router.replace({path: `/comic`});
+      this.$router.replace({ path: `/comic` })
     },
     firstComic() {
       if (!this.hasPrevComic) {
-        return;
+        return
       }
-      this.$router.push({path: `/comic/1`});
-      gtag("event", "FirstComic", {event_category: "Comic"})
+      this.$router.push({ path: `/comic/1` })
+      gtag('event', 'FirstComic', { event_category: 'Comic' })
     },
-  }
+  },
 }
