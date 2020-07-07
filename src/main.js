@@ -4,7 +4,8 @@ import router from './router'
 
 import vueScrollTo from 'vue-scrollto'
 
-import './assets/main.css'
+import './assets/css/tailwind.css'
+import './assets/css/animate.css'
 import store from './store'
 
 Vue.config.productionTip = false
