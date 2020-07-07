@@ -1,42 +1,41 @@
 <template>
   <section class="text-center w-full relative">
-    <comic-image v-on:prev-comic="prevComic" v-on:next-comic="nextComic"></comic-image>
+    <comic-image
+      v-on:prev-comic="prevComic"
+      v-on:next-comic="nextComic"
+    ></comic-image>
     <comic-nav class="relative z-10"></comic-nav>
-    <div class="text-gray-500 font-semibold my-4">{{ comicId }} / {{ latestComicId }}</div>
+    <div class="text-gray-500 font-semibold my-4">
+      {{ comicId }} / {{ latestComicId }}
+    </div>
   </section>
 </template>
 
 <script>
-import ComicImage from "@/components/ComicImage";
-import ComicNav from "@/components/ComicNav.vue";
-import ComicNavMixin from "@/mixins/ComicNavMixin";
-import {mapActions, mapState} from "vuex"
+import ComicImage from '@/components/ComicImage'
+import ComicNav from '@/components/ComicNav.vue'
+import ComicNavMixin from '@/mixins/ComicNavMixin'
+import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: "comic",
-  props: ["id"],
+  name: 'comic',
+  props: ['id'],
   mixins: [ComicNavMixin],
   components: {
     ComicImage,
-    ComicNav
+    ComicNav,
   },
   computed: {
-    ...mapState([
-        'comicId',
-        'latestComicId'
-    ])
+    ...mapState(['comicId', 'latestComicId']),
   },
   methods: {
-    ...mapActions([
-        'updateComicId',
-        'loadComics'
-    ])
+    ...mapActions(['updateComicId', 'loadComics']),
   },
   watch: {
     $route() {
-      this.updateComicId(this.id);
-      this.$scrollTo(this.$parent.$refs.top);
-    }
+      this.updateComicId(this.id)
+      this.$scrollTo(this.$parent.$refs.top)
+    },
   },
   mounted() {
     this.loadComics().then(() => {
@@ -44,14 +43,14 @@ export default {
         if (parseInt(this.id, 10) !== this.comicId) {
           if (this.comicId === this.latestComicId) {
             if (this.$router.currentRoute.path !== '/') {
-              this.$router.replace({path: `/`})
+              this.$router.replace({ path: `/` })
             }
           } else {
-            this.$router.replace({path: `/comic/${this.comicId}`})
+            this.$router.replace({ path: `/comic/${this.comicId}` })
           }
         }
       })
     })
-  }
+  },
 }
 </script>

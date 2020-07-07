@@ -9,7 +9,7 @@ export default new Vuex.Store({
     comicId: 1,
     latestComicId: 1,
     comicList: {},
-    chapters: []
+    chapters: [],
   },
   getters: {
     getComicFileName(state) {
@@ -31,12 +31,12 @@ export default new Vuex.Store({
     },
     hasPrevChapter(state) {
       for (let val of state.chapters) {
-        if (state.comicId > (val + 1)) {
+        if (state.comicId > val + 1) {
           return true
         }
       }
       return false
-    }
+    },
   },
   mutations: {
     SET_CURRENT_COMIC(state, id) {
@@ -50,24 +50,23 @@ export default new Vuex.Store({
     },
     SET_CHAPTER_LIST(state, chapterList) {
       state.chapters = chapterList
-    }
+    },
   },
   actions: {
-    async loadComics({commit}) {
+    async loadComics({ commit }) {
       let res = await ComicsService.getComics()
       commit('SET_COMIC_LIST', res.data.comics)
       commit('SET_CHAPTER_LIST', res.data.chapters)
       commit('SET_CURRENT_COMIC', res.data.latest)
       commit('SET_LATEST_COMIC', res.data.latest)
     },
-    updateComicId({commit, state}, id) {
+    updateComicId({ commit, state }, id) {
       let cleanId = parseInt(id, 10) || state.latestComicId
       if (isNaN(cleanId) || cleanId <= 0 || !(cleanId in state.comicList)) {
         cleanId = state.latestComicId
       }
       commit('SET_CURRENT_COMIC', cleanId)
-    }
+    },
   },
-  modules: {
-  }
+  modules: {},
 })

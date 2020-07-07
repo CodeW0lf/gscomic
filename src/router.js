@@ -1,37 +1,37 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Comic from "./views/Comic.vue";
-import Lore from "./views/Lore.vue";
-import Sketches from "@/views/Sketches";
+import Vue from 'vue'
+import Router from 'vue-router'
+import Comic from './views/Comic.vue'
+import Lore from './views/Lore.vue'
+import Sketches from '@/views/Sketches'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
-  mode: "history",
+  mode: 'history',
   routes: [
     {
-      path: "/comic/:id",
-      name: "comic",
+      path: '/comic/:id',
+      name: 'comic',
       component: Comic,
-      props: true
+      props: true,
     },
     {
-      path: "/lore",
-      name: "lore",
-      component: Lore
+      path: '/lore',
+      name: 'lore',
+      component: Lore,
     },
     {
-      path: "/sketches",
-      name: "sketches",
-      component: Sketches
+      path: '/sketches',
+      name: 'sketches',
+      component: Sketches,
     },
     {
-      path: "/",
+      path: '/',
       component: Comic,
     },
     {
-      path: "*",
-      redirect: "/"
-    }
-  ]
-});
+      path: '*',
+      redirect: '/',
+    },
+  ],
+})
