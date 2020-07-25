@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Comic from './views/Comic.vue'
-import Lore from './views/Lore.vue'
-import Sketches from '@/views/Sketches'
+const Comic = () => import('./views/Comic')
+const Lore = () => import('./views/Lore')
+const Sketches = () => import('./views/Sketches')
 
 Vue.use(Router)
 
