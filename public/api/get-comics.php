@@ -2,8 +2,8 @@
 header("Access-Control-Allow-Origin: http://localhost:8080");
 date_default_timezone_set("America/Los_Angeles");
 
-const LATEST = 65;
-$RELEASE_TIME = mktime(0,0,0, 07, 22, 2020);
+const LATEST = 70;
+$RELEASE_TIME = mktime(0,0,0, 9, 2, 2020);
 
 function isComicReleased($comicNum) {
   global $RELEASE_TIME;

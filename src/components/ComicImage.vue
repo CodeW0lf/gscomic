@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center mx-auto relative w-full" style="padding-top: 136%;">
+  <div class="text-center mx-auto relative w-full" style="padding-top: 136%">
     <transition
       mode="out-in"
       enter-active-class="animated fadeIn fade-duration"
@@ -9,7 +9,7 @@
         v-if="loading"
         key="spinner"
         class="absolute inset-0 w-full"
-        style="top: 40%;"
+        style="top: 40%"
       >
         <spinner></spinner>
       </div>

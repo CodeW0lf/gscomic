@@ -22,7 +22,7 @@
       id="top"
       ref="top"
       class="container mx-auto flex flex-col items-center justify-between w-full h-full"
-      style="max-width: 900px;"
+      style="max-width: 900px"
     >
       <site-nav></site-nav>
       <router-view />
