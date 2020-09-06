@@ -24,6 +24,10 @@ module.exports = {
           default: '#1B95E0',
           lighter: '#99aab5',
         },
+        telegram: {
+          default: '#2CA5E0',
+          lighter: '#99aab5',
+        },
       },
     },
   },

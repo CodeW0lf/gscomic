@@ -14,7 +14,7 @@
         console.log("GA Disabled");
       }
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      const gtag = function(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-123602656-1');
     </script>
