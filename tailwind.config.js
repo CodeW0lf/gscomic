@@ -32,7 +32,7 @@ module.exports = {
     },
   },
   variants: {
-    textColor: ['responsive', 'hover', 'focus', 'disabled'],
+    textColor: ['responsive', 'hover', 'focus', 'group-hover', 'disabled'],
   },
   plugins: [],
 }

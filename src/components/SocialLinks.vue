@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="mt-8 text-center">
+    <div class="mt-8 text-center group">
       <a
         :href="shareUrl"
         @click="twitterClick"
         target="_blank"
-        class="text-gray-500 hover:text-white text-sm"
+        class="text-gray-500 group-hover:text-white text-sm"
       >
         <svg
-          class="fill-current text-twitter inline-block w-4 h-4"
+          class="fill-current text-twitter group-hover:text-twitter-lighter inline-block w-4 h-4"
           role="img"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
