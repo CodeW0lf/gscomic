@@ -17,11 +17,33 @@
         v-else
         @touchstart.passive="startDrag"
         @touchmove.passive="dragComic"
-        @touchstop.passive="stopDrag"
+        @touchend.passive="stopDrag"
         key="image"
         class="absolute inset-0 w-full"
       >
-        <img :src="src" alt="Comic Image" />
+        <svg
+          class="fill-current text-white absolute w-24 h-24 transform rotate-90 transition duration-200"
+          style="top: 50%"
+          :style="{ opacity: lastMoveDist > 0 ? lastMoveDist / 2 + '%' : 0 }"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+          />
+        </svg>
+        <img class="transition" :src="src" alt="Comic Image" />
+        <svg
+          class="fill-current text-white absolute w-24 h-24 transform -rotate-90 right-0 transition duration-200"
+          style="top: 50%"
+          :style="{ opacity: lastMoveDist < 0 ? -lastMoveDist / 2 + '%' : 0 }"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+          />
+        </svg>
       </div>
     </transition>
   </div>
@@ -30,6 +52,8 @@
 <script>
 import Spinner from '@/components/Spinner'
 import { mapGetters } from 'vuex'
+
+const comicChangeDragDistPx = 200
 
 export default {
   name: 'ComicImage',
@@ -47,6 +71,7 @@ export default {
       loading: true,
       dragging: false,
       startX: 0,
+      lastMoveDist: 0,
     }
   },
   mounted() {
@@ -82,6 +107,7 @@ export default {
     stopDrag() {
       this.dragging = false
       this.startX = 0
+      this.lastMoveDist = 0
     },
     dragComic(e) {
       if (this.loading) {
@@ -91,12 +117,17 @@ export default {
       e = e.changedTouches ? e.changedTouches[0] : e
       if (this.dragging) {
         moveDist = e.pageX - this.startX
-        if (moveDist >= 200) {
+        if (moveDist !== this.lastMoveDist) {
+          this.lastMoveDist = moveDist
+        }
+        if (moveDist >= comicChangeDragDistPx) {
           this.$emit('prev-comic')
           this.dragging = false
-        } else if (moveDist <= -200) {
+          this.lastMoveDist = 0
+        } else if (moveDist <= -comicChangeDragDistPx) {
           this.$emit('next-comic')
           this.dragging = false
+          this.lastMoveDist = 0
         }
       }
     },
