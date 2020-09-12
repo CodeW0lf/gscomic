@@ -23,7 +23,7 @@
       >
         <svg
           class="fill-current text-white absolute w-24 h-24 transform rotate-90 transition duration-200"
-          style="top: 50%"
+          style="top: 40%"
           :style="{ opacity: lastMoveDist > 0 ? lastMoveDist / 2 + '%' : 0 }"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
@@ -35,7 +35,7 @@
         <img class="transition" :src="src" alt="Comic Image" />
         <svg
           class="fill-current text-white absolute w-24 h-24 transform -rotate-90 right-0 transition duration-200"
-          style="top: 50%"
+          style="top: 40%"
           :style="{ opacity: lastMoveDist < 0 ? -lastMoveDist / 2 + '%' : 0 }"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
