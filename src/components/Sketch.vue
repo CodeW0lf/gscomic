@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center">
     <p class="text-sm text-gray-600 font-semibold self-start mb-2">
-      Posted on {{ date | longDate }}
+      Posted on {{ longDate(date) }}
     </p>
     <div class="w-full mb-6">
       <a :href="src" target="_blank">
@@ -20,7 +20,7 @@ const dateOptions = {
 export default {
   name: 'Sketch',
   props: ['src', 'date'],
-  filters: {
+  methods: {
     longDate(date) {
       return new Date(date * 1000).toLocaleDateString('en-US', dateOptions)
     },
