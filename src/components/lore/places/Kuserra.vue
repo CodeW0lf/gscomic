@@ -1,5 +1,5 @@
 <template>
-  <section class="my-8 md:mt-0 md:mb-4 md:mx-8">
+  <section class="my-8 md:mt-0 md:mb-4 mx-8">
     <article class="prose max-w-none">
       <h2>Kuserra</h2>
       <p>
@@ -29,43 +29,56 @@
         building materials, and in return, they bring valuable canned food,
         watts, technology and textiles.
       </p>
-      <h2>Locations Within Kuserra</h2>
+      <h2 class="text-center">Locations Within Kuserra</h2>
     </article>
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 mt-6">
+    <div
+      class="grid grid-cols-1 justify-items-center gap-4 md:grid-cols-3 mt-6"
+    >
       <div>
         <button>
-          <img
-            class="h-16 rounded hover:filter-grayscale"
-            src="@/assets/lore-locations-kuserra.png"
-            alt="Kuserra Lore"
-          />
+          <router-link to="unknown">
+            <img
+              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white"
+              src="@/assets/lore/lore-locations-citadel.png"
+              alt="Kuserra Location"
+            />
+          </router-link>
         </button>
       </div>
       <div>
         <button>
-          <img
-            class="h-16 rounded filter-grayscale"
-            src="@/assets/lore-locations-kuserra.png"
-            alt="Kuserra Lore"
-          />
+          <router-link to="unknown">
+            <img
+              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white"
+              src="@/assets/lore/lore-locations-underground.png"
+              alt="Kuserra Location"
+            />
+          </router-link>
         </button>
       </div>
       <div>
         <button>
-          <img
-            class="h-16 rounded filter-grayscale"
-            src="@/assets/lore-locations-kuserra.png"
-            alt="Kuserra Lore"
-          />
+          <router-link to="unknown">
+            <img
+              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white"
+              src="@/assets/lore/lore-locations-downtown.png"
+              alt="Kuserra Location"
+            />
+          </router-link>
         </button>
       </div>
+    </div>
+    <div class="text-center mt-8">
+      <BackButton path="/lore/places">Back to Places</BackButton>
     </div>
   </section>
 </template>
 
 <script>
+import BackButton from '@/components/lore/BackButton'
 export default {
   name: 'LoreLocations',
+  components: { BackButton },
 }
 </script>
 

@@ -19,7 +19,10 @@ module.exports = {
           default: '#9a473a',
           lighter: '#F96854',
         },
-        primary: '#3B9C7D',
+        primary: {
+          default: '#3B9C7D',
+          lighter: '#57e7b9',
+        },
         discord: {
           default: '#7289da',
           lighter: '#99aab5',
@@ -32,6 +35,11 @@ module.exports = {
           default: '#2CA5E0',
           lighter: '#99aab5',
         },
+      },
+      spacing: {
+        0.5: '0.125rem',
+        1.5: '0.375rem',
+        2.5: '0.625rem',
       },
     },
     typography: (theme) => ({
@@ -50,6 +58,7 @@ module.exports = {
   },
   variants: {
     textColor: ['responsive', 'hover', 'focus', 'group-hover', 'disabled'],
+    backgroundColor: ['hover', 'group-hover'],
   },
   plugins: [require('@tailwindcss/typography')],
 }

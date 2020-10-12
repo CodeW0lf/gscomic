@@ -31,6 +31,10 @@ export default new Router({
           component: Kuserra,
         },
         {
+          path: 'places/unknown',
+          component: () => import('./components/lore/places/Unknown'),
+        },
+        {
           path: '',
           component: LoreHome,
         },
