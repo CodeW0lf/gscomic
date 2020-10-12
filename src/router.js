@@ -3,6 +3,9 @@ import Router from 'vue-router'
 const Comic = () => import('./views/Comic')
 const Lore = () => import('./views/Lore')
 const Sketches = () => import('./views/Sketches')
+const LorePlaces = () => import('./components/lore/LorePlaces')
+const LoreHome = () => import('./components/lore/LoreHome')
+const Kuserra = () => import('./components/lore/places/Kuserra')
 
 Vue.use(Router)
 
@@ -11,18 +14,29 @@ export default new Router({
   routes: [
     {
       path: '/comic/:id',
-      name: 'comic',
       component: Comic,
       props: true,
     },
     {
       path: '/lore',
-      name: 'lore',
       component: Lore,
+      children: [
+        {
+          path: 'places',
+          component: LorePlaces,
+        },
+        {
+          path: 'places/kuserra',
+          component: Kuserra,
+        },
+        {
+          path: '',
+          component: LoreHome,
+        },
+      ],
     },
     {
       path: '/sketches',
-      name: 'sketches',
       component: Sketches,
     },
     {

@@ -1,4 +1,8 @@
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   purge: [
     './src/**/*.html',
     './src/**/*.vue',
@@ -30,9 +34,22 @@ module.exports = {
         },
       },
     },
+    typography: (theme) => ({
+      default: {
+        css: {
+          color: theme('colors.gray.500'),
+          h1: {
+            color: theme('colors.gray.400'),
+          },
+          h2: {
+            color: theme('colors.gray.400'),
+          },
+        },
+      },
+    }),
   },
   variants: {
     textColor: ['responsive', 'hover', 'focus', 'group-hover', 'disabled'],
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
