@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 const Comic = () => import('./views/Comic')
 const Lore = () => import('./views/Lore')
 const Sketches = () => import('./views/Sketches')
