@@ -12,8 +12,8 @@
     <button disabled>
       <router-link to="">
         <img
-          class="h-24 rounded filter-grayscale"
-          src="@/assets/lore/lore-locations-secret.png"
+          class="h-24 rounded border border-gray-800 cursor-not-allowed filter-grayscale"
+          src="@/assets/lore/lore-characters.png"
           alt="Character Lore"
         />
       </router-link>
@@ -21,8 +21,8 @@
     <button disabled>
       <router-link to="">
         <img
-          class="h-24 rounded filter-grayscale"
-          src="@/assets/lore/lore-locations-secret.png"
+          class="h-24 rounded border border-gray-800 cursor-not-allowed filter-grayscale"
+          src="@/assets/lore/lore-culture.png"
           alt="Culture Lore"
         />
       </router-link>
