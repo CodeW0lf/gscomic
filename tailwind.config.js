@@ -1,7 +1,7 @@
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
+  future: 'all',
+  experimental: {
+    extendedSpacingScale: true,
   },
   purge: [
     './src/**/*.html',
@@ -36,11 +36,11 @@ module.exports = {
           lighter: '#99aab5',
         },
       },
-      spacing: {
-        0.5: '0.125rem',
-        1.5: '0.375rem',
-        2.5: '0.625rem',
-      },
+      // spacing: {
+      //   0.5: '0.125rem',
+      //   1.5: '0.375rem',
+      //   2.5: '0.625rem',
+      // },
     },
     typography: (theme) => ({
       default: {

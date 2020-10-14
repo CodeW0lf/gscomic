@@ -1,5 +1,7 @@
 <template>
-  <section class="grid grid-cols-1 gap-8 justify-center items-center mb-4">
+  <section
+    class="grid grid-cols-1 gap-8 justify-center items-center mb-4 md:mt-8"
+  >
     <button>
       <router-link to="places/kuserra">
         <img

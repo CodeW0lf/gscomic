@@ -1,5 +1,5 @@
 <template>
-  <section class="my-8 md:mt-0 md:mb-4 mx-8">
+  <section class="mb-2 mt-0 md:my-8 mx-8">
     <article class="prose max-w-none">
       <h2>Kuserra</h2>
       <p>
@@ -31,13 +31,14 @@
       <h2 class="text-center">Locations Within Kuserra</h2>
     </article>
     <div
-      class="grid grid-cols-1 justify-items-center gap-4 md:grid-cols-3 mt-6"
+      class="grid grid-cols-1 justify-items-center justify-center gap-4 mt-6 md:grid-cols-3"
     >
       <div>
         <button>
           <router-link to="unknown">
             <img
-              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white"
+              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white w-full"
+              style="max-width: 300px"
               src="@/assets/lore/lore-locations-citadel.png"
               alt="Kuserra Location"
             />
@@ -48,7 +49,8 @@
         <button>
           <router-link to="unknown">
             <img
-              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white"
+              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white w-full"
+              style="max-width: 300px"
               src="@/assets/lore/lore-locations-underground.png"
               alt="Kuserra Location"
             />
@@ -59,7 +61,8 @@
         <button>
           <router-link to="unknown">
             <img
-              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white"
+              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white w-full"
+              style="max-width: 300px"
               src="@/assets/lore/lore-locations-downtown.png"
               alt="Kuserra Location"
             />
