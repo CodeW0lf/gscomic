@@ -22,7 +22,7 @@
       </a>
     </div>
     <div class="mt-8 text-gray-500 text-center">Follow for Updates!</div>
-    <div class="mt-4">
+    <div class="mt-4 mx-auto text-center">
       <a
         href="https://t.me/ComicSlayers"
         @click="telegramClick"
@@ -77,12 +77,34 @@
         </svg>
       </a>
     </div>
+    <div class="mt-8 text-center">
+      <a
+        href="http://www.topwebcomics.com/vote/26458"
+        @click="voteClick"
+        target="_blank"
+      >
+        <img
+          class="mx-auto"
+          :src="voteImgRollover"
+          @mouseover="voteImgHover = true"
+          @mouseleave="voteImgHover = false"
+          alt="Vote for God Slayers Comic at TopWebComics"
+        />
+      </a>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'SocialLinks',
+  data() {
+    return {
+      voteImgHover: false,
+      voteImg: require('@/assets/vote-twc.png'),
+      voteImgO: require('@/assets/vote-twc-o.png'),
+    }
+  },
   methods: {
     discordClick() {
       // eslint-disable-next-line no-undef
@@ -96,6 +118,10 @@ export default {
       // eslint-disable-next-line no-undef
       gtag('event', 'Telegram', { event_category: 'Social' })
     },
+    voteClick() {
+      // eslint-disable-next-line no-undef
+      gtag('event', 'TopWebComic', { event_category: 'Social' })
+    },
   },
   computed: {
     shareUrl() {
@@ -108,6 +134,9 @@ export default {
         '&text=' +
         message
       )
+    },
+    voteImgRollover() {
+      return this.voteImgHover ? this.voteImgO : this.voteImg
     },
   },
 }
