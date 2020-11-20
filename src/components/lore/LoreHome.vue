@@ -14,7 +14,7 @@
     <button disabled>
       <router-link to="">
         <img
-          class="h-24 rounded border border-gray-800 cursor-not-allowed filter-grayscale"
+          class="h-24 rounded border border-gray-700 cursor-not-allowed filter-grayscale"
           src="@/assets/lore/lore-characters.png"
           alt="Character Lore"
         />
@@ -23,7 +23,7 @@
     <button disabled>
       <router-link to="">
         <img
-          class="h-24 rounded border border-gray-800 cursor-not-allowed filter-grayscale"
+          class="h-24 rounded border border-gray-700 cursor-not-allowed filter-grayscale"
           src="@/assets/lore/lore-culture.png"
           alt="Culture Lore"
         />

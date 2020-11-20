@@ -2,7 +2,7 @@
   <section class="flex justify-between items-center mx-4 text-primary">
     <div>
       <button
-        class="disabled:text-gray-800"
+        class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
         aria-label="First Comic"
         @click="firstComic"
         :disabled="!hasPrevComic"
@@ -17,7 +17,7 @@
         </svg>
       </button>
       <button
-        class="disabled:text-gray-800"
+        class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
         aria-label="Previous Chapter"
         @click="prevChapter"
         :disabled="!hasPrevChapter"
@@ -32,7 +32,7 @@
         </svg>
       </button>
       <button
-        class="disabled:text-gray-800"
+        class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
         aria-label="Previous Comic"
         @click="prevComic"
         :disabled="!hasPrevComic"
@@ -50,7 +50,7 @@
 
     <div>
       <button
-        class="disabled:text-gray-800"
+        class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
         aria-label="Next Comic"
         @click="nextComic"
         :disabled="!hasNextComic"
@@ -65,7 +65,7 @@
         </svg>
       </button>
       <button
-        class="disabled:text-gray-800"
+        class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
         aria-label="Next Chapter"
         @click="nextChapter"
         :disabled="!hasNextChapter"
@@ -80,7 +80,7 @@
         </svg>
       </button>
       <button
-        class="disabled:text-gray-800"
+        class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
         aria-label="Latest Comic"
         @click="latestComic"
         :disabled="!hasNextComic"

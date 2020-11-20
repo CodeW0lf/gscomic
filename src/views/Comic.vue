@@ -5,7 +5,7 @@
       v-on:next-comic="nextComic"
     ></comic-image>
     <comic-nav class="relative z-10"></comic-nav>
-    <div class="text-gray-500 font-semibold my-4">
+    <div class="text-gray-400 font-semibold my-4">
       {{ comicId }} / {{ latestComicId }}
     </div>
   </section>

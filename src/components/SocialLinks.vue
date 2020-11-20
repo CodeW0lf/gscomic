@@ -5,10 +5,10 @@
         :href="shareUrl"
         @click="twitterClick"
         target="_blank"
-        class="text-gray-500 group-hover:text-white text-sm"
+        class="text-gray-400 group-hover:text-white text-sm"
       >
         <svg
-          class="fill-current text-twitter group-hover:text-twitter-lighter inline-block w-4 h-4"
+          class="fill-current text-twitter group-hover:text-twitter-lighter inline-block w-4 h-4 align-text-top"
           role="img"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
         Share
       </a>
     </div>
-    <div class="mt-8 text-gray-500 text-center">Follow for Updates!</div>
+    <div class="mt-8 text-gray-400 text-center">Follow for Updates!</div>
     <div class="mt-4 mx-auto text-center">
       <a
         href="https://t.me/ComicSlayers"

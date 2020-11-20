@@ -9,7 +9,7 @@
       class="py-2 px-3 bg-patreon-lighter text-white text-xs sm:text-sm rounded hover:bg-gray-700 inline-block"
     >
       <svg
-        class="fill-current inline-block w-4 h-4 align-text-top"
+        class="fill-current inline-block w-4 h-4 align-middle"
         role="img"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
@@ -22,10 +22,10 @@
       Become a Patron
     </a>
     <span
-      class="text-gray-700 font-semibold inline-block animated bounceIn delay-1s text-sm mt-2 sm:text-base sm:mt-0"
+      class="text-gray-600 font-semibold inline-block animated bounceIn delay-1s text-sm mt-2 sm:text-base sm:mt-0"
     >
       <svg
-        class="fill-current w-5 inline-block mx-2 hidden sm:inline-block md:align-text-top"
+        class="fill-current w-5 inline-block mx-2 hidden sm:inline-block md:align-middle"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
       >

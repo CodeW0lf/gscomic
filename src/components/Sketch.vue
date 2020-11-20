@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-center items-center">
-    <p class="text-sm text-gray-600 font-semibold self-start mb-2">
+    <p class="text-sm text-gray-500 font-semibold self-start mb-2">
       Posted on {{ longDate(date) }}
     </p>
     <div class="w-full mb-6">

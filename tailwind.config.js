@@ -1,8 +1,6 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
-  future: 'all',
-  experimental: {
-    extendedSpacingScale: true,
-  },
   purge: [
     './src/**/*.html',
     './src/**/*.vue',
@@ -11,49 +9,50 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      body: ['Roboto', 'sans-serif'],
+      body: ['Roboto', ...defaultTheme.fontFamily.sans],
     },
     extend: {
       colors: {
         patreon: {
-          default: '#9a473a',
+          DEFAULT: '#9a473a',
           lighter: '#F96854',
         },
         primary: {
-          default: '#3B9C7D',
+          DEFAULT: '#3B9C7D',
           lighter: '#57e7b9',
         },
         discord: {
-          default: '#7289da',
+          DEFAULT: '#7289da',
           lighter: '#99aab5',
         },
         twitter: {
-          default: '#1B95E0',
+          DEFAULT: '#1B95E0',
           lighter: '#99aab5',
         },
         telegram: {
-          default: '#2CA5E0',
+          DEFAULT: '#2CA5E0',
           lighter: '#99aab5',
         },
       },
-    },
-    typography: (theme) => ({
-      default: {
-        css: {
-          color: theme('colors.gray.500'),
-          h1: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
             color: theme('colors.gray.400'),
-          },
-          h2: {
-            color: theme('colors.gray.400'),
+            h1: {
+              color: theme('colors.gray.500'),
+            },
+            h2: {
+              color: theme('colors.gray.500'),
+            },
           },
         },
-      },
-    }),
+      }),
+    },
   },
   variants: {
-    textColor: ['responsive', 'hover', 'focus', 'group-hover', 'disabled'],
-    backgroundColor: ['hover', 'group-hover'],
+    extend: {
+      textColor: ['disabled'],
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 }

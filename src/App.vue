@@ -27,7 +27,7 @@
       <site-nav></site-nav>
       <router-view />
       <SocialLinks></SocialLinks>
-      <footer class="text-gray-500 mt-16 text-center py-2">
+      <footer class="text-gray-400 mt-16 text-center py-2">
         <p class="font-semibold">
           Comic updates (most) Wednesdays. <br class="sm:hidden" />Sketches
           posted Friday.
