@@ -2,11 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Comic = () => import('./views/Comic')
-const Lore = () => import('./views/Lore')
-const Sketches = () => import('./views/Sketches')
-const LorePlaces = () => import('./components/lore/LorePlaces')
-const LoreHome = () => import('./components/lore/LoreHome')
-const Kuserra = () => import('./components/lore/places/Kuserra')
 
 Vue.use(Router)
 
@@ -20,29 +15,37 @@ export default new Router({
     },
     {
       path: '/lore',
-      component: Lore,
+      component: () => import('./views/Lore'),
       children: [
         {
           path: 'places',
-          component: LorePlaces,
+          component: () => import('./components/lore/LorePlaces'),
         },
         {
           path: 'places/kuserra',
-          component: Kuserra,
+          component: () => import('./components/lore/places/Kuserra'),
         },
         {
           path: 'places/unknown',
           component: () => import('./components/lore/places/Unknown'),
         },
         {
+          path: 'culture',
+          component: () => import('./components/lore/LoreCulture'),
+        },
+        {
+          path: 'culture/gods',
+          component: () => import('./components/lore/culture/Gods'),
+        },
+        {
           path: '',
-          component: LoreHome,
+          component: () => import('./components/lore/LoreHome'),
         },
       ],
     },
     {
       path: '/sketches',
-      component: Sketches,
+      component: () => import('./views/Sketches'),
     },
     {
       path: '/',

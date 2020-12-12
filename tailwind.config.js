@@ -7,6 +7,7 @@ module.exports = {
     './src/**/*.jsx',
     './public/*.html',
   ],
+  darkMode: false,
   theme: {
     fontFamily: {
       body: ['Roboto', ...defaultTheme.fontFamily.sans],
@@ -52,6 +53,11 @@ module.exports = {
   variants: {
     extend: {
       textColor: ['disabled'],
+      ringColor: ['hover'],
+      ringWidth: ['hover'],
+      ringOffsetWidth: ['hover'],
+      ringOffsetColor: ['hover'],
+      ringOpacity: ['hover'],
     },
   },
   plugins: [require('@tailwindcss/typography')],

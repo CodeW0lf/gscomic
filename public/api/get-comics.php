@@ -2,8 +2,8 @@
 header("Access-Control-Allow-Origin: http://localhost:8080");
 date_default_timezone_set("America/Los_Angeles");
 
-const LATEST = 70;
-$RELEASE_TIME = mktime(0,0,0, 9, 2, 2020);
+const LATEST = 81;
+$RELEASE_TIME = mktime(0,0,0, 12, 9, 2020);
 
 function isComicReleased($comicNum) {
   global $RELEASE_TIME;
@@ -45,5 +45,5 @@ foreach ($files as $file) {
   }
 }
 $returnObj->latest = $latest;
-$returnObj->chapters = [0, 18, 39, 56];
+$returnObj->chapters = [0, 18, 39, 56, 72];
 echo json_encode($returnObj);

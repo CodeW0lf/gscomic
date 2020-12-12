@@ -2,39 +2,30 @@
   <section
     class="grid grid-cols-1 gap-8 justify-center items-center mb-4 md:mt-8"
   >
-    <button>
-      <router-link to="/lore/places">
-        <img
-          class="h-24 rounded border border-primary hover:filter-grayscale hover:border-white"
-          src="@/assets/lore/lore-locations-btn.png"
-          alt="Location Lore"
-        />
-      </router-link>
-    </button>
-    <button disabled>
-      <router-link to="">
-        <img
-          class="h-24 rounded border border-gray-700 cursor-not-allowed filter-grayscale"
-          src="@/assets/lore/lore-characters.png"
-          alt="Character Lore"
-        />
-      </router-link>
-    </button>
-    <button disabled>
-      <router-link to="">
-        <img
-          class="h-24 rounded border border-gray-700 cursor-not-allowed filter-grayscale"
-          src="@/assets/lore/lore-culture.png"
-          alt="Culture Lore"
-        />
-      </router-link>
-    </button>
+    <section-button
+      path="/lore/places"
+      :img="require('@/assets/lore/lore-locations-btn.png')"
+      alt="Location Lore"
+    />
+    <section-button
+      path="/lore"
+      :img="require('@/assets/lore/lore-characters.png')"
+      alt="Character Lore"
+      disabled
+    />
+    <section-button
+      path="/lore/culture"
+      alt="Culture Lore"
+      :img="require('@/assets/lore/lore-culture.png')"
+    />
   </section>
 </template>
 
 <script>
+import SectionButton from '@/components/lore/SectionButton'
 export default {
   name: 'LoreHome',
+  components: { SectionButton },
 }
 </script>
 

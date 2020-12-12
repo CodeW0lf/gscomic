@@ -1,21 +1,21 @@
-
 /*! @import */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
-  @responsive {
-    @variants hover, focus {
-      .filter-none {
-        filter: none;
-      }
-      .filter-grayscale {
-        filter: grayscale(100%);
-      }
-      .filter-grayscale-50 {
-        filter: grayscale(50%);
-      }
+  @variants hover, focus {
+    .filter-none {
+      filter: none;
+    }
+    .filter-grayscale {
+      filter: grayscale(100%);
+    }
+    .filter-grayscale-50 {
+      filter: grayscale(50%);
+    }
+    .filter-blur-1 {
+      filter: blur(1px);
     }
   }
 }
