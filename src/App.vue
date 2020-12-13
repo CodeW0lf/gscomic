@@ -8,7 +8,7 @@
       />
       <a href="#" v-scroll-to="'#top'">
         <svg
-          class="animated pulse infinite slower fill-current text-white opacity-50 inline-block relative w-12 h-12 -mt-8"
+          class="animated pulse infinite slower fill-current text-white opacity-40 inline-block relative w-12 h-12 -mt-8"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
         >

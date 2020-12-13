@@ -52,6 +52,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      backgroundColor: ['active'],
       textColor: ['disabled'],
       ringColor: ['hover'],
       ringWidth: ['hover'],

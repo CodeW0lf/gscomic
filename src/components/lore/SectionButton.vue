@@ -1,9 +1,9 @@
 <template>
   <button>
-    <router-link :to="path">
+    <router-link :to="disabled ? '' : path">
       <img
-        class="h-24 rounded border"
-        :class="displayClass"
+        class="rounded border"
+        :class="[displayClass, displaySizeClass]"
         :src="img"
         :alt="alt"
       />
@@ -17,6 +17,7 @@ export default {
     img: String,
     alt: String,
     path: String,
+    small: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
   },
   name: 'SectionButton',
@@ -25,7 +26,13 @@ export default {
       if (this.disabled === true) {
         return 'border-gray-700 cursor-not-allowed filter-grayscale'
       }
-      return 'border-primary hover:border-white hover:ring-4 hover:ring-primary hover:ring-offset-2 hover:ring-offset-black'
+      return 'border-primary hover:border-white hover:ring-2 hover:ring-primary hover:ring-offset-2 hover:ring-offset-black'
+    },
+    displaySizeClass() {
+      if (this.small === true) {
+        return 'h-18'
+      }
+      return 'h-24'
     },
   },
 }

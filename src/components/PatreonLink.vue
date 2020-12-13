@@ -6,7 +6,7 @@
       href="https://www.patreon.com/elitetrick"
       @click="patreonClick"
       target="_blank"
-      class="py-2 px-3 bg-patreon-lighter text-white text-xs sm:text-sm rounded hover:bg-gray-700 inline-block"
+      class="inline-block py-2 px-3 bg-patreon-lighter text-white rounded text-xs sm:text-sm hover:ring-2 hover:ring-patreon hover:ring-offset-2 hover:ring-offset-black active:bg-gray-700"
     >
       <svg
         class="fill-current inline-block w-4 h-4 align-middle"
@@ -22,10 +22,10 @@
       Become a Patron
     </a>
     <span
-      class="text-gray-600 font-semibold inline-block animated bounceIn delay-1s text-sm mt-2 sm:text-base sm:mt-0"
+      class="text-gray-600 font-semibold inline-block animated bounceIn delay-1s text-sm mt-2 sm:mt-0 sm:ml-2 sm:text-base"
     >
       <svg
-        class="fill-current w-5 inline-block mx-2 hidden sm:inline-block md:align-middle"
+        class="fill-current w-5 h-5 mx-1 align-text-top hidden sm:inline-block"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
       >

@@ -34,40 +34,34 @@
       class="grid grid-cols-1 justify-items-center justify-center gap-4 mt-6 md:grid-cols-3"
     >
       <div>
-        <button>
-          <router-link to="unknown">
-            <img
-              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white w-full"
-              style="max-width: 300px"
-              src="@/assets/lore/lore-locations-citadel.png"
-              alt="Kuserra Location"
-            />
-          </router-link>
-        </button>
+        <section-button
+          path="unknown"
+          style="max-width: 300px"
+          :img="require('@/assets/lore/lore-locations-citadel.png')"
+          alt="Citadel"
+          small
+          disabled
+        />
       </div>
       <div>
-        <button>
-          <router-link to="unknown">
-            <img
-              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white w-full"
-              style="max-width: 300px"
-              src="@/assets/lore/lore-locations-underground.png"
-              alt="Kuserra Location"
-            />
-          </router-link>
-        </button>
+        <section-button
+          path="unknown"
+          style="max-width: 300px"
+          :img="require('@/assets/lore/lore-locations-underground.png')"
+          alt="Underground"
+          small
+          disabled
+        />
       </div>
       <div>
-        <button>
-          <router-link to="unknown">
-            <img
-              class="h-18 rounded border border-primary hover:filter-grayscale hover:border-white w-full"
-              style="max-width: 300px"
-              src="@/assets/lore/lore-locations-downtown.png"
-              alt="Kuserra Location"
-            />
-          </router-link>
-        </button>
+        <section-button
+          path="unknown"
+          style="max-width: 300px"
+          :img="require('@/assets/lore/lore-locations-downtown.png')"
+          alt="Downtown"
+          small
+          disabled
+        />
       </div>
     </div>
     <div class="text-center mt-8">
@@ -78,9 +72,10 @@
 
 <script>
 import BackButton from '@/components/lore/BackButton'
+import SectionButton from '@/components/lore/SectionButton'
 export default {
   name: 'LoreLocations',
-  components: { BackButton },
+  components: { SectionButton, BackButton },
 }
 </script>
 

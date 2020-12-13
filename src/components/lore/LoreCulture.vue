@@ -7,7 +7,7 @@
       :img="require('@/assets/lore/lore-culture-gods.png')"
       alt="Gods Lore"
     />
-    <BackButton path="/lore">Back to Lore Home</BackButton>
+    <BackButton class="mt-12" path="/lore">Back to Lore Home</BackButton>
   </section>
 </template>
 

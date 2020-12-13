@@ -11,13 +11,15 @@
     <section-button
       path="places/unknown"
       :img="require('@/assets/lore/lore-locations-deadlands.png')"
-      alt="Kuserra Location Lore"
+      alt="Deadlands"
+      disabled
     />
 
     <section-button
       path="places/unknown"
       :img="require('@/assets/lore/lore-locations-secret.png')"
-      alt="Kuserra Location Lore"
+      alt="Secret"
+      disabled
     />
 
     <BackButton path="/lore">Back to Lore Home</BackButton>

@@ -8,15 +8,15 @@
       alt="Location Lore"
     />
     <section-button
+      path="/lore/culture"
+      alt="Culture Lore"
+      :img="require('@/assets/lore/lore-culture.png')"
+    />
+    <section-button
       path="/lore"
       :img="require('@/assets/lore/lore-characters.png')"
       alt="Character Lore"
       disabled
-    />
-    <section-button
-      path="/lore/culture"
-      alt="Culture Lore"
-      :img="require('@/assets/lore/lore-culture.png')"
     />
   </section>
 </template>
