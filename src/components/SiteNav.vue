@@ -12,9 +12,9 @@
       <span class="px-2 text-gray-600">|</span>
       <router-link class="hover:text-white relative group" to="/lore"
         >Lore
-        <!--        <span-->
-        <!--          class="absolute top-0 right-0 inline-block h-2 w-2 -mt-0.5 -mr-1.5 rounded-full bg-pink-800 group-hover:bg-white"-->
-        <!--        ></span>-->
+        <span
+          class="absolute top-0 right-0 inline-block h-2 w-2 -mt-0.5 -mr-1.5 rounded-full bg-pink-800 group-hover:bg-white"
+        ></span>
       </router-link>
     </div>
   </nav>

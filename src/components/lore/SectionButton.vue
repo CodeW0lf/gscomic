@@ -1,6 +1,6 @@
 <template>
   <button>
-    <router-link :to="disabled ? '' : path">
+    <router-link :to="disabled ? '' : path" class="inline-block">
       <img
         class="rounded border"
         :class="[displayClass, displaySizeClass]"

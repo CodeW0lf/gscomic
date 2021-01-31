@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Comic = () => import('./views/Comic')
+const Unknown = () => import('./components/lore/places/Unknown')
 
 Vue.use(Router)
 
@@ -24,10 +25,21 @@ export default new Router({
         {
           path: 'places/kuserra',
           component: () => import('./components/lore/places/Kuserra'),
+          children: [
+            {
+              path: 'downtown',
+              component: () =>
+                import('./components/lore/places/kuserra/Downtown'),
+            },
+            {
+              path: 'unknown',
+              component: Unknown,
+            },
+          ],
         },
         {
           path: 'places/unknown',
-          component: () => import('./components/lore/places/Unknown'),
+          component: Unknown,
         },
         {
           path: 'culture',

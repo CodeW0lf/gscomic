@@ -35,7 +35,7 @@
     >
       <div>
         <section-button
-          path="unknown"
+          path="/lore/places/kuserra/unknown"
           style="max-width: 300px"
           :img="require('@/assets/lore/lore-locations-citadel.png')"
           alt="Citadel"
@@ -45,7 +45,7 @@
       </div>
       <div>
         <section-button
-          path="unknown"
+          path="/lore/places/kuserra/unknown"
           style="max-width: 300px"
           :img="require('@/assets/lore/lore-locations-underground.png')"
           alt="Underground"
@@ -55,15 +55,15 @@
       </div>
       <div>
         <section-button
-          path="unknown"
+          path="/lore/places/kuserra/downtown"
           style="max-width: 300px"
           :img="require('@/assets/lore/lore-locations-downtown.png')"
           alt="Downtown"
           small
-          disabled
         />
       </div>
     </div>
+    <router-view></router-view>
     <div class="text-center mt-8">
       <BackButton path="/lore/places">Back to Places</BackButton>
     </div>
