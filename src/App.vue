@@ -37,7 +37,7 @@
 <script>
 import SiteNav from '@/components/SiteNav'
 import SocialLinks from '@/components/SocialLinks'
-import SiteFooter from '@/SiteFooter'
+import SiteFooter from '@/components/SiteFooter'
 
 export default {
   name: 'app',
