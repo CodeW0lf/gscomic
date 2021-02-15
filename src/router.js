@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Comic = () => import('./views/Comic')
-const Unknown = () => import('./components/lore/places/Unknown')
+const Unknown = () =>
+  import(/* webpackChunkName: "lore" */ './components/lore/places/Unknown')
 
 Vue.use(Router)
 
@@ -16,20 +17,28 @@ export default new Router({
     },
     {
       path: '/lore',
-      component: () => import('./views/Lore'),
+      component: () => import(/* webpackChunkName: "lore" */ './views/Lore'),
       children: [
         {
           path: 'places',
-          component: () => import('./components/lore/LorePlaces'),
+          component: () =>
+            import(
+              /* webpackChunkName: "lore" */ './components/lore/LorePlaces'
+            ),
         },
         {
           path: 'places/kuserra',
-          component: () => import('./components/lore/places/Kuserra'),
+          component: () =>
+            import(
+              /* webpackChunkName: "lore" */ './components/lore/places/Kuserra'
+            ),
           children: [
             {
               path: 'downtown',
               component: () =>
-                import('./components/lore/places/kuserra/Downtown'),
+                import(
+                  /* webpackChunkName: "lore" */ './components/lore/places/kuserra/Downtown'
+                ),
             },
             {
               path: 'unknown',
@@ -43,15 +52,22 @@ export default new Router({
         },
         {
           path: 'culture',
-          component: () => import('./components/lore/LoreCulture'),
+          component: () =>
+            import(
+              /* webpackChunkName: "culture" */ './components/lore/LoreCulture'
+            ),
         },
         {
           path: 'culture/gods',
-          component: () => import('./components/lore/culture/Gods'),
+          component: () =>
+            import(
+              /* webpackChunkName: "culture" */ './components/lore/culture/Gods'
+            ),
         },
         {
           path: '',
-          component: () => import('./components/lore/LoreHome'),
+          component: () =>
+            import(/* webpackChunkName: "lore" */ './components/lore/LoreHome'),
         },
       ],
     },
