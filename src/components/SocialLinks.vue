@@ -89,6 +89,7 @@
           @mouseover="voteImgHover = true"
           @mouseleave="voteImgHover = false"
           alt="Vote for God Slayers Comic at TopWebComics"
+          title="Vote for God Slayers Comic at TopWebComics"
         />
       </a>
     </div>
