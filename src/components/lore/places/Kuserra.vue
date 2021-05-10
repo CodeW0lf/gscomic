@@ -31,16 +31,21 @@
       <h2 class="text-center">Locations Within Kuserra</h2>
     </article>
     <div
-      class="grid grid-cols-1 justify-items-center justify-center gap-4 mt-6 md:grid-cols-3"
+      class="
+        grid grid-cols-1
+        justify-items-center justify-center
+        gap-4
+        mt-6
+        md:grid-cols-3
+      "
     >
       <div>
         <section-button
-          path="/lore/places/kuserra/unknown"
+          path="/lore/places/kuserra/citadel"
           style="max-width: 300px"
           :img="require('@/assets/lore/lore-locations-citadel.png')"
           alt="Citadel"
           small
-          disabled
         />
       </div>
       <div>

@@ -41,6 +41,13 @@ export default new Router({
                 ),
             },
             {
+              path: 'citadel',
+              component: () =>
+                import(
+                  /* webpackChunkName: "lore" */ './components/lore/places/kuserra/Citadel'
+                ),
+            },
+            {
               path: 'unknown',
               component: Unknown,
             },

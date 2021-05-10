@@ -1,6 +1,14 @@
 <template>
   <nav
-    class="flex flex-col justify-between items-center w-full my-2 px-4 md:flex-row"
+    class="
+      flex flex-col
+      justify-between
+      items-center
+      w-full
+      my-2
+      px-4
+      md:flex-row
+    "
   >
     <patreon-link></patreon-link>
     <div class="mt-2 md:mt-0 text-size-md text-primary font-bold">
@@ -12,9 +20,21 @@
       <span class="px-2 text-gray-600">|</span>
       <router-link class="hover:text-white relative group" to="/lore"
         >Lore
-        <!--        <span-->
-        <!--          class="absolute top-0 right-0 inline-block h-2 w-2 -mt-0.5 -mr-1.5 rounded-full bg-pink-800 group-hover:bg-white"-->
-        <!--        ></span>-->
+        <span
+          class="
+            absolute
+            top-0
+            right-0
+            inline-block
+            h-2
+            w-2
+            -mt-0.5
+            -mr-1.5
+            rounded-full
+            bg-pink-800
+            group-hover:bg-white
+          "
+        ></span>
       </router-link>
     </div>
   </nav>
