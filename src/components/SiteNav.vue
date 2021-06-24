@@ -20,7 +20,7 @@
       <span class="px-2 text-gray-600">|</span>
       <router-link class="hover:text-white relative group" to="/lore"
         >Lore
-        <span
+        <span v-if="isLoreBadgeEnabled"
           class="
             absolute
             top-0
@@ -42,11 +42,21 @@
 
 <script>
 import PatreonLink from '@/components/PatreonLink'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: 'SiteNav',
   components: {
     PatreonLink,
+  },
+  computed: {
+    ...mapGetters(['isLoreBadgeEnabled'])
+  },
+  methods: {
+    ...mapActions(['loadBadges']),
+  },
+  mounted() {
+    this.loadBadges()
   },
 }
 </script>

@@ -7,4 +7,7 @@ export default {
   getSketches() {
     return Api().get('get-sketches.php')
   },
+  getBadges() {
+    return Api().get('get-badges.php')
+  }
 }

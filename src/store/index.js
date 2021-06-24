@@ -10,6 +10,7 @@ export default new Vuex.Store({
     latestComicId: 1,
     comicList: {},
     chapters: [],
+    loreBadge: false,
   },
   getters: {
     getComicFileName(state) {
@@ -37,6 +38,9 @@ export default new Vuex.Store({
       }
       return false
     },
+    isLoreBadgeEnabled(state) {
+      return state.loreBadge
+    },
   },
   mutations: {
     SET_CURRENT_COMIC(state, id) {
@@ -50,6 +54,9 @@ export default new Vuex.Store({
     },
     SET_CHAPTER_LIST(state, chapterList) {
       state.chapters = chapterList
+    },
+    SET_LORE_BADGE(state, loreBadge) {
+      state.loreBadge = loreBadge
     },
   },
   actions: {
@@ -66,6 +73,10 @@ export default new Vuex.Store({
         cleanId = state.latestComicId
       }
       commit('SET_CURRENT_COMIC', cleanId)
+    },
+    async loadBadges({ commit }) {
+      let res = await ComicsService.getBadges()
+      commit('SET_LORE_BADGE', (res.data.newLore || false))
     },
   },
   modules: {},
