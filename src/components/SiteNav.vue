@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="
+      class="
       flex flex-col
       justify-between
       items-center
@@ -14,27 +14,16 @@
     <div class="mt-2 md:mt-0 text-size-md text-primary font-bold">
       <router-link class="hover:text-white" to="/">Comic</router-link>
       <span class="px-2 text-gray-600">|</span>
-      <router-link class="hover:text-white" to="/sketches"
-        >Sketches</router-link
-      >
+      <router-link class="hover:text-white relative group" to="/characters">
+        Characters
+        <new-badge v-if="isCharactersBadgeEnabled"></new-badge>
+      </router-link>
       <span class="px-2 text-gray-600">|</span>
-      <router-link class="hover:text-white relative group" to="/lore"
-        >Lore
-        <span v-if="isLoreBadgeEnabled"
-          class="
-            absolute
-            top-0
-            right-0
-            inline-block
-            h-2
-            w-2
-            -mt-0.5
-            -mr-1.5
-            rounded-full
-            bg-pink-800
-            group-hover:bg-white
-          "
-        ></span>
+      <router-link class="hover:text-white" to="/sketches">Sketches</router-link>
+      <span class="px-2 text-gray-600">|</span>
+      <router-link class="hover:text-white relative group" to="/lore">
+        Lore
+        <new-badge v-if="isLoreBadgeEnabled"></new-badge>
       </router-link>
     </div>
   </nav>
@@ -43,14 +32,19 @@
 <script>
 import PatreonLink from '@/components/PatreonLink'
 import {mapActions, mapGetters} from 'vuex'
+import NewBadge from '@/components/NewBadge'
 
 export default {
   name: 'SiteNav',
   components: {
+    NewBadge,
     PatreonLink,
   },
   computed: {
-    ...mapGetters(['isLoreBadgeEnabled'])
+    ...mapGetters({
+      isLoreBadgeEnabled: 'isLoreBadgeEnabled',
+      isCharactersBadgeEnabled: 'isCharactersBadgeEnabled'
+    }),
   },
   methods: {
     ...mapActions(['loadBadges']),
