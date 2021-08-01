@@ -79,6 +79,10 @@ export default new Router({
       ],
     },
     {
+      path: '/characters',
+      component: () => import(/* webpackChunkName: "characters" */ './views/Characters'),
+    },
+    {
       path: '/sketches',
       component: () => import('./views/Sketches'),
     },
