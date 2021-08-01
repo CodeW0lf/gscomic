@@ -15,12 +15,12 @@
               <div>
                 <img alt="Character Portrait" :src="require('@/assets/characters/' + portrait.portraitImg)">
               </div>
-              <div class="flex justify-between w-3/4 mx-auto">
+              <div class="flex justify-between mx-auto -mt-8 w-full sm:px-4">
                 <div>
-                  <button
-                      class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700">
+                  <button @click="prevPortrait"
+                          class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700">
                     <svg aria-hidden="true" focusable="false"
-                         class="fillCurrent w-10 h-10 text-primary transform rotate-180" role="img"
+                         class="fillCurrent w-8 h-8 sm:w-10 sm:h-10 text-primary transform rotate-180" role="img"
                          xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 448 512">
                       <!--
@@ -36,7 +36,8 @@
                   <button @click="nextPortrait"
                           class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700">
                     <svg aria-hidden="true" focusable="false"
-                         class="fillCurrent w-10 h-10 text-primary" role="img" xmlns="http://www.w3.org/2000/svg"
+                         class="fillCurrent w-8 h-8 sm:w-10 sm:h-10 text-primary" role="img"
+                         xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 448 512">
                       <!--
                       Font Awesome Free 5.15.0 by @fontawesome - https://fontawesome.com
@@ -50,7 +51,7 @@
               </div>
             </div>
           </div>
-          <div class="triangle-border left mb-14 p-2 h-96 w-2/3">
+          <div class="triangle-border left mb-4 sm:mb-14 p-2 h-96 w-2/3">
             <div class="prose p-4 overflow-y-auto text-center h-full w-full" v-html="portrait.text">
             </div>
           </div>
@@ -136,7 +137,10 @@ export default {
   },
   methods: {
     nextPortrait() {
-      this.selectedPortraitIdx = (this.selectedPortraitIdx + 1) % this.character.talkingHeads.length;
+      this.selectedPortraitIdx = ++this.selectedPortraitIdx % this.character.talkingHeads.length;
+    },
+    prevPortrait() {
+      this.selectedPortraitIdx = Math.abs(--this.selectedPortraitIdx % this.character.talkingHeads.length);
     }
   }
 }
