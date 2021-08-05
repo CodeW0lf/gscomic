@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import characterList from '@/assets/characters/characterList.json';
+import characterList from '../../public/characters/characterList.json';
 
 export default {
   name: "Characters",
