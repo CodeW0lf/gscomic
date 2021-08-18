@@ -1,8 +1,8 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:8080");
+header("Access-Control-Allow-Origin: *");
 
 $badgeObj = new stdClass();
 $badgeObj->newLore = false;
-$badgeObj->newCharacters = true;
+$badgeObj->newCharacters = false;
 
 echo json_encode($badgeObj);

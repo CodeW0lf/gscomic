@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:8080");
+header("Access-Control-Allow-Origin: *");
 date_default_timezone_set("America/Los_Angeles");
 
 $dir = "../img/sketch_files";
@@ -18,7 +18,7 @@ foreach ($files as $file) {
   $returnFile->date = $time;
   $returnArray[] = $returnFile;
 }
-usort($returnArray, function($a, $b) {
+usort($returnArray, function ($a, $b) {
   return $a->date <= $b->date;
 });
 echo json_encode($returnArray);

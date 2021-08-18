@@ -1,9 +1,9 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:8080");
+header("Access-Control-Allow-Origin: *");
 date_default_timezone_set("America/Los_Angeles");
 
 const LATEST = 101;
-$RELEASE_TIME = mktime(0,0,0, 6, 23, 2021);
+$RELEASE_TIME = mktime(0, 0, 0, 6, 23, 2021);
 
 function isComicReleased($comicNum): bool {
   global $RELEASE_TIME;
@@ -24,7 +24,6 @@ function isComicReleased($comicNum): bool {
   }
   return false;
 }
-
 
 $dir = "../img/comics";
 $files = scandir($dir);
