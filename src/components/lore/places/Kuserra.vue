@@ -31,7 +31,7 @@
       <h2 class="text-center">Locations Within Kuserra</h2>
     </article>
     <div
-      class="
+        class="
         grid grid-cols-1
         justify-items-center justify-center
         gap-4
@@ -41,34 +41,36 @@
     >
       <div>
         <section-button
-          path="/lore/places/kuserra/citadel"
-          style="max-width: 300px"
-          :img="require('@/assets/lore/lore-locations-citadel.png')"
-          alt="Citadel"
-          small
+            path="/lore/places/kuserra/citadel"
+            style="max-width: 300px"
+            :img="require('@/assets/lore/lore-locations-citadel.png')"
+            alt="Citadel"
+            small
         />
       </div>
       <div>
         <section-button
-          path="/lore/places/kuserra/unknown"
-          style="max-width: 300px"
-          :img="require('@/assets/lore/lore-locations-underground.png')"
-          alt="Underground"
-          small
-          disabled
+            path="/lore/places/kuserra/unknown"
+            style="max-width: 300px"
+            :img="require('@/assets/lore/lore-locations-underground.png')"
+            alt="Underground"
+            small
+            disabled
         />
       </div>
       <div>
         <section-button
-          path="/lore/places/kuserra/downtown"
-          style="max-width: 300px"
-          :img="require('@/assets/lore/lore-locations-downtown.png')"
-          alt="Downtown"
-          small
+            path="/lore/places/kuserra/downtown"
+            style="max-width: 300px"
+            :img="require('@/assets/lore/lore-locations-downtown.png')"
+            alt="Downtown"
+            small
         />
       </div>
     </div>
-    <router-view></router-view>
+    <div ref="subLocation">
+      <router-view></router-view>
+    </div>
     <div class="text-center mt-8">
       <BackButton path="/lore/places">Back to Places</BackButton>
     </div>
@@ -78,9 +80,15 @@
 <script>
 import BackButton from '@/components/lore/BackButton'
 import SectionButton from '@/components/lore/SectionButton'
+
 export default {
   name: 'LoreLocations',
-  components: { SectionButton, BackButton },
+  components: {SectionButton, BackButton},
+  watch: {
+    $route() {
+      this.$scrollTo(this.$refs.subLocation)
+    }
+  }
 }
 </script>
 
