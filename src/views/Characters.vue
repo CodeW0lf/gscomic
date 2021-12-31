@@ -15,7 +15,7 @@
             </div>
             <div class="flex justify-between mx-auto -mt-20 w-full py-8">
               <div>
-                <button disabled title="More Coming Soon!"
+                <button @click="prevCharacter" title="See Other Characters"
                         class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700 text-primary">
                   <svg aria-hidden="true" focusable="false"
                        class="fillCurrent w-8 h-8 sm:w-10 sm:h-10 transform rotate-180" role="img"
@@ -31,7 +31,7 @@
                 </button>
               </div>
               <div>
-                <button disabled title="More Coming Soon!"
+                <button @click="nextCharacter" title="See Other Characters"
                         class="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700 text-primary">
                   <svg aria-hidden="true" focusable="false"
                        class="fillCurrent w-8 h-8 sm:w-10 sm:h-10" role="img"
@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import characterList from '../../public/characters-data/characterList.json';
+import characterList from '../../public/characters-data/characterList.json'
 
 export default {
   name: "Characters",
@@ -127,22 +127,32 @@ export default {
   },
   computed: {
     character() {
-      return this.characterList[this.selectedCharIdx];
+      return this.characterList[this.selectedCharIdx]
     },
     portrait() {
-      return this.character.talkingHeads[this.selectedPortraitIdx];
+      return this.character.talkingHeads[this.selectedPortraitIdx]
     }
   },
   methods: {
     nextPortrait() {
       this.enterActive = 'slideInRight'
       this.leaveActive = 'slideOutLeft'
-      this.selectedPortraitIdx = ++this.selectedPortraitIdx % this.character.talkingHeads.length;
+      this.selectedPortraitIdx = ++this.selectedPortraitIdx % this.character.talkingHeads.length
     },
     prevPortrait() {
       this.enterActive = 'slideInLeft'
       this.leaveActive = 'slideOutRight'
-      this.selectedPortraitIdx = Math.abs(--this.selectedPortraitIdx % this.character.talkingHeads.length);
+      this.selectedPortraitIdx = Math.abs(--this.selectedPortraitIdx % this.character.talkingHeads.length)
+    },
+    nextCharacter() {
+      this.enterActive = 'slideInRight'
+      this.leaveActive = 'slideOutLeft'
+      this.selectedCharIdx = ++this.selectedCharIdx % this.characterList.length
+    },
+    prevCharacter() {
+      this.enterActive = 'slideInLeft'
+      this.leaveActive = 'slideOutRight'
+      this.selectedCharIdx = Math.abs(--this.selectedCharIdx % this.characterList.length)
     }
   }
 }
