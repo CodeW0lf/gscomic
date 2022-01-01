@@ -3,14 +3,16 @@
     <div class="flex">
       <div class="flex flex-col justify-between items-center px-4 w-full">
         <div class="">
-          <h1 class="text-primary text-5xl font-bold">Kiva</h1>
+          <h1 class="text-primary text-5xl font-bold">{{ character.name }}</h1>
         </div>
-        <div class="w-3/4">
-          <div class="flex flex-col w-full">
-            <div>
+        <div class="w-3/4 relative pt-[100%]">
+          <div class="flex flex-col w-full h-full absolute inset-0">
+            <div class="overflow-hidden flex-1">
               <transition mode="out-in" :enter-active-class="'animated fade-duration ' + enterActive"
-                          :leave-active-class="'animated fade-duration ' + leaveActive">
-                <img alt="Character Image" :src="require('@/assets/characters/' + character.fullImg)">
+                          :leave-active-class="'animated fade-duration ' + leaveActive"
+                          v-on:before-leave="charBeforeLeave" v-on:after-enter="charAfterEnter">
+                <img alt="Character Image" :key="character.fullImg"
+                     :src="require('@/assets/characters/' + character.fullImg)">
               </transition>
             </div>
             <div class="flex justify-between mx-auto -mt-20 w-full py-8">
@@ -52,7 +54,7 @@
 
         <div class="flex justify-center w-full">
           <div class="w-1/3 self-end overflow-hidden">
-            <div class="flex flex-col w-full">
+            <div class="flex flex-col w-full animated fade-duration fadeIn" v-show="portraitsVisible">
               <div>
                 <transition mode="out-in" :enter-active-class="'animated fade-duration ' + enterActive"
                             :leave-active-class="'animated fade-duration ' + leaveActive">
@@ -120,7 +122,8 @@ export default {
     return {
       selectedCharIdx: 0,
       selectedPortraitIdx: 0,
-      characterList: characterList,
+      portraitsVisible: true,
+      characterList: characterList.characters,
       enterActive: 'slideInRight',
       leaveActive: 'slideOutLeft',
     }
@@ -142,17 +145,27 @@ export default {
     prevPortrait() {
       this.enterActive = 'slideInLeft'
       this.leaveActive = 'slideOutRight'
-      this.selectedPortraitIdx = Math.abs(--this.selectedPortraitIdx % this.character.talkingHeads.length)
+      const len = this.character.talkingHeads.length
+      this.selectedPortraitIdx = (--this.selectedPortraitIdx + len) % len
     },
     nextCharacter() {
+      this.selectedPortraitIdx = 0;
       this.enterActive = 'slideInRight'
       this.leaveActive = 'slideOutLeft'
       this.selectedCharIdx = ++this.selectedCharIdx % this.characterList.length
     },
     prevCharacter() {
+      this.selectedPortraitIdx = 0;
       this.enterActive = 'slideInLeft'
       this.leaveActive = 'slideOutRight'
-      this.selectedCharIdx = Math.abs(--this.selectedCharIdx % this.characterList.length)
+      const len = this.characterList.length
+      this.selectedCharIdx = (--this.selectedCharIdx + len) % len
+    },
+    charBeforeLeave() {
+      this.portraitsVisible = false;
+    },
+    charAfterEnter() {
+      this.portraitsVisible = true;
     }
   }
 }

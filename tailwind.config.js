@@ -35,6 +35,10 @@ module.exports = {
           DEFAULT: '#2CA5E0',
           lighter: '#99aab5',
         },
+        kofi: {
+          DEFAULT: '#29ABE0',
+          lighter: '#6dcbff'
+        }
       },
       typography: (theme) => ({
         DEFAULT: {
