@@ -4,16 +4,23 @@ date_default_timezone_set("America/Los_Angeles");
 
 require_once "shared/comic-util.php";
 
-const LATEST = 141;
+$version = $_GET["version"] ?? "a";
+$fileSuffix = "a";
+
+if ($version != "a") {
+  $fileSuffix = "b";
+}
+
+const LATEST = 2;
 $RELEASE_TIME = mktime(0, 0, 0, 6, 15, 2022);
 
-$dir = "../img/comics";
+$dir = "../img/riley_comics";
 $files = scandir($dir);
 $returnObj = new stdClass();
 $returnObj->comics = new stdClass();
 $latest = 1;
 foreach ($files as $file) {
-  $isMatch = preg_match("/Page_0*(\d+)\.(jpg|png)/", $file, $matches);
+  $isMatch = preg_match("/Page_0*(\d+)[$fileSuffix]\.(jpg|png)/", $file, $matches);
   if ($isMatch) {
     $val = $matches[1];
     if (!isComicReleased($val)) {
@@ -26,5 +33,5 @@ foreach ($files as $file) {
   }
 }
 $returnObj->latest = $latest;
-$returnObj->chapters = [0, 18, 39, 56, 72, 88, 98, 120];
+$returnObj->chapters = [];
 echo json_encode($returnObj);

@@ -1,47 +1,47 @@
 <template>
   <div class="text-center mx-auto relative w-full" style="padding-top: 136%">
     <transition
-      mode="out-in"
-      enter-active-class="animated fadeIn fade-duration"
-      leave-active-class="animated fadeOut fade-duration"
+        mode="out-in"
+        enter-active-class="animated fadeIn fade-duration"
+        leave-active-class="animated fadeOut fade-duration"
     >
       <div
-        v-if="loading"
-        key="spinner"
-        class="absolute inset-0 w-full"
-        style="top: 40%"
+          v-if="loading"
+          key="spinner"
+          class="absolute inset-0 w-full"
+          style="top: 40%"
       >
         <spinner></spinner>
       </div>
       <div
-        v-else
-        @touchstart.passive="startDrag"
-        @touchmove.passive="dragComic"
-        @touchend.passive="stopDrag"
-        key="image"
-        class="absolute inset-0 w-full"
+          v-else
+          @touchstart.passive="startDrag"
+          @touchmove.passive="dragComic"
+          @touchend.passive="stopDrag"
+          key="image"
+          class="absolute inset-0 w-full"
       >
         <svg
-          class="fill-current text-white absolute w-24 h-24 transform rotate-90 transition duration-200"
-          style="top: 40%"
-          :style="{ opacity: lastMoveDist > 0 ? lastMoveDist / 2 + '%' : 0 }"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
+            class="fill-current text-white absolute w-24 h-24 transform rotate-90 transition duration-200"
+            style="top: 40%"
+            :style="{ opacity: lastMoveDist > 0 ? lastMoveDist / 2 + '%' : 0 }"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
         >
           <path
-            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
           />
         </svg>
-        <img class="transition" :src="src" alt="Comic Image" />
+        <img class="transition" :src="src" alt="Comic Image"/>
         <svg
-          class="fill-current text-white absolute w-24 h-24 transform -rotate-90 right-0 transition duration-200"
-          style="top: 40%"
-          :style="{ opacity: lastMoveDist < 0 ? -lastMoveDist / 2 + '%' : 0 }"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
+            class="fill-current text-white absolute w-24 h-24 transform -rotate-90 right-0 transition duration-200"
+            style="top: 40%"
+            :style="{ opacity: lastMoveDist < 0 ? -lastMoveDist / 2 + '%' : 0 }"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
         >
           <path
-            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
           />
         </svg>
       </div>
@@ -51,16 +51,17 @@
 
 <script>
 import Spinner from '@/components/Spinner'
-import { mapGetters } from 'vuex'
+import {mapGetters} from 'vuex'
 
 const comicChangeDragDistPx = 200
 
 export default {
   name: 'ComicImage',
+  props: ['imgPath'],
   computed: {
     ...mapGetters(['getComicFileName']),
     src() {
-      return '/img/comics/' + this.getComicFileName
+      return this.imgPath + this.getComicFileName
     },
   },
   components: {

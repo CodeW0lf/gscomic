@@ -12,6 +12,7 @@ export default new Vuex.Store({
     chapters: [],
     loreBadge: false,
     characterBadge: false,
+    comicPath: 'comic'
   },
   getters: {
     getComicFileName(state) {
@@ -65,6 +66,9 @@ export default new Vuex.Store({
     SET_CHARACTER_BADGE(state, characterBadge) {
       state.characterBadge = characterBadge
     },
+    SET_COMIC_PATH(state, comicPath) {
+      state.comicPath = comicPath
+    },
   },
   actions: {
     async loadComics({commit}) {
@@ -73,6 +77,15 @@ export default new Vuex.Store({
       commit('SET_CHAPTER_LIST', res.data.chapters)
       commit('SET_CURRENT_COMIC', res.data.latest)
       commit('SET_LATEST_COMIC', res.data.latest)
+      commit('SET_COMIC_PATH', 'comic')
+    },
+    async loadRileyComics({commit}, version) {
+      let res = await ComicsService.getRileyComics(version);
+      commit('SET_COMIC_LIST', res.data.comics)
+      commit('SET_CHAPTER_LIST', res.data.chapters)
+      commit('SET_CURRENT_COMIC', res.data.latest)
+      commit('SET_LATEST_COMIC', res.data.latest)
+      commit('SET_COMIC_PATH', 'rileycomic')
     },
     updateComicId({commit, state}, id) {
       let cleanId = parseInt(id, 10) || state.latestComicId

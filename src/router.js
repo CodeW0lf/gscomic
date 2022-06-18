@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Comic = () => import('./views/Comic')
+const RileyComic = () => import('./views/RileyComic')
 const Unknown = () =>
-  import(/* webpackChunkName: "lore" */ './components/lore/places/Unknown')
+    import(/* webpackChunkName: "lore" */ './components/lore/places/Unknown')
 
 Vue.use(Router)
 
@@ -16,36 +17,41 @@ export default new Router({
       props: true,
     },
     {
+      path: '/rileycomic/:id',
+      component: RileyComic,
+      props: true,
+    },
+    {
       path: '/lore',
       component: () => import(/* webpackChunkName: "lore" */ './views/Lore'),
       children: [
         {
           path: 'places',
           component: () =>
-            import(
-              /* webpackChunkName: "lore" */ './components/lore/LorePlaces'
-            ),
+              import(
+                  /* webpackChunkName: "lore" */ './components/lore/LorePlaces'
+                  ),
         },
         {
           path: 'places/kuserra',
           component: () =>
-            import(
-              /* webpackChunkName: "lore" */ './components/lore/places/Kuserra'
-            ),
+              import(
+                  /* webpackChunkName: "lore" */ './components/lore/places/Kuserra'
+                  ),
           children: [
             {
               path: 'downtown',
               component: () =>
-                import(
-                  /* webpackChunkName: "lore" */ './components/lore/places/kuserra/Downtown'
-                ),
+                  import(
+                      /* webpackChunkName: "lore" */ './components/lore/places/kuserra/Downtown'
+                      ),
             },
             {
               path: 'citadel',
               component: () =>
-                import(
-                  /* webpackChunkName: "lore" */ './components/lore/places/kuserra/Citadel'
-                ),
+                  import(
+                      /* webpackChunkName: "lore" */ './components/lore/places/kuserra/Citadel'
+                      ),
             },
             {
               path: 'unknown',
@@ -60,21 +66,21 @@ export default new Router({
         {
           path: 'culture',
           component: () =>
-            import(
-              /* webpackChunkName: "culture" */ './components/lore/LoreCulture'
-            ),
+              import(
+                  /* webpackChunkName: "culture" */ './components/lore/LoreCulture'
+                  ),
         },
         {
           path: 'culture/gods',
           component: () =>
-            import(
-              /* webpackChunkName: "culture" */ './components/lore/culture/Gods'
-            ),
+              import(
+                  /* webpackChunkName: "culture" */ './components/lore/culture/Gods'
+                  ),
         },
         {
           path: '',
           component: () =>
-            import(/* webpackChunkName: "lore" */ './components/lore/LoreHome'),
+              import(/* webpackChunkName: "lore" */ './components/lore/LoreHome'),
         },
       ],
     },
@@ -89,6 +95,10 @@ export default new Router({
     {
       path: '/',
       component: Comic,
+    },
+    {
+      path: '/rileycomic',
+      component: RileyComic
     },
     {
       path: '*',

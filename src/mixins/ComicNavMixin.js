@@ -1,8 +1,8 @@
-import { mapGetters, mapState } from 'vuex'
+import {mapGetters, mapState} from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['comicId', 'chapters']),
+    ...mapState(['comicId', 'chapters', 'comicPath']),
     ...mapGetters([
       'hasNextComic',
       'hasPrevComic',
@@ -13,16 +13,16 @@ export default {
   methods: {
     nextComic() {
       if (this.hasNextComic) {
-        this.$router.push({ path: `/comic/${this.comicId + 1}` })
+        this.$router.push({path: `/${this.comicPath}/${this.comicId + 1}`})
         // eslint-disable-next-line no-undef
-        gtag('event', 'NextComic', { event_category: 'Comic' })
+        gtag('event', 'NextComic', {event_category: 'Comic'})
       }
     },
     prevComic() {
       if (this.hasPrevComic) {
-        this.$router.push({ path: `/comic/${this.comicId - 1}` })
+        this.$router.push({path: `/${this.comicPath}/${this.comicId - 1}`})
         // eslint-disable-next-line no-undef
-        gtag('event', 'PrevComic', { event_category: 'Comic' })
+        gtag('event', 'PrevComic', {event_category: 'Comic'})
       }
     },
     nextChapter() {
@@ -31,7 +31,7 @@ export default {
       }
       for (let val of this.chapters) {
         if (this.comicId < val) {
-          this.$router.push({ path: `/comic/${val}` })
+          this.$router.push({path: `/${this.comicPath}/${val}`})
           break
         }
       }
@@ -47,21 +47,21 @@ export default {
         }
       }
       latest = latest + 1 // Val represents end of chapter, inc by 1 for beginning
-      this.$router.push({ path: `/comic/${latest}` })
+      this.$router.push({path: `/${this.comicPath}/${latest}`})
     },
     latestComic() {
       if (!this.hasNextComic) {
         return
       }
-      this.$router.replace({ path: `/comic` })
+      this.$router.replace({path: `/${this.comicPath}`})
     },
     firstComic() {
       if (!this.hasPrevComic) {
         return
       }
-      this.$router.push({ path: `/comic/1` })
+      this.$router.push({path: `/${this.comicPath}/1`})
       // eslint-disable-next-line no-undef
-      gtag('event', 'FirstComic', { event_category: 'Comic' })
+      gtag('event', 'FirstComic', {event_category: 'Comic'})
     },
   },
 }

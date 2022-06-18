@@ -2,6 +2,7 @@
 node_modules
 /dist
 /public/img/comics
+/public/img/riley_comics
 
 # local env files
 .env.local
