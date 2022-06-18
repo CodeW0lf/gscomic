@@ -11,8 +11,8 @@ if ($version != "a") {
   $fileSuffix = "b";
 }
 
-const LATEST = 2;
-$RELEASE_TIME = mktime(0, 0, 0, 6, 15, 2022);
+const LATEST = 1;
+$RELEASE_TIME = mktime(0, 0, 0, 6, 22, 2022);
 
 $dir = "../img/riley_comics";
 $files = scandir($dir);
@@ -23,7 +23,7 @@ foreach ($files as $file) {
   $isMatch = preg_match("/Page_0*(\d+)[$fileSuffix]\.(jpg|png)/", $file, $matches);
   if ($isMatch) {
     $val = $matches[1];
-    if (!isComicReleased($val)) {
+    if (!isComicReleased($val, LATEST, $RELEASE_TIME)) {
       continue;
     }
     $returnObj->comics->$val = $file;

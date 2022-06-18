@@ -16,7 +16,7 @@ foreach ($files as $file) {
   $isMatch = preg_match("/Page_0*(\d+)\.(jpg|png)/", $file, $matches);
   if ($isMatch) {
     $val = $matches[1];
-    if (!isComicReleased($val)) {
+    if (!isComicReleased($val, LATEST, $RELEASE_TIME)) {
       continue;
     }
     $returnObj->comics->$val = $file;

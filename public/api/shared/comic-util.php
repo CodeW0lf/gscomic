@@ -1,15 +1,14 @@
 <?php
 
-function isComicReleased($comicNum): bool {
-  global $RELEASE_TIME;
-  if ($comicNum <= LATEST) {
+function isComicReleased($comicNum, $latest, $releaseTime): bool {
+  if ($comicNum <= $latest) {
     return true;
   }
   try {
     $today = new DateTime();
-    $numWeeks = $comicNum - LATEST;
+    $numWeeks = $comicNum - $latest;
     $releaseDate = new DateTime();
-    $releaseDate->setTimestamp($RELEASE_TIME);
+    $releaseDate->setTimestamp($releaseTime);
     $releaseDate->modify("+$numWeeks weeks");
     if ($today >= $releaseDate) {
       return true;
