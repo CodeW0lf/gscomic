@@ -8,8 +8,18 @@
     <comic-nav class="relative z-10"></comic-nav>
     <div class="flex flex-col justify-center items-center">
       <div class="switch-button">
-        <input class="switch-button-checkbox" type="checkbox" v-model="isSecondViewSelected" @change="switchValue">
-        <label class="switch-button-label" for=""><span class="switch-button-label-span">A</span></label>
+        <input class="switch-button-checkbox" id="switch" type="checkbox" v-model="isSecondViewSelected"
+               @change="switchValue">
+        <label class="switch-button-label" for="switch">
+          <span class="switch-button-label-span">
+            <transition mode="out-in"
+                        enter-active-class="animated fadeIn fade-duration"
+                        leave-active-class="animated fadeOut fade-duration">
+              <img :src="grinImg" alt="Riley Grin" key="riley" class="mx-auto"
+                   v-if="!isSecondViewSelected">
+            </transition>
+          </span>
+        </label>
       </div>
       <div class="text-gray-400 font-semibold my-4">
         {{ comicId }} / {{ latestComicId }}
@@ -35,7 +45,8 @@ export default {
   data() {
     return {
       version: 'a',
-      isSecondViewSelected: false
+      isSecondViewSelected: false,
+      grinImg: require('@/assets/grin.png')
     }
   },
   computed: mapState(['comicId', 'latestComicId']),
@@ -91,7 +102,7 @@ export default {
 }
 
 .switch-button:before {
-  content: "B";
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -144,5 +155,11 @@ export default {
 
 .switch-button-checkbox + .switch-button-label .switch-button-label-span {
   position: relative;
+  display: inline-block;
+  height: 20px;
+}
+
+.fade-duration {
+  animation-duration: 150ms;
 }
 </style>
