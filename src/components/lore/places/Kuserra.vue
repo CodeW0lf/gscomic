@@ -43,7 +43,7 @@
         <section-button
             path="/lore/places/kuserra/citadel"
             style="max-width: 300px"
-            :img="require('@/assets/lore/lore-locations-citadel.png')"
+            :img="citidelBtn"
             alt="Citadel"
             small
         />
@@ -52,7 +52,7 @@
         <section-button
             path="/lore/places/kuserra/unknown"
             style="max-width: 300px"
-            :img="require('@/assets/lore/lore-locations-underground.png')"
+            :img="undergroundBtn"
             alt="Underground"
             small
             disabled
@@ -62,7 +62,7 @@
         <section-button
             path="/lore/places/kuserra/downtown"
             style="max-width: 300px"
-            :img="require('@/assets/lore/lore-locations-downtown.png')"
+            :img="downtownBtn"
             alt="Downtown"
             small
         />
@@ -78,12 +78,22 @@
 </template>
 
 <script>
-import BackButton from '@/components/lore/BackButton'
-import SectionButton from '@/components/lore/SectionButton'
+import BackButton from '@/components/lore/BackButton.vue'
+import SectionButton from '@/components/lore/SectionButton.vue'
+import citidelBtn from '@/assets/lore/lore-locations-citadel.png'
+import undergroundBtn from '@/assets/lore/lore-locations-underground.png'
+import downtownBtn from '@/assets/lore/lore-locations-downtown.png'
 
 export default {
   name: 'LoreLocations',
   components: {SectionButton, BackButton},
+  data() {
+    return {
+      citidelBtn,
+      undergroundBtn,
+      downtownBtn
+    }
+  },
   watch: {
     $route() {
       this.$scrollTo(this.$refs.subLocation)

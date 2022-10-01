@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import SiteNav from '@/components/SiteNav'
-import SocialLinks from '@/components/SocialLinks'
-import SiteFooter from '@/components/SiteFooter'
+import SiteNav from '@/components/SiteNav.vue'
+import SocialLinks from '@/components/SocialLinks.vue'
+import SiteFooter from '@/components/SiteFooter.vue'
 
 export default {
   name: 'app',

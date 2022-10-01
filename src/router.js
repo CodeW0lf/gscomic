@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Comic = () => import('./views/Comic')
-const RileyComic = () => import('./views/RileyComic')
-const Unknown = () =>
-    import(/* webpackChunkName: "lore" */ './components/lore/places/Unknown')
+const Comic = () => import('./views/Comic.vue')
+const RileyComic = () => import('./views/RileyComic.vue')
+const Unknown = () => import('./components/lore/places/Unknown.vue')
 
 Vue.use(Router)
 
@@ -23,35 +22,35 @@ export default new Router({
     },
     {
       path: '/lore',
-      component: () => import(/* webpackChunkName: "lore" */ './views/Lore'),
+      component: () => import('./views/Lore.vue'),
       children: [
         {
           path: 'places',
           component: () =>
-              import(
-                  /* webpackChunkName: "lore" */ './components/lore/LorePlaces'
-                  ),
+            import(
+              './components/lore/LorePlaces.vue'
+            ),
         },
         {
           path: 'places/kuserra',
           component: () =>
-              import(
-                  /* webpackChunkName: "lore" */ './components/lore/places/Kuserra'
-                  ),
+            import(
+              './components/lore/places/Kuserra.vue'
+            ),
           children: [
             {
               path: 'downtown',
               component: () =>
-                  import(
-                      /* webpackChunkName: "lore" */ './components/lore/places/kuserra/Downtown'
-                      ),
+                import(
+                  './components/lore/places/kuserra/Downtown.vue'
+                ),
             },
             {
               path: 'citadel',
               component: () =>
-                  import(
-                      /* webpackChunkName: "lore" */ './components/lore/places/kuserra/Citadel'
-                      ),
+                import(
+                  './components/lore/places/kuserra/Citadel.vue'
+                ),
             },
             {
               path: 'unknown',
@@ -66,31 +65,31 @@ export default new Router({
         {
           path: 'culture',
           component: () =>
-              import(
-                  /* webpackChunkName: "culture" */ './components/lore/LoreCulture'
-                  ),
+            import(
+              './components/lore/LoreCulture.vue'
+            ),
         },
         {
           path: 'culture/gods',
           component: () =>
-              import(
-                  /* webpackChunkName: "culture" */ './components/lore/culture/Gods'
-                  ),
+            import(
+              './components/lore/culture/Gods.vue'
+            ),
         },
         {
           path: '',
           component: () =>
-              import(/* webpackChunkName: "lore" */ './components/lore/LoreHome'),
+            import('./components/lore/LoreHome.vue'),
         },
       ],
     },
     {
       path: '/characters',
-      component: () => import(/* webpackChunkName: "characters" */ './views/Characters'),
+      component: () => import('./views/Characters.vue'),
     },
     {
       path: '/sketches',
-      component: () => import('./views/Sketches'),
+      component: () => import('./views/Sketches.vue'),
     },
     {
       path: '/',

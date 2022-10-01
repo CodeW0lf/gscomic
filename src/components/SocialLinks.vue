@@ -97,13 +97,16 @@
 </template>
 
 <script>
+import voteImg from '@/assets/vote-twc.png'
+import voteImgOverlay from '@/assets/vote-twc-o.png'
+
 export default {
   name: 'SocialLinks',
   data() {
     return {
       voteImgHover: false,
-      voteImg: require('@/assets/vote-twc.png'),
-      voteImgO: require('@/assets/vote-twc-o.png'),
+      voteImg: voteImg,
+      voteImgO: voteImgOverlay,
     }
   },
   methods: {

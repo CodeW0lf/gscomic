@@ -29,9 +29,10 @@
 </template>
 
 <script>
-import ComicImage from '@/components/ComicImage'
+import ComicImage from '@/components/ComicImage.vue'
 import ComicNav from '@/components/ComicNav.vue'
 import ComicNavMixin from '@/mixins/ComicNavMixin'
+import grinImg from '@/assets/grin.png'
 import {mapActions, mapState} from 'vuex'
 
 export default {
@@ -46,7 +47,7 @@ export default {
     return {
       version: 'a',
       isSecondViewSelected: false,
-      grinImg: require('@/assets/grin.png')
+      grinImg: grinImg
     }
   },
   computed: mapState(['comicId', 'latestComicId']),
@@ -66,7 +67,7 @@ export default {
         if (parseInt(this.id, 10) !== this.comicId) {
           if (this.comicId === this.latestComicId) {
             if (this.$router.currentRoute.path !== '/rileycomic') {
-              this.$router.replace({path: `/rileycomic`})
+              this.$router.replace({path: '/rileycomic'})
             }
           } else {
             this.$router.replace({path: `/rileycomic/${this.comicId}`})

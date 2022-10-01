@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ComicImage from '@/components/ComicImage'
+import ComicImage from '@/components/ComicImage.vue'
 import ComicNav from '@/components/ComicNav.vue'
 import ComicNavMixin from '@/mixins/ComicNavMixin'
 import {mapActions, mapState} from 'vuex'
@@ -44,7 +44,7 @@ export default {
       if (parseInt(this.id, 10) !== this.comicId) {
         if (this.comicId === this.latestComicId) {
           if (this.$router.currentRoute.path !== '/') {
-            this.$router.replace({path: `/`})
+            this.$router.replace({path: '/'})
           }
         } else {
           this.$router.replace({path: `/comic/${this.comicId}`})

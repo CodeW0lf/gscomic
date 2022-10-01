@@ -4,20 +4,20 @@
   >
     <section-button
       path="places/kuserra"
-      :img="require('@/assets/lore/lore-locations-kuserra.png')"
+      :img="kuserraBtn"
       alt="Kuserra Location Lore"
     />
 
     <section-button
       path="places/unknown"
-      :img="require('@/assets/lore/lore-locations-deadlands.png')"
+      :img="deadlandsBtn"
       alt="Deadlands"
       disabled
     />
 
     <section-button
       path="places/unknown"
-      :img="require('@/assets/lore/lore-locations-secret.png')"
+      :img="secretBtn"
       alt="Secret"
       disabled
     />
@@ -27,12 +27,22 @@
 </template>
 
 <script>
-import BackButton from '@/components/lore/BackButton'
-import SectionButton from '@/components/lore/SectionButton'
+import BackButton from '@/components/lore/BackButton.vue'
+import SectionButton from '@/components/lore/SectionButton.vue'
+import kuserraBtn from '@/assets/lore/lore-locations-kuserra.png'
+import deadlandsBtn from '@/assets/lore/lore-locations-deadlands.png'
+import secretBtn from '@/assets/lore/lore-locations-secret.png'
 
 export default {
   name: 'LoreLocations',
   components: { SectionButton, BackButton },
+  data() {
+    return {
+      kuserraBtn,
+      deadlandsBtn,
+      secretBtn
+    }
+  }
 }
 </script>
 

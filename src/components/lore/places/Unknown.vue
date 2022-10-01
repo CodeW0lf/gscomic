@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import BackButton from '@/components/lore/BackButton'
+import BackButton from '@/components/lore/BackButton.vue'
 export default {
-  name: 'Unknown',
+  name: 'UnknownLocation',
   components: { BackButton },
 }
 </script>

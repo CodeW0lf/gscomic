@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "NewBadge"
+  name: 'NewBadge'
 }
 </script>
 

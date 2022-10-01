@@ -1,38 +1,33 @@
 {
   "name": "god-slayers",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "serve": "cross-env TAILWIND_MODE=watch vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "cross-env TAILWIND_MODE=watch vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/typography": "^0.4.1",
     "animate.css": "^4.1.1",
-    "axios": "^0.21.4",
-    "core-js": "^3.17.3",
-    "vue": "^2.6.14",
+    "axios": "^0.27.2",
+    "vue": "^2.7.10",
     "vue-infinite-loading": "^2.4.5",
-    "vue-router": "^3.5.2",
+    "vue-router": "^3.6.5",
     "vue-scrollto": "^2.20.0",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~5.0.8",
-    "@vue/cli-plugin-eslint": "~5.0.8",
-    "@vue/cli-plugin-router": "~5.0.8",
-    "@vue/cli-plugin-vuex": "~5.0.8",
-    "@vue/cli-service": "~5.0.8",
-    "autoprefixer": "^9.8.6",
-    "babel-eslint": "^10.1.0",
+    "@vitejs/plugin-vue2": "^2.0.0",
+    "autoprefixer": "^10.4.12",
     "cross-env": "^7.0.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "postcss": "^7.0.36",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
-    "vue-template-compiler": "^2.6.14"
+    "eslint": "^8.24.0",
+    "eslint-plugin-vue": "^9.5.1",
+    "postcss": "^8.4.17",
+    "tailwindcss": "^2.2.19",
+    "vite": "^3.1.4"
   }
 }

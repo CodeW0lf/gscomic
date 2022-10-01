@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import PatreonLink from '@/components/PatreonLink'
+import PatreonLink from '@/components/PatreonLink.vue'
 import {mapActions, mapGetters} from 'vuex'
-import NewBadge from '@/components/NewBadge'
+import NewBadge from '@/components/NewBadge.vue'
 
 export default {
   name: 'SiteNav',

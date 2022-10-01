@@ -11,8 +11,7 @@
               <transition mode="out-in" :enter-active-class="'animated fade-duration ' + enterActive"
                           :leave-active-class="'animated fade-duration ' + leaveActive"
                           v-on:before-leave="charBeforeLeave" v-on:after-enter="charAfterEnter">
-                <img alt="Character Image" :key="character.fullImg"
-                     :src="require('@/assets/characters/' + character.fullImg)">
+                <img alt="Character Image" :key="character.fullImg" :src="getImageUrl(character.fullImg)">
               </transition>
             </div>
             <div class="flex justify-between mx-auto -mt-20 w-full py-8">
@@ -59,7 +58,7 @@
                 <transition mode="out-in" :enter-active-class="'animated fade-duration ' + enterActive"
                             :leave-active-class="'animated fade-duration ' + leaveActive">
                   <img alt="Character Portrait" :key="portrait.portraitImg" class="z-0"
-                       :src="require('@/assets/characters/' + portrait.portraitImg)">
+                       :src="getImageUrl(portrait.portraitImg)">
                 </transition>
               </div>
               <div class="flex justify-between mx-auto -mt-8 w-full sm:px-4 z-10">
@@ -114,10 +113,10 @@
 </template>
 
 <script>
-import characterList from '../../public/characters-data/characterList.json'
+import characterList from '/src/characters-data/characterList.json'
 
 export default {
-  name: "Characters",
+  name: 'Characters',
   data() {
     return {
       selectedCharIdx: 0,
@@ -149,7 +148,7 @@ export default {
       this.selectedPortraitIdx = (--this.selectedPortraitIdx + len) % len
     },
     nextCharacter() {
-      this.selectedPortraitIdx = 0;
+      this.selectedPortraitIdx = 0
       this.enterActive = 'slideInRight'
       this.leaveActive = 'slideOutLeft'
       this.selectedCharIdx = ++this.selectedCharIdx % this.characterList.length
@@ -162,10 +161,13 @@ export default {
       this.selectedCharIdx = (--this.selectedCharIdx + len) % len
     },
     charBeforeLeave() {
-      this.portraitsVisible = false;
+      this.portraitsVisible = false
     },
     charAfterEnter() {
-      this.portraitsVisible = true;
+      this.portraitsVisible = true
+    },
+    getImageUrl(name) {
+      return new URL(`/src/assets/characters/${name}`, import.meta.url).href
     }
   }
 }

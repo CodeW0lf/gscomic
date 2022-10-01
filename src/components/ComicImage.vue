@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Spinner from '@/components/Spinner'
+import Spinner from '@/components/Spinner.vue'
 import {mapGetters} from 'vuex'
 
 const comicChangeDragDistPx = 200

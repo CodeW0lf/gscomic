@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Sketch from '@/components/Sketch'
+import Sketch from '@/components/Sketch.vue'
 import InfiniteLoading from 'vue-infinite-loading'
 import ComicsService from '@/services/ComicsService'
 

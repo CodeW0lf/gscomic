@@ -4,23 +4,31 @@
   >
     <section-button
         path="/lore/places"
-        :img="require('@/assets/lore/lore-locations-btn.png')"
+        :img="placesBtn"
         alt="Location Lore"
     />
     <section-button
         path="/lore/culture"
         alt="Culture Lore"
-        :img="require('@/assets/lore/lore-culture.png')"
+        :img="cultureBtn"
     />
   </section>
 </template>
 
 <script>
-import SectionButton from '@/components/lore/SectionButton'
+import SectionButton from '@/components/lore/SectionButton.vue'
+import placesBtn from '@/assets/lore/lore-locations-btn.png'
+import cultureBtn from '@/assets/lore/lore-culture.png'
 
 export default {
   name: 'LoreHome',
   components: {SectionButton},
+  data() {
+    return {
+      placesBtn,
+      cultureBtn
+    }
+  }
 }
 </script>
 
