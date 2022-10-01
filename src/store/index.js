@@ -80,7 +80,7 @@ export default new Vuex.Store({
       commit('SET_COMIC_PATH', 'comic')
     },
     async loadRileyComics({commit}, version) {
-      let res = await ComicsService.getRileyComics(version);
+      let res = await ComicsService.getRileyComics(version)
       commit('SET_COMIC_LIST', res.data.comics)
       commit('SET_CHAPTER_LIST', res.data.chapters)
       commit('SET_CURRENT_COMIC', res.data.latest)

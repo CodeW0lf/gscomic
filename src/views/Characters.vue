@@ -154,7 +154,7 @@ export default {
       this.selectedCharIdx = ++this.selectedCharIdx % this.characterList.length
     },
     prevCharacter() {
-      this.selectedPortraitIdx = 0;
+      this.selectedPortraitIdx = 0
       this.enterActive = 'slideInLeft'
       this.leaveActive = 'slideOutRight'
       const len = this.characterList.length
