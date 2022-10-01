@@ -4,8 +4,8 @@ date_default_timezone_set("America/Los_Angeles");
 
 require_once "shared/comic-util.php";
 
-const LATEST = 141;
-$RELEASE_TIME = mktime(0, 0, 0, 6, 15, 2022);
+const LATEST = 148;
+$RELEASE_TIME = mktime(0, 0, 0, 9, 28, 2022);
 
 $dir = "../img/comics";
 $files = scandir($dir);
@@ -26,5 +26,5 @@ foreach ($files as $file) {
   }
 }
 $returnObj->latest = $latest;
-$returnObj->chapters = [0, 18, 39, 56, 72, 88, 98, 120];
+$returnObj->chapters = [0, 18, 39, 56, 72, 88, 98, 120, 141];
 echo json_encode($returnObj);

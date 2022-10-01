@@ -11,11 +11,11 @@
     "
   >
     <patreon-link></patreon-link>
-    <div class="mt-4 lg:mt-0 text-size-md text-primary font-bold">
+    <div class="mt-4 lg:mt-0 text-center text-size-md text-primary font-bold">
       <router-link class="hover:text-white" to="/">Comic</router-link>
       <span class="px-2 text-gray-600">|</span>
-      <!--      <router-link class="hover:text-white" to="/rileycomic">Riley Comic</router-link>-->
-      <!--      <span class="px-2 text-gray-600">|</span>-->
+      <router-link class="hover:text-white" to="/rileycomic">Riley Comic</router-link>
+      <span class="px-2 text-gray-600">|</span>
       <router-link class="hover:text-white relative group" to="/characters">
         Characters
         <new-badge v-if="isCharactersBadgeEnabled"></new-badge>

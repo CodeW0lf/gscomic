@@ -11,8 +11,8 @@ if ($version != "a") {
   $fileSuffix = "b";
 }
 
-const LATEST = 1;
-$RELEASE_TIME = mktime(0, 0, 0, 6, 22, 2022);
+const LATEST = 5;
+$RELEASE_TIME = mktime(0, 0, 0, 9, 28, 2022);
 
 $dir = "../img/riley_comics";
 $files = scandir($dir);
