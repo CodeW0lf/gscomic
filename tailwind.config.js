@@ -1,12 +1,11 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
   ],
-  darkMode: false,
   theme: {
     fontFamily: {
       body: ['Roboto', ...defaultTheme.fontFamily.sans],
@@ -38,7 +37,7 @@ module.exports = {
           lighter: '#6dcbff'
         }
       },
-      typography: (theme) => ({
+      typography: ({theme}) => ({
         DEFAULT: {
           css: {
             color: theme('colors.gray.400'),
@@ -51,17 +50,6 @@ module.exports = {
           },
         },
       }),
-    },
-  },
-  variants: {
-    extend: {
-      backgroundColor: ['active'],
-      textColor: ['disabled'],
-      ringColor: ['hover'],
-      ringWidth: ['hover'],
-      ringOffsetWidth: ['hover'],
-      ringOffsetColor: ['hover'],
-      ringOpacity: ['hover'],
     },
   },
   plugins: [require('@tailwindcss/typography')],
