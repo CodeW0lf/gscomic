@@ -35,6 +35,10 @@ module.exports = {
         kofi: {
           DEFAULT: '#29ABE0',
           lighter: '#6dcbff'
+        },
+        bsky: {
+          DEFAULT: '#1185fe',
+          lighter: '#54a9ff'
         }
       },
       typography: ({theme}) => ({
