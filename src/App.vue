@@ -24,6 +24,9 @@
       class="container mx-auto flex flex-col items-center justify-between w-full h-full"
       style="max-width: 900px"
     >
+      <a href="https://www.fenrispublishing.com/product.php?id=995" target="_blank" class="mb-4">
+        <img src="./assets/book_preorder.png" alt="Preorder the God Slayers physical book!"/>
+      </a>
       <site-nav></site-nav>
       <router-view />
       <social-links></social-links>
