@@ -150,10 +150,10 @@ export default {
   computed: {
     shareUrl() {
       let message = encodeURIComponent(
-          'Check out God Slayers Comic (@ComicSlayers)!'
+        'Check out God Slayers Comic (@ComicSlayers)!'
       )
       return (
-          'https://twitter.com/intent/tweet?url=https://www.godslayerscomic.com' +
+        'https://twitter.com/intent/tweet?url=https://www.godslayerscomic.com' +
           this.$route.path +
           '&text=' +
           message
