@@ -92,6 +92,10 @@ export default new Router({
       component: () => import('./views/Sketches.vue'),
     },
     {
+      path: '/archive',
+      component: () => import('./views/Archive.vue'),
+    },
+    {
       path: '/',
       component: Comic,
     },

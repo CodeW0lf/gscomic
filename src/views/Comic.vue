@@ -9,6 +9,11 @@
     <div class="text-gray-400 font-semibold my-4">
       {{ comicId }} / {{ latestComicId }}
     </div>
+    <div>
+      <router-link class="text-size-md text-primary font-bold hover:text-white" to="/archive">
+        Archive
+      </router-link>
+    </div>
   </section>
 </template>
 
@@ -41,6 +46,7 @@ export default {
   mounted() {
     this.loadComics().then(() => {
       this.updateComicId(this.id)
+      // Failed to update the ID because it was invalid in some way, fallback
       if (parseInt(this.id, 10) !== this.comicId) {
         if (this.comicId === this.latestComicId) {
           if (this.$router.currentRoute.path !== '/') {
@@ -49,6 +55,10 @@ export default {
         } else {
           this.$router.replace({path: `/comic/${this.comicId}`})
         }
+      }
+      // Scroll to the top of the page if the user went to a comic directly
+      if (this.comicId !== this.latestComicId) {
+        this.$scrollTo(this.$parent.$refs.top)
       }
     })
   },
