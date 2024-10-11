@@ -1,8 +1,7 @@
 <template>
   <div>
     <p class="font-semibold">
-      Comic updates (most) Wednesdays. <br class="sm:hidden"/>Sketches posted
-      Friday.
+      Comic updates (almost) weekly, Currently posting on Fridays.
     </p>
     <p>
       Like the comic? Support me on
