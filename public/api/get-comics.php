@@ -4,7 +4,7 @@ date_default_timezone_set("America/Los_Angeles");
 
 require_once "shared/comic-util.php";
 
-const LATEST = 148;
+const LATEST = 203;
 $RELEASE_TIME = mktime(0, 0, 0, 10, 4, 2024);
 
 $dir = "../img/comics";
