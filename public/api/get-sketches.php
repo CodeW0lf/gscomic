@@ -1,6 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-date_default_timezone_set("America/Los_Angeles");
+date_default_timezone_set("America/Phoenix");
 
 $dir = "../img/sketch_files";
 $files = scandir($dir);

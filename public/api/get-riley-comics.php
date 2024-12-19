@@ -1,6 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-date_default_timezone_set("America/Los_Angeles");
+date_default_timezone_set("America/Phoenix");
 
 require_once "shared/comic-util.php";
 
@@ -11,7 +11,7 @@ if ($version != "a") {
   $fileSuffix = "b";
 }
 
-const LATEST = 5;
+const LATEST = 10;
 $RELEASE_TIME = mktime(0, 0, 0, 9, 28, 2022);
 
 $dir = "../img/riley_comics";
