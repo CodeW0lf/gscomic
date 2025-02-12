@@ -23,9 +23,8 @@
       <span class="px-2 text-gray-600">|</span>
       <router-link class="hover:text-white" to="/sketches">Sketches</router-link>
       <span class="px-2 text-gray-600">|</span>
-      <router-link class="hover:text-white relative group" to="/lore">
-        Lore
-        <new-badge v-if="isLoreBadgeEnabled"></new-badge>
+      <router-link class="hover:text-white relative group" to="/links">
+        Links
       </router-link>
     </div>
   </nav>

@@ -21,6 +21,10 @@ export default new Router({
       props: true,
     },
     {
+      path: '/links',
+      component: () => import('./views/Links.vue'),
+    },
+    {
       path: '/lore',
       component: () => import('./views/Lore.vue'),
       children: [
