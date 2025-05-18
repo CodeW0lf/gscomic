@@ -20,9 +20,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <title>God Slayers</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="God Slayers Web Comic" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="God Slayers Comic" />
+        <meta property="og:description" content="God Slayers Web Comic" />
+        <meta property="og:url" content="https://www.godslayerscomic.com" />
+        <meta property="og:image" content="https://www.godslayerscomic.com/patreon/PromotionalKivaFace.png" />
         <Meta />
         <Links />
       </head>

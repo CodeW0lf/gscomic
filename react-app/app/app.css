@@ -4,6 +4,22 @@
   --font-sans:
     'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
+  --color-primary: #3B9C7D;
+  --color-primary-lighter: #57e7b9;
+  --color-primary-darker: #297057;
+  --color-discord: #7289da;
+  --color-discord-lighter: #99aab5;
+  --color-discord-darker: #546e9a;
+  --color-twitter: #1B95E0;
+  --color-twitter-lighter: #99aab5;
+  --color-patreon: #9a473a;
+  --color-patreon-lighter: #f96854;
+  --color-kofi: #29ABE0;
+  --color-kofi-lighter: #6dcbff;
+  --color-bsky: #1185fe;
+  --color-bsky-lighter: #54a9ff;
+  --color-telegram: #2CA5E0;
+  --color-telegram-lighter: #99aab5;
 }
 
 html,
