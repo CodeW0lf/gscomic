@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import { SiteNav } from './SiteNav';
-import { SocialLinks } from './SocialLinks';
-import { SiteFooter } from './SiteFooter';
+import { SiteNav } from '../components/SiteNav';
+import { SocialLinks } from '../components/SocialLinks';
+import { SiteFooter } from '../components/SiteFooter';
 
 export default function Layout() {
   return (
