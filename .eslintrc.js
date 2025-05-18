@@ -13,6 +13,7 @@ module.exports = {
     'ecmaVersion': 'latest',
     'sourceType': 'module'
   },
+  ignorePatterns: ['react-app/**/*'],
   'plugins': [
     'vue'
   ],
