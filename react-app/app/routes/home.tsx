@@ -1,7 +1,6 @@
-import type { Route } from './+types/home';
 import { Welcome } from '../welcome/welcome';
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [{ title: 'God Slayers Comic' }, { name: 'description', content: 'Welcome to React Router!' }];
 }
 

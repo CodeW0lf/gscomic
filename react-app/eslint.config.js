@@ -7,11 +7,11 @@ import pluginImport from 'eslint-plugin-import';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
-  pluginImport.configs.recommended,
-  pluginImport.configs.typescript,
+  pluginImport.flatConfigs.recommended,
+  pluginImport.flatConfigs.typescript,
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-    plugins: { js, prettier: pluginPrettier, import: pluginImport },
+    plugins: { js, prettier: pluginPrettier },
     extends: ['js/recommended'],
     rules: {
       'prettier/prettier': 'warn', // show Prettier issues in ESLint
@@ -35,6 +35,14 @@ export default defineConfig([
     rules: {
       'react/react-in-jsx-scope': 'off',
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+      'import/resolver': {
+        typescript: {},
+      }
+    }
   },
   {
     files: ['**/*.{jsx,tsx}'],
