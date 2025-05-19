@@ -51,13 +51,6 @@ export default function ComicImage({ imgPath, comicPath, version }: ComicImagePr
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          {/* Left swipe indicator */}
-          <SlArrowLeft
-            className="absolute top-[40%] left-0 h-24 w-24 rotate-90 transform fill-current text-white transition duration-200"
-            style={{
-              opacity: dragX > 0 ? Math.min(dragX / 80, 1) : 0,
-            }}
-          />
           {/* Comic Image */}
           <AnimatePresence mode="wait">
             <motion.img
@@ -72,11 +65,18 @@ export default function ComicImage({ imgPath, comicPath, version }: ComicImagePr
               transition={{ duration: 0.2 }}
             />
           </AnimatePresence>
+          {/* Left swipe indicator */}
+          <SlArrowLeft
+            className="absolute top-[40%] left-1 h-24 w-24 text-white transition duration-200"
+            style={{
+              opacity: dragX > 0 ? Math.min(dragX / 100, 1) : 0,
+            }}
+          />
           {/* Right swipe indicator */}
           <SlArrowRight
-            className="absolute top-[40%] right-0 h-24 w-24 -rotate-90 transform fill-current text-white transition duration-200"
+            className="absolute top-[40%] right-1 h-24 w-24 text-white transition duration-200"
             style={{
-              opacity: dragX < 0 ? Math.min(-dragX / 80, 1) : 0,
+              opacity: dragX < 0 ? Math.min(-dragX / 100, 1) : 0,
             }}
           />
         </div>

@@ -10,7 +10,7 @@ import { SlArrowDown } from 'react-icons/sl';
 type ChapterMap = Map<number, string[]>;
 
 export function ArchivePage() {
-  const [expandedChapters, setExpandedChapters] = useState<Set<number>>(new Set());
+  const [expandedChapters, setExpandedChapters] = useState<Set<number>>(new Set([1]));
 
   const {
     data: comics,
@@ -83,6 +83,7 @@ export function ArchivePage() {
                 <h2 className="text-xl font-semibold">Chapter {chapter}</h2>
                 <motion.span
                   className="inline-block h-5 w-5"
+                  initial={{ rotate: isExpanded ? 0 : -90 }}
                   animate={{ rotate: isExpanded ? 0 : -90 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -94,7 +95,7 @@ export function ArchivePage() {
                 {isExpanded && (
                   <motion.div
                     layout
-                    transition={{ layout: { type: 'tween', ease: 'easeInOut', duration: 1 } }}
+                    transition={{ layout: { type: 'tween', ease: 'easeInOut', duration: 0.5 } }}
                     exit={{ height: 0 }}
                     className="overflow-hidden"
                     style={{ willChange: 'height, opacity' }}
@@ -109,7 +110,7 @@ export function ArchivePage() {
                           transition={{ duration: 0.5 }}
                           style={{ willChange: 'opacity, transform' }}
                         >
-                          <Link to={`/comic/${comicId}`} className="block hover:opacity-90">
+                          <Link to={`/comic/${comicId}#top`} className="block hover:opacity-70">
                             <img
                               src={`/img/comics/${comics!.comics[comicId]}`}
                               alt={`Comic ${comicId}`}
