@@ -3,6 +3,7 @@ import { useComicNav } from '~/hooks/useComicNav';
 import ComicImage from '~/components/ComicImage';
 import ComicNav from '~/components/ComicNav';
 import grinImg from '~/assets/grin.png';
+import { motion, AnimatePresence } from 'motion/react';
 
 export function RileyComicPage() {
   const [version, setVersion] = useState<'a' | 'b'>('a');
@@ -30,7 +31,19 @@ export function RileyComicPage() {
           />
           <label className="switch-button-label" htmlFor="switch">
             <span className="switch-button-label-span">
-              {!isSecondViewSelected && <img src={grinImg} alt="Riley Grin" className="mx-auto" />}
+              <AnimatePresence>
+                {!isSecondViewSelected && (
+                  <motion.img
+                    key="grin"
+                    src={grinImg}
+                    alt="Riley Grin"
+                    className="mx-auto"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.3 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.1 } }}
+                  />
+                )}
+              </AnimatePresence>
             </span>
           </label>
         </div>
