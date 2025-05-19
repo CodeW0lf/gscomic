@@ -16,10 +16,10 @@ export function ComicPage() {
   // Could do scroll-to-top here if needed
 
   return (
-    <section className="text-center w-full relative">
+    <section className="relative w-full text-center">
       <ComicImage imgPath="/img/comics/" comicPath={nav.comicPath} />
       <ComicNav {...nav} />
-      <div className="text-gray-400 font-semibold my-4">
+      <div className="my-4 font-semibold text-gray-400">
         {nav.comicId} / {nav.latestComicId}
       </div>
       <div>

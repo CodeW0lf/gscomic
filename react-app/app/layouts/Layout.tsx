@@ -7,11 +7,11 @@ import { SiteFooter } from '../components/SiteFooter';
 export default function Layout() {
   return (
     <div className="h-full">
-      <header className="relative text-center mx-auto">
+      <header className="relative mx-auto text-center">
         <img className="w-screen" src="/images/title_banner.png" alt="God Slayers Comic" />
         <a href="#top" className="scroll-to-top">
           <svg
-            className="animated pulse infinite slower fill-current text-white opacity-40 inline-block relative w-12 h-12 -mt-8"
+            className="animated pulse infinite slower relative -mt-8 inline-block h-12 w-12 fill-current text-white opacity-40"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >
@@ -21,7 +21,7 @@ export default function Layout() {
       </header>
       <div
         id="top"
-        className="container mx-auto flex flex-col items-center justify-between w-full h-full"
+        className="container mx-auto flex h-full w-full flex-col items-center justify-between"
         style={{ maxWidth: '900px' }}
       >
         <a href="https://www.fenrispublishing.com/product.php?id=995" target="_blank" rel="noreferrer" className="mb-4">
@@ -30,7 +30,7 @@ export default function Layout() {
         <SiteNav />
         <Outlet />
         <SocialLinks />
-        <footer className="text-gray-400 mt-16 text-center py-2">
+        <footer className="mt-16 py-2 text-center text-gray-400">
           <SiteFooter />
         </footer>
       </div>

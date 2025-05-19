@@ -3,7 +3,7 @@ import React from 'react';
 export default function Spinner() {
   return (
     <svg
-      className="fill-current inline-block text-white w-12 h-12"
+      className="inline-block h-12 w-12 fill-current text-white"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 40 40"
       role="status"

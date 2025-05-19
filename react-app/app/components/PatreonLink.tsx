@@ -9,16 +9,16 @@ export function PatreonLink() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mb-2 text-nowrap sm:flex-row md:mb-0">
+    <div className="mb-2 flex flex-col items-center justify-center text-nowrap sm:flex-row md:mb-0">
       <a
         href="https://www.patreon.com/elitetrick"
         onClick={patreonClick}
         target="_blank"
         rel="noreferrer"
-        className="inline-block py-2 px-3 bg-patreon-lighter text-white rounded text-xs sm:text-sm hover:ring-2 hover:ring-patreon hover:ring-offset-2 hover:ring-offset-black active:bg-gray-700"
+        className="bg-patreon-lighter hover:ring-patreon inline-block rounded px-3 py-2 text-xs text-white hover:ring-2 hover:ring-offset-2 hover:ring-offset-black active:bg-gray-700 sm:text-sm"
       >
         <svg
-          className="fill-current inline-block w-4 h-4 align-middle mr-1"
+          className="mr-1 inline-block h-4 w-4 fill-current align-middle"
           role="img"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -28,9 +28,9 @@ export function PatreonLink() {
         </svg>
         Become a Patron
       </a>
-      <span className="text-gray-600 font-semibold inline-block animated bounceIn delay-1s text-sm mt-2 sm:mt-0 sm:ml-2 sm:text-base">
+      <span className="animated bounceIn delay-1s mt-2 inline-block text-sm font-semibold text-gray-600 sm:mt-0 sm:ml-2 sm:text-base">
         <svg
-          className="fill-current w-5 h-5 mx-1 align-text-top hidden sm:inline-block"
+          className="mx-1 hidden h-5 w-5 fill-current align-text-top sm:inline-block"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
         >

@@ -15,10 +15,10 @@ interface ComicNavProps {
 
 export default function ComicNav(props: ComicNavProps) {
   return (
-    <section className="flex justify-between items-center mx-4 text-primary">
+    <section className="text-primary mx-4 flex items-center justify-between">
       <div>
         <button
-          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
+          className="focus:ring-primary focus:ring-opacity-50 rounded focus:ring-2 focus:outline-none disabled:text-gray-700"
           aria-label="First Comic"
           onClick={props.firstComic}
           disabled={!props.hasPrevComic}
@@ -26,7 +26,7 @@ export default function ComicNav(props: ComicNavProps) {
           {/* SVG as in your Vue code */}
         </button>
         <button
-          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
+          className="focus:ring-primary focus:ring-opacity-50 rounded focus:ring-2 focus:outline-none disabled:text-gray-700"
           aria-label="Previous Chapter"
           onClick={props.prevChapter}
           disabled={!props.hasPrevChapter}
@@ -34,7 +34,7 @@ export default function ComicNav(props: ComicNavProps) {
           {/* SVG */}
         </button>
         <button
-          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
+          className="focus:ring-primary focus:ring-opacity-50 rounded focus:ring-2 focus:outline-none disabled:text-gray-700"
           aria-label="Previous Comic"
           onClick={props.prevComic}
           disabled={!props.hasPrevComic}
@@ -44,7 +44,7 @@ export default function ComicNav(props: ComicNavProps) {
       </div>
       <div>
         <button
-          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
+          className="focus:ring-primary focus:ring-opacity-50 rounded focus:ring-2 focus:outline-none disabled:text-gray-700"
           aria-label="Next Comic"
           onClick={props.nextComic}
           disabled={!props.hasNextComic}
@@ -52,7 +52,7 @@ export default function ComicNav(props: ComicNavProps) {
           {/* SVG */}
         </button>
         <button
-          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
+          className="focus:ring-primary focus:ring-opacity-50 rounded focus:ring-2 focus:outline-none disabled:text-gray-700"
           aria-label="Next Chapter"
           onClick={props.nextChapter}
           disabled={!props.hasNextChapter}
@@ -60,7 +60,7 @@ export default function ComicNav(props: ComicNavProps) {
           {/* SVG */}
         </button>
         <button
-          className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded disabled:text-gray-700"
+          className="focus:ring-primary focus:ring-opacity-50 rounded focus:ring-2 focus:outline-none disabled:text-gray-700"
           aria-label="Latest Comic"
           onClick={props.latestComic}
           disabled={!props.hasNextComic}

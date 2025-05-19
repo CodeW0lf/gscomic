@@ -38,16 +38,16 @@ export function SocialLinks() {
 
   return (
     <div>
-      <div className="mt-8 text-center group">
+      <div className="group mt-8 text-center">
         <a
           href={shareUrl()}
           onClick={bskyClick}
           target="_blank"
           rel="noreferrer"
-          className="text-gray-400 group-hover:text-white text-sm"
+          className="text-sm text-gray-400 group-hover:text-white"
         >
           <svg
-            className="fill-current text-bsky hover:text-bsky-lighter inline-block w-4 h-4 mx-1"
+            className="text-bsky hover:text-bsky-lighter mx-1 inline-block h-4 w-4 fill-current"
             role="img"
             width="24"
             height="24"
@@ -59,8 +59,8 @@ export function SocialLinks() {
           Share
         </a>
       </div>
-      <div className="mt-8 text-gray-400 text-center">Follow for Updates!</div>
-      <div className="mt-4 mx-auto text-center">
+      <div className="mt-8 text-center text-gray-400">Follow for Updates!</div>
+      <div className="mx-auto mt-4 text-center">
         <a
           href="https://t.me/ComicSlayers"
           onClick={telegramClick}
@@ -69,7 +69,7 @@ export function SocialLinks() {
           className="telegram"
         >
           <svg
-            className="fill-current text-telegram hover:text-telegram-lighter inline-block w-8 h-8 mx-2"
+            className="text-telegram hover:text-telegram-lighter mx-2 inline-block h-8 w-8 fill-current"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -86,7 +86,7 @@ export function SocialLinks() {
           className="bksy"
         >
           <svg
-            className="fill-current text-bsky hover:text-bsky-lighter inline-block w-8 h-8 mx-2"
+            className="text-bsky hover:text-bsky-lighter mx-2 inline-block h-8 w-8 fill-current"
             role="img"
             width="24"
             height="24"
@@ -98,7 +98,7 @@ export function SocialLinks() {
         </a>
         <a href="https://discord.gg/HKZmH3U" onClick={discordClick} target="_blank" rel="noreferrer">
           <svg
-            className="fill-current text-discord hover:text-discord-lighter inline-block w-8 h-8 mx-2"
+            className="text-discord hover:text-discord-lighter mx-2 inline-block h-8 w-8 fill-current"
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"

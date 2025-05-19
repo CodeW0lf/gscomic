@@ -10,10 +10,10 @@ export function SiteFooter() {
           href="https://www.patreon.com/elitetrick"
           target="_blank"
           rel="noreferrer"
-          className="text-patreon hover:text-white mx-1"
+          className="text-patreon mx-1 hover:text-white"
         >
           <svg
-            className="fill-current inline-block w-4 h-4 align-text-top mr-1"
+            className="mr-1 inline-block h-4 w-4 fill-current align-text-top"
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -28,13 +28,13 @@ export function SiteFooter() {
           href="https://ko-fi.com/trickfoxx"
           target="_blank"
           rel="noreferrer"
-          className="text-kofi hover:text-white mx-1"
+          className="text-kofi mx-1 hover:text-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
             role="img"
-            className="fill-current inline-block w-4 h-4 align-text-top mr-1"
+            className="mr-1 inline-block h-4 w-4 fill-current align-text-top"
             viewBox="0 0 24 24"
           >
             <path

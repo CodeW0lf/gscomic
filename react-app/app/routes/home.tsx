@@ -1,4 +1,4 @@
-import { ComicPage } from '~/comics/ComicPage';
+import { ComicPage } from '~/pages/ComicPage';
 
 export function meta() {
   return [{ title: 'God Slayers Comic' }, { name: 'description', content: 'Welcome to React Router!' }];

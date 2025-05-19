@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useComicNav } from '~/hooks/useComicNav';
 import Spinner from './Spinner';
 import type { ComicPath } from '~/stores/comicUiStore';
-
-const comicChangeDragDistPx = 200;
+import { useSwipeDrag } from '~/hooks/useSwipeDrag';
+import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
 interface ComicImageProps {
   imgPath: string;
@@ -13,11 +13,18 @@ interface ComicImageProps {
 
 export default function ComicImage({ imgPath, comicPath, version }: ComicImageProps) {
   const { getComicFileName, prevComic, nextComic } = useComicNav({ comicPath, version });
+  const { dragX, onTouchStart, onTouchMove, onTouchEnd } = useSwipeDrag(
+    (direction) => {
+      if (direction === 'left') {
+        nextComic();
+      } else {
+        prevComic();
+      }
+    },
+    { threshold: 200 },
+  );
   const src = imgPath + (getComicFileName?.() ?? '');
   const [loading, setLoading] = useState(true);
-  const [dragging, setDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [lastMoveDist, setLastMoveDist] = useState(0);
 
   // Handle image loading state
   useEffect(() => {
@@ -27,45 +34,8 @@ export default function ComicImage({ imgPath, comicPath, version }: ComicImagePr
     img.src = src;
   }, [src]);
 
-  // Drag/Touch events
-  const startDrag = useCallback(
-    (e: React.TouchEvent | React.MouseEvent) => {
-      if (loading) return;
-      const x = 'changedTouches' in e ? e.changedTouches[0].pageX : (e as React.MouseEvent).pageX;
-      setDragging(true);
-      setStartX(x);
-    },
-    [loading],
-  );
-
-  const dragComic = useCallback(
-    (e: React.TouchEvent | React.MouseEvent) => {
-      if (loading || !dragging) return;
-      const x = 'changedTouches' in e ? e.changedTouches[0].pageX : (e as React.MouseEvent).pageX;
-      const moveDist = x - startX;
-      setLastMoveDist(moveDist);
-
-      if (moveDist >= comicChangeDragDistPx) {
-        prevComic?.();
-        setDragging(false);
-        setLastMoveDist(0);
-      } else if (moveDist <= -comicChangeDragDistPx) {
-        nextComic?.();
-        setDragging(false);
-        setLastMoveDist(0);
-      }
-    },
-    [dragging, loading, startX, prevComic, nextComic],
-  );
-
-  const stopDrag = useCallback(() => {
-    setDragging(false);
-    setStartX(0);
-    setLastMoveDist(0);
-  }, []);
-
   return (
-    <div className="text-center mx-auto relative w-full" style={{ paddingTop: '136%' }}>
+    <div className="relative mx-auto w-full text-center" style={{ paddingTop: '136%' }}>
       {loading ? (
         <div className="absolute inset-0 w-full" style={{ top: '40%' }}>
           <Spinner />
@@ -73,41 +43,33 @@ export default function ComicImage({ imgPath, comicPath, version }: ComicImagePr
       ) : (
         <div
           className="absolute inset-0 w-full"
-          onTouchStart={startDrag}
-          onTouchMove={dragComic}
-          onTouchEnd={stopDrag}
-          onMouseDown={startDrag}
-          onMouseMove={dragComic}
-          onMouseUp={stopDrag}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           {/* Left swipe indicator */}
-          <svg
-            className="fill-current text-white absolute w-24 h-24 transform rotate-90 transition duration-200"
+          <SlArrowLeft
+            className="absolute h-24 w-24 rotate-90 transform fill-current text-white transition duration-200"
             style={{
               top: '40%',
-              opacity: lastMoveDist > 0 ? `${lastMoveDist / 2}%` : 0,
+              left: 0,
+              opacity: dragX > 0 ? Math.min(dragX / 80, 1) : 0,
             }}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-          </svg>
+          />
           {/* Comic Image */}
           <img className="transition" src={src} alt="Comic Image" draggable={false} />
           {/* Right swipe indicator */}
-          <svg
-            className="fill-current text-white absolute w-24 h-24 transform -rotate-90 right-0 transition duration-200"
+          <SlArrowRight
+            className="absolute right-0 h-24 w-24 -rotate-90 transform fill-current text-white transition duration-200"
             style={{
               top: '40%',
-              opacity: lastMoveDist < 0 ? `${-lastMoveDist / 2}%` : 0,
+              right: 0,
+              opacity: dragX < 0 ? Math.min(-dragX / 80, 1) : 0,
             }}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-          </svg>
+          />
         </div>
       )}
+      <div className="rounded border bg-white p-8 font-bold text-blue-500 shadow-md">Hello</div>
     </div>
   );
 }

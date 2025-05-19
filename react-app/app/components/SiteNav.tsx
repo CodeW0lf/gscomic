@@ -14,19 +14,9 @@ export function SiteNav() {
   }, []);
 
   return (
-    <nav
-      className="
-        flex flex-col
-        justify-between
-        items-center
-        w-full
-        my-2
-        px-4
-        lg:flex-row
-      "
-    >
+    <nav className="my-2 flex w-full flex-col items-center justify-between px-4 lg:flex-row">
       <PatreonLink />
-      <div className="mt-4 lg:mt-0 text-center text-size-md text-primary font-bold">
+      <div className="text-size-md text-primary mt-4 text-center font-bold lg:mt-0">
         <Link className="hover:text-white" to="/">
           Comic
         </Link>
@@ -35,7 +25,7 @@ export function SiteNav() {
           Riley Comic
         </Link>
         <span className="px-2 text-gray-600">|</span>
-        <Link className="hover:text-white relative group" to="/characters">
+        <Link className="group relative hover:text-white" to="/characters">
           Characters
           {isCharactersBadgeEnabled && <NewBadge />}
         </Link>
@@ -44,7 +34,7 @@ export function SiteNav() {
           Sketches
         </Link>
         <span className="px-2 text-gray-600">|</span>
-        <Link className="hover:text-white relative group" to="/links">
+        <Link className="group relative hover:text-white" to="/links">
           Links
         </Link>
       </div>

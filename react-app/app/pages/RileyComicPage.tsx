@@ -22,10 +22,10 @@ export function RileyComicPage() {
   }
 
   return (
-    <section className="text-center w-full relative">
+    <section className="relative w-full text-center">
       <ComicImage imgPath="/img/riley_comics/" comicPath={nav.comicPath} version={version} />
       <ComicNav {...nav} />
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center justify-center">
         <div className="switch-button">
           <input
             className="switch-button-checkbox"
@@ -40,7 +40,7 @@ export function RileyComicPage() {
             </span>
           </label>
         </div>
-        <div className="text-gray-400 font-semibold my-4">
+        <div className="my-4 font-semibold text-gray-400">
           {nav.comicId} / {nav.latestComicId}
         </div>
       </div>
