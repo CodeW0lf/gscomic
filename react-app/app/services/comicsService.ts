@@ -1,5 +1,6 @@
 import { api } from './api';
 import type { BadgesResponse, ComicsResponse, SketchesResponse } from '~/types/apiTypes';
+import type { CharacterList } from '~/types/characterTypes';
 
 export const getComics = async (): Promise<ComicsResponse> => {
   const res = await api.get<ComicsResponse>('/get-comics.php');
@@ -19,4 +20,12 @@ export const getSketches = async (): Promise<SketchesResponse> => {
 export const getBadges = async (): Promise<BadgesResponse> => {
   const res = await api.get<BadgesResponse>('/get-badges.php');
   return res.data;
+};
+
+export const getCharacters = async (): Promise<CharacterList> => {
+  const response = await fetch('/characters-data/characterList.json');
+  if (!response.ok) {
+    throw new Error('Failed to fetch characters');
+  }
+  return response.json();
 };
