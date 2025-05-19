@@ -1,19 +1,9 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router';
 import { useComicNav } from '~/hooks/useComicNav';
 import ComicImage from '~/components/ComicImage';
 import ComicNav from '~/components/ComicNav';
 
 export function ComicPage() {
-  const { id } = useParams<{ id?: string }>();
   const nav = useComicNav({ comicPath: 'comic' });
-
-  // On mount/update: set comicId from URL param
-  useEffect(() => {
-    if (id) nav.setComicId(Number(id));
-  }, [id]);
-
-  // Could do scroll-to-top here if needed
 
   return (
     <section className="relative w-full text-center">
