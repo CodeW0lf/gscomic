@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import React, { useState } from 'react';
 import { useComicNav } from '~/hooks/useComicNav';
 import ComicImage from '~/components/ComicImage';
 import ComicNav from '~/components/ComicNav';
 import grinImg from '~/assets/grin.png';
 
 export function RileyComicPage() {
-  const { id } = useParams<{ id?: string }>();
   const [version, setVersion] = useState<'a' | 'b'>('a');
   const [isSecondViewSelected, setSecondView] = useState(false);
   const nav = useComicNav({ comicPath: 'rileycomic', version });
-
-  useEffect(() => {
-    if (id) nav.setComicId(Number(id));
-  }, [id, nav.setComicId]);
 
   // Sync switch with version
   function switchValue(e: React.ChangeEvent<HTMLInputElement>) {
