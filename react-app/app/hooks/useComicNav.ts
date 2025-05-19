@@ -17,7 +17,7 @@ export function useComicNav({ comicPath, version }: { comicPath: ComicPath; vers
   });
   const comicList = data?.comics ?? {};
   const chapters = data?.chapters ?? [];
-  const latestComicId = Number(data?.latest) ?? 1;
+  const latestComicId = data?.latest ? Number(data.latest) : 1;
 
   // Parse comicId from the URL params
   let comicId: number | undefined = Number(id);
@@ -34,7 +34,7 @@ export function useComicNav({ comicPath, version }: { comicPath: ComicPath; vers
     if (!data || !id) return;
     const comicId = Number(id);
     const comicList = data.comics ?? {};
-    const latestComicId = Number(data.latest) ?? 1;
+    const latestComicId = data.latest ? Number(data.latest) : 1;
 
     if (isNaN(comicId) || !comicList[comicId]) {
       navigate(`/${comicPath}/${latestComicId}`, { replace: true });

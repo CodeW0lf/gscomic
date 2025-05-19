@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getComics } from '~/services/comicsService';
-import { motion, AnimatePresence } from 'motion/react';
-import { Link } from 'react-router';
-import type { ComicsResponse } from '~/types/apiTypes';
-import Spinner from '~/components/Spinner';
+import { AnimatePresence, motion } from 'motion/react';
+import { useMemo, useState } from 'react';
 import { SlArrowDown } from 'react-icons/sl';
+import { Link } from 'react-router';
+import Spinner from '~/components/Spinner';
+import { getComics } from '~/services/comicsService';
+import type { ComicsResponse } from '~/types/apiTypes';
 
 type ChapterMap = Map<number, string[]>;
 
@@ -79,7 +79,6 @@ export function ArchivePage() {
                 onClick={() => toggleChapter(chapter)}
                 className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-700"
               >
-                {/* no layout here */}
                 <h2 className="text-xl font-semibold">Chapter {chapter}</h2>
                 <motion.span
                   className="inline-block h-5 w-5"

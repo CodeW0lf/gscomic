@@ -125,7 +125,7 @@ body {
 }
 
 .switch-button:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -164,7 +164,7 @@ body {
 }
 
 .switch-button-checkbox + .switch-button-label:before {
-  content: "";
+  content: '';
   background: rgba(59, 156, 125, 1);
   height: 100%;
   width: 100%;
