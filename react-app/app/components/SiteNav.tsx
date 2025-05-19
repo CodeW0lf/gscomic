@@ -3,17 +3,18 @@ import { Link } from 'react-router';
 import { PatreonLink } from './PatreonLink';
 import { NewBadge } from './NewBadge';
 import { useQuery } from '@tanstack/react-query';
+import { getBadges } from '~/services/comicsService';
 
 export function SiteNav() {
   const [isCharactersBadgeEnabled, setIsCharactersBadgeEnabled] = useState(false);
 
   const { data } = useQuery({
     queryKey: ['characters-badge'],
-    queryFn: () => fetch('/api/badges/characters').then((res) => res.json()),
+    queryFn: getBadges,
   });
 
   useEffect(() => {
-    if (data?.enabled) {
+    if (data?.newCharacters === true) {
       setIsCharactersBadgeEnabled(true);
     }
   }, [data]);
