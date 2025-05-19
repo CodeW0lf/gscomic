@@ -34,7 +34,7 @@ function CharactersPage() {
       <div className="flex w-full flex-col items-center justify-center">
         <div className="flex w-full flex-col items-center justify-between px-4">
           <div>
-            <h1 className="primary text-5xl font-bold">{character.name}</h1>
+            <h1 className="text-primary text-5xl font-bold">{character.name}</h1>
           </div>
 
           <div className="relative w-3/4 pt-[100%]">
@@ -73,7 +73,7 @@ function CharactersPage() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="prose h-full w-full overflow-y-auto p-4 text-center"
+                  className="prose h-full w-full overflow-y-auto p-4 text-center text-gray-400"
                   dangerouslySetInnerHTML={{ __html: portrait?.text || '' }}
                 />
               </AnimatePresence>

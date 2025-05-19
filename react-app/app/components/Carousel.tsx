@@ -1,64 +1,87 @@
-import type { ReactNode } from 'react';
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { type ReactNode, useState, useCallback } from 'react';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import { PiPlayFill } from 'react-icons/pi';
-import { Tooltip } from '~/components/Tooltip';
+import { Tooltip } from './Tooltip';
 
-type CarouselProps = {
-  items: string[];
-  onIndexChange: (newIdx: number) => void;
-  renderItem: (item: string, idx: number) => ReactNode;
+export type CarouselProps<T> = {
+  items: T[];
+  onIndexChange?: (newIdx: number) => void;
+  renderItem: (item: T, idx: number) => ReactNode;
+  wrap?: boolean; // if true, next after last → first
 };
 
-function Carousel({ items, onIndexChange, renderItem }: CarouselProps) {
-  const [idx, setIdx] = useState(0);
-  const [visible, setVisible] = useState(true);
-  const [dir, setDir] = useState<1 | -1>(1);
+const variants: Variants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? 50 : -50,
+    opacity: 0,
+  }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir: number) => ({
+    x: dir > 0 ? -50 : 50,
+    opacity: 0,
+  }),
+};
 
-  const change = (dir: 1 | -1) => {
-    setVisible(false);
-    setTimeout(() => {
-      const next = idx + dir;
-      setIdx(next);
-      setDir(dir);
-      onIndexChange(next);
-      setVisible(true);
-    }, 300);
-  };
+function Carousel<T>({ items, onIndexChange, renderItem, wrap = false }: CarouselProps<T>) {
+  const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
+  const count = items.length;
+
+  const paginate = useCallback(
+    (dir: 1 | -1) => {
+      let next = page + dir;
+      if (wrap) {
+        // modulo wrap: ensures 0 ≤ next < count
+        next = ((next % count) + count) % count;
+      } else {
+        next = Math.max(0, Math.min(count - 1, next));
+      }
+      setPage([next, dir]);
+      onIndexChange?.(next);
+    },
+    [page, count, wrap, onIndexChange],
+  );
 
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {visible && (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, x: dir === 1 ? 50 : -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: dir === 1 ? -50 : 50 }}
-            transition={{ duration: 0.3 }}
-            className="h-full w-full overflow-hidden"
-          >
-            {renderItem(items[idx], idx)}
-          </motion.div>
-        )}
+    <div className="relative h-full w-full">
+      <AnimatePresence initial={false} mode="wait" custom={direction}>
+        <motion.div
+          key={page}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.3 }}
+          className="h-full w-full"
+        >
+          {renderItem(items[page], page)}
+        </motion.div>
       </AnimatePresence>
-      <div className="z-10 mx-auto -mt-8 flex w-full justify-between sm:px-4">
-        <Tooltip text="Previous Character" top>
-          <button onClick={() => change(-1)} disabled={idx === 0} className="text-primary disabled:text-gray-700">
+
+      {/* navigation controls */}
+      <div className="absolute inset-x-0 bottom-0 flex justify-between px-4">
+        <button
+          onClick={() => paginate(-1)}
+          disabled={!wrap && page === 0}
+          aria-label="Previous"
+          className="text-primary disabled:text-gray-700"
+        >
+          <Tooltip text="Previous Character" top>
             <PiPlayFill className="h-8 w-8 rotate-180 sm:h-10 sm:w-10" />
-          </button>
-        </Tooltip>
-        <Tooltip text="Next Character" top>
-          <button
-            onClick={() => change(+1)}
-            disabled={idx === items.length - 1}
-            className="text-primary disabled:text-gray-700"
-          >
+          </Tooltip>
+        </button>
+        <button
+          onClick={() => paginate(1)}
+          disabled={!wrap && page === count - 1}
+          aria-label="Next"
+          className="text-primary disabled:text-gray-700"
+        >
+          <Tooltip text="Next Character" top>
             <PiPlayFill className="h-8 w-8 sm:h-10 sm:w-10" />
-          </button>
-        </Tooltip>
+          </Tooltip>
+        </button>
       </div>
-    </>
+    </div>
   );
 }
 
