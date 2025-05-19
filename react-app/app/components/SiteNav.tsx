@@ -2,16 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { PatreonLink } from './PatreonLink';
 import { NewBadge } from './NewBadge';
+import { useQuery } from '@tanstack/react-query';
 
 export function SiteNav() {
   const [isCharactersBadgeEnabled, setIsCharactersBadgeEnabled] = useState(false);
 
-  // Simulating the loadBadges action from Vuex
+  const { data } = useQuery({
+    queryKey: ['characters-badge'],
+    queryFn: () => fetch('/api/badges/characters').then((res) => res.json()),
+  });
+
   useEffect(() => {
-    // In a real app, this would fetch badge state from an API
-    // For now, we'll just set it to true for demonstration
-    setIsCharactersBadgeEnabled(true);
-  }, []);
+    if (data?.enabled) {
+      setIsCharactersBadgeEnabled(true);
+    }
+  }, [data]);
 
   return (
     <nav className="my-2 flex w-full flex-col items-center justify-between px-4 lg:flex-row">

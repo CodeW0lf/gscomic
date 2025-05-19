@@ -7,5 +7,6 @@ export default [
     route('sketches', 'routes/sketches.tsx'),
     route('rileycomic/:id?', 'routes/rileycomic.tsx'),
     route('archive', 'routes/archive.tsx'),
+    route('links', 'routes/links.tsx'),
   ]),
 ] satisfies RouteConfig;
