@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginImport from 'eslint-plugin-import';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
@@ -29,6 +30,7 @@ export default defineConfig([
   },
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  ...pluginQuery.configs['flat/recommended'],
   {
     // FINAL OVERRIDE BLOCK — placed AFTER all configs!
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
@@ -41,8 +43,8 @@ export default defineConfig([
       },
       'import/resolver': {
         typescript: {},
-      }
-    }
+      },
+    },
   },
   {
     files: ['**/*.{jsx,tsx}'],

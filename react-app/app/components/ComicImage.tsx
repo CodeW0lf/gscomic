@@ -1,15 +1,18 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useComicNav } from '~/hooks/useComicNav';
 import Spinner from './Spinner';
+import type { ComicPath } from '~/stores/comicUiStore';
 
 const comicChangeDragDistPx = 200;
 
 interface ComicImageProps {
   imgPath: string;
+  comicPath: ComicPath;
+  version?: 'a' | 'b';
 }
 
-export default function ComicImage({ imgPath }: ComicImageProps) {
-  const { getComicFileName, prevComic, nextComic } = useComicNav.useStore();
+export default function ComicImage({ imgPath, comicPath, version }: ComicImageProps) {
+  const { getComicFileName, prevComic, nextComic } = useComicNav({ comicPath, version });
   const src = imgPath + (getComicFileName?.() ?? '');
   const [loading, setLoading] = useState(true);
   const [dragging, setDragging] = useState(false);

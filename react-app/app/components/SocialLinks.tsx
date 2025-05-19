@@ -2,34 +2,28 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import voteImg from '../assets/vote-twc.png';
 import voteImgOverlay from '../assets/vote-twc-o.png';
+import { useAnalytics } from '~/hooks/useAnalytics';
 
 export function SocialLinks() {
   const [voteImgHover, setVoteImgHover] = useState(false);
   const location = useLocation();
+  const track = useAnalytics();
 
   // Event handlers for analytics
   const bskyClick = () => {
-    if (typeof window !== 'undefined' && 'gtag' in window) {
-      window.gtag('event', 'Bluesky', { event_category: 'Social' });
-    }
+    track('Bluesky', { event_category: 'Social' });
   };
 
   const telegramClick = () => {
-    if (typeof window !== 'undefined' && 'gtag' in window) {
-      window.gtag('event', 'Telegram', { event_category: 'Social' });
-    }
+    track('Telegram', { event_category: 'Social' });
   };
 
   const discordClick = () => {
-    if (typeof window !== 'undefined' && 'gtag' in window) {
-      window.gtag('event', 'Discord', { event_category: 'Social' });
-    }
+    track('Discord', { event_category: 'Social' });
   };
 
   const voteClick = () => {
-    if (typeof window !== 'undefined' && 'gtag' in window) {
-      window.gtag('event', 'TopWebComic', { event_category: 'Social' });
-    }
+    track('TopWebComic', { event_category: 'Social' });
   };
 
   // Computed properties

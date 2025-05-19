@@ -1,11 +1,11 @@
 import React from 'react';
+import { useAnalytics } from '~/hooks/useAnalytics';
 
 export function PatreonLink() {
+  const track = useAnalytics();
+
   const patreonClick = () => {
-    // Google Analytics tracking
-    if (typeof window !== 'undefined' && 'gtag' in window) {
-      window.gtag('event', 'Patreon', { event_category: 'Social' });
-    }
+    track('Patreon', { event_category: 'Social' });
   };
 
   return (

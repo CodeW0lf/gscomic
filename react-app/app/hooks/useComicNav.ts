@@ -1,21 +1,22 @@
 import { useNavigate, useLocation, useParams } from 'react-router';
-import { useComicUiStore } from '~/store/comicUiStore';
+import { type ComicPath, useComicUiStore } from '~/stores/comicUiStore';
 import { useQuery } from '@tanstack/react-query';
 import { getComics, getRileyComics } from '~/services/comicsService';
+import { useAnalytics } from '~/hooks/useAnalytics';
 
 // Pass which loader to use, current version, etc.
-export function useComicNav({ mode, version }: { mode: 'main' | 'riley'; version?: string }) {
+export function useComicNav({ comicPath, version }: { comicPath: ComicPath; version?: 'a' | 'b' }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const track = useAnalytics();
   const { id } = useParams<{ id: string }>();
   const comicId = useComicUiStore((s) => s.comicId);
   const setComicId = useComicUiStore((s) => s.setComicId);
-  const comicPath = mode === 'main' ? 'comic' : 'rileycomic';
 
   // Choose the right query for this comic series
   const { data } = useQuery({
-    queryKey: [mode, version],
-    queryFn: mode === 'main' ? getComics : () => getRileyComics(version || 'a'),
+    queryKey: [comicPath, version],
+    queryFn: comicPath === 'comic' ? getComics : () => getRileyComics(version || 'a'),
   });
   const comicList = data?.comics ?? {};
   const chapters = data?.chapters ?? [];
@@ -32,14 +33,14 @@ export function useComicNav({ mode, version }: { mode: 'main' | 'riley'; version
     if (hasNextComic) {
       setComicId(comicId + 1);
       navigate(`/${comicPath}/${comicId + 1}`);
-      window.gtag?.('event', 'NextComic', { event_category: 'Comic' });
+      track('NextComic', { event_category: 'Comic' });
     }
   }
   function prevComic() {
     if (hasPrevComic) {
       setComicId(comicId - 1);
       navigate(`/${comicPath}/${comicId - 1}`);
-      window.gtag?.('event', 'PrevComic', { event_category: 'Comic' });
+      track('PrevComic', { event_category: 'Comic' });
     }
   }
   function nextChapter() {
@@ -77,6 +78,10 @@ export function useComicNav({ mode, version }: { mode: 'main' | 'riley'; version
     }
   }
 
+  function getComicFileName() {
+    return comicList[comicId] ?? '';
+  }
+
   // Expose data and methods for use in components
   return {
     comicId,
@@ -94,6 +99,7 @@ export function useComicNav({ mode, version }: { mode: 'main' | 'riley'; version
     prevChapter,
     latestComic,
     firstComic,
+    getComicFileName,
     setComicId,
     data,
   };

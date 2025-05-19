@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 
+export type ComicPath = 'comic' | 'rileycomic';
+
 interface ComicUiState {
   comicId: number;
-  comicPath: 'comic' | 'rileycomic';
+  comicPath: ComicPath;
 
   setComicId: (id: number) => void;
-  setComicPath: (path: string) => void;
+  setComicPath: (path: ComicPath) => void;
 }
 
 export const useComicUiStore = create<ComicUiState>((set) => ({

@@ -6,7 +6,7 @@ import ComicNav from '~/components/ComicNav';
 
 export function ComicPage() {
   const { id } = useParams<{ id?: string }>();
-  const nav = useComicNav({ mode: 'main' });
+  const nav = useComicNav({ comicPath: 'comic' });
 
   // On mount/update: set comicId from URL param
   useEffect(() => {
@@ -17,7 +17,7 @@ export function ComicPage() {
 
   return (
     <section className="text-center w-full relative">
-      <ComicImage imgPath="/img/comics/" />
+      <ComicImage imgPath="/img/comics/" comicPath={nav.comicPath} />
       <ComicNav {...nav} />
       <div className="text-gray-400 font-semibold my-4">
         {nav.comicId} / {nav.latestComicId}

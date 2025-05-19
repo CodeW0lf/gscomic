@@ -9,7 +9,7 @@ export function RileyComicPage() {
   const { id } = useParams<{ id?: string }>();
   const [version, setVersion] = useState<'a' | 'b'>('a');
   const [isSecondViewSelected, setSecondView] = useState(false);
-  const nav = useComicNav({ mode: 'riley', version });
+  const nav = useComicNav({ comicPath: 'rileycomic', version });
 
   useEffect(() => {
     if (id) nav.setComicId(Number(id));
@@ -23,7 +23,7 @@ export function RileyComicPage() {
 
   return (
     <section className="text-center w-full relative">
-      <ComicImage imgPath="/img/riley_comics/" />
+      <ComicImage imgPath="/img/riley_comics/" comicPath={nav.comicPath} version={version} />
       <ComicNav {...nav} />
       <div className="flex flex-col justify-center items-center">
         <div className="switch-button">
