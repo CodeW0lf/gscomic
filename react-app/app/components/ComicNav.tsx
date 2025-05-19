@@ -20,7 +20,6 @@ const navButtonClass =
   'focus:ring-primary focus:ring-opacity-50 hover:text-primary-lighter cursor-pointer rounded focus:ring-2 focus:outline-none disabled:text-gray-700 disabled:cursor-default';
 
 export default function ComicNav(props: ComicNavProps) {
-  console.log(props);
   return (
     <section className="text-primary mx-4 flex items-center justify-between">
       <div>

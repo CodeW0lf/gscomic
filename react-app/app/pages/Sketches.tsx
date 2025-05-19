@@ -38,9 +38,12 @@ export function Sketches() {
 
   // Handle the successful fetch of sketches
   useEffect(() => {
-    if (sketches?.length) {
-      addSketches(sketches, 0);
-    }
+    if (!sketches) return;
+
+    // clear & re-seed
+    setSketchList([]);
+    setHasMore(true);
+    addSketches(sketches, 0);
   }, [sketches, addSketches]);
 
   // Handle infinite loading
@@ -55,11 +58,11 @@ export function Sketches() {
 
     setIsLoadingMore(true);
 
-    // Simulate image preloading for the last sketch
-    if (sketchList.length > 0) {
-      const lastSketch = sketchList[sketchList.length - 1];
-      const img = new Image();
-      img.src = `/img/sketch_files/${lastSketch.src}`;
+    // Preload next sketch
+    const nextSketch = sketches[sketchList.length];
+    if (nextSketch) {
+      const img = new window.Image();
+      img.src = `/img/sketch_files/${nextSketch.src}`;
     }
 
     // Add more sketches after a small delay for smoother UX
@@ -94,13 +97,13 @@ export function Sketches() {
         <AnimatePresence>
           {sketchList.map((sketch) => (
             <motion.div
-            key={sketch.src}
-            className="mx-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            layout
+              key={sketch.src}
+              className="mx-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              layout
             >
               <Sketch sketch={sketch} />
             </motion.div>
@@ -114,4 +117,4 @@ export function Sketches() {
       </div>
     </section>
   );
-};
+}
