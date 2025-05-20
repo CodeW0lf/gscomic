@@ -5,6 +5,7 @@ import voteImgOverlay from '../assets/vote-twc-o.png';
 import { useAnalytics } from '~/hooks/useAnalytics';
 import { FaBluesky } from 'react-icons/fa6';
 import { RiDiscordFill, RiTelegram2Fill } from 'react-icons/ri';
+import { motion } from 'motion/react';
 
 export function SocialLinks() {
   const [voteImgHover, setVoteImgHover] = useState(false);
@@ -86,14 +87,25 @@ export function SocialLinks() {
         </a>
       </div>
       <div className="mt-8 text-center">
-        <a href="http://www.topwebcomics.com/vote/26458" onClick={voteClick} target="_blank" rel="noreferrer">
-          <img
+        <a href="https://www.topwebcomics.com/vote/26458" onClick={voteClick} target="_blank" rel="noreferrer">
+          <motion.img
             className="mx-auto"
             src={voteImgRollover}
             onMouseOver={() => setVoteImgHover(true)}
             onMouseLeave={() => setVoteImgHover(false)}
             alt="Vote for God Slayers Comic at TopWebComics"
             title="Vote for God Slayers Comic at TopWebComics"
+            initial={{ scale: 1 }}
+            whileHover={{
+              scale: 1.05,
+              transition: { type: 'spring', stiffness: 300 },
+            }}
+            animate={{
+              opacity: voteImgHover ? 1 : 0.95,
+              y: voteImgHover ? 0 : 2,
+              filter: voteImgHover ? 'brightness(1.1)' : 'brightness(1)',
+            }}
+            transition={{ duration: 0.2 }}
           />
         </a>
       </div>
