@@ -64,7 +64,7 @@ function Carousel<T>({ items, onIndexChange, renderItem, wrap = false }: Carouse
           onClick={() => paginate(-1)}
           disabled={!wrap && page === 0}
           aria-label="Previous"
-          className="text-primary disabled:text-gray-700"
+          className="text-primary hover:text-primary-lighter cursor-pointer disabled:text-gray-700"
         >
           <Tooltip text="Previous Character" top>
             <PiPlayFill className="h-8 w-8 rotate-180 sm:h-10 sm:w-10" />
@@ -74,7 +74,7 @@ function Carousel<T>({ items, onIndexChange, renderItem, wrap = false }: Carouse
           onClick={() => paginate(1)}
           disabled={!wrap && page === count - 1}
           aria-label="Next"
-          className="text-primary disabled:text-gray-700"
+          className="text-primary hover:text-primary-lighter cursor-pointer disabled:text-gray-700"
         >
           <Tooltip text="Next Character" top>
             <PiPlayFill className="h-8 w-8 sm:h-10 sm:w-10" />

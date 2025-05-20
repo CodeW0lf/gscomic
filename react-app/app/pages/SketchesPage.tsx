@@ -9,7 +9,7 @@ import Spinner from '~/components/Spinner';
 
 const SKETCHES_TO_ADD = 3;
 
-export function Sketches() {
+export function SketchesPage() {
   const [sketchList, setSketchList] = useState<SketchItem[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);

@@ -43,6 +43,7 @@ function CharactersPage() {
                 <Carousel
                   items={characterData?.characters.map((char) => char.fullImg)}
                   onIndexChange={setSelectedCharIdx}
+                  wrap={true}
                   renderItem={(src) => (
                     <img src={getImageUrl(src)} alt="Character" className="h-full w-full object-contain" />
                   )}
@@ -56,6 +57,7 @@ function CharactersPage() {
               <Carousel
                 items={character.talkingHeads.map((portrait) => portrait.portraitImg)}
                 onIndexChange={setSelectedPortraitIdx}
+                wrap={true}
                 renderItem={(src) => (
                   <img
                     src={getImageUrl(src)}
