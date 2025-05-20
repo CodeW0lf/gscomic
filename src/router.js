@@ -25,69 +25,6 @@ export default new Router({
       component: () => import('./views/Links.vue'),
     },
     {
-      path: '/lore',
-      component: () => import('./views/Lore.vue'),
-      children: [
-        {
-          path: 'places',
-          component: () =>
-            import(
-              './components/lore/LorePlaces.vue'
-            ),
-        },
-        {
-          path: 'places/kuserra',
-          component: () =>
-            import(
-              './components/lore/places/Kuserra.vue'
-            ),
-          children: [
-            {
-              path: 'downtown',
-              component: () =>
-                import(
-                  './components/lore/places/kuserra/Downtown.vue'
-                ),
-            },
-            {
-              path: 'citadel',
-              component: () =>
-                import(
-                  './components/lore/places/kuserra/Citadel.vue'
-                ),
-            },
-            {
-              path: 'unknown',
-              component: Unknown,
-            },
-          ],
-        },
-        {
-          path: 'places/unknown',
-          component: Unknown,
-        },
-        {
-          path: 'culture',
-          component: () =>
-            import(
-              './components/lore/LoreCulture.vue'
-            ),
-        },
-        {
-          path: 'culture/gods',
-          component: () =>
-            import(
-              './components/lore/culture/Gods.vue'
-            ),
-        },
-        {
-          path: '',
-          component: () =>
-            import('./components/lore/LoreHome.vue'),
-        },
-      ],
-    },
-    {
       path: '/characters',
       component: () => import('./views/Characters.vue'),
     },
