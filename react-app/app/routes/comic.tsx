@@ -4,6 +4,6 @@ export function meta() {
   return [{ title: 'God Slayers Comic' }];
 }
 
-export default function Comic() {
-  return <ComicPage />;
+export default function MainComicRoute() {
+  return <ComicPage initialComicPathFromProps="comic" imgPath="/img/comics/" />;
 }
