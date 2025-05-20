@@ -3,8 +3,8 @@ import { Outlet } from 'react-router';
 import { SiteNav } from '~/components/SiteNav';
 import { SocialLinks } from '~/components/SocialLinks';
 import { SiteFooter } from '~/components/SiteFooter';
-import { SlArrowDown } from 'react-icons/sl';
 import { motion } from 'motion/react';
+import { RiArrowDownWideFill } from 'react-icons/ri';
 
 export default function Layout() {
   return (
@@ -22,7 +22,7 @@ export default function Layout() {
             repeatType: 'loop',
           }}
         >
-          <SlArrowDown className="h-8 w-8 text-white"></SlArrowDown>
+          <RiArrowDownWideFill className="h-8 w-8 text-white"></RiArrowDownWideFill>
         </motion.a>
       </header>
       <div
