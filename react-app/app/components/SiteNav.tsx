@@ -20,7 +20,7 @@ export function SiteNav() {
   }, [data]);
 
   return (
-    <nav className="my-2 flex w-full flex-col items-center justify-between px-4 lg:flex-row">
+    <nav id="top" className="my-2 flex w-full flex-col items-center justify-between px-4 lg:flex-row">
       <PatreonLink />
       <div className="text-size-md text-primary mt-4 text-center font-bold lg:mt-0">
         <Link className="hover:text-white" to="/">

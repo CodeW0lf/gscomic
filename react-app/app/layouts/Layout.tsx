@@ -1,23 +1,29 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import { SiteNav } from '../components/SiteNav';
-import { SocialLinks } from '../components/SocialLinks';
-import { SiteFooter } from '../components/SiteFooter';
+import { SiteNav } from '~/components/SiteNav';
+import { SocialLinks } from '~/components/SocialLinks';
+import { SiteFooter } from '~/components/SiteFooter';
+import { SlArrowDown } from 'react-icons/sl';
+import { motion } from 'motion/react';
 
 export default function Layout() {
   return (
     <div className="h-full">
       <header className="relative mx-auto text-center">
         <img className="w-screen" src="/images/title_banner.png" alt="God Slayers Comic" />
-        <a href="#top" className="scroll-to-top">
-          <svg
-            className="animated pulse infinite slower relative -mt-8 inline-block h-12 w-12 fill-current text-white opacity-40"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-          </svg>
-        </a>
+        <motion.a
+          href="#top"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 transform"
+          animate={{ y: [0, 8, 0] }}
+          transition={{
+            duration: 2,
+            ease: 'easeInOut',
+            repeat: Infinity,
+            repeatType: 'loop',
+          }}
+        >
+          <SlArrowDown className="h-8 w-8 text-white"></SlArrowDown>
+        </motion.a>
       </header>
       <div
         id="top"

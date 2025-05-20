@@ -111,7 +111,7 @@ export function ArchivePage() {
                         >
                           <Link to={`/comic/${comicId}#top`} className="block hover:opacity-70">
                             <img
-                              src={`/img/comics/${comics!.comics[comicId]}`}
+                              src={`/img/comics/thumbnails/${comics!.comics[comicId]}`}
                               alt={`Comic ${comicId}`}
                               className="w-full rounded-md shadow-lg"
                               loading="lazy"
