@@ -1,4 +1,5 @@
 import deridealBanner from '../assets/banner-vote-derideal.png';
+import { motion } from 'motion/react';
 
 export function LinksPage() {
   return (
@@ -9,7 +10,16 @@ export function LinksPage() {
         </div>
         <div>
           <a href="https://derideal.com/" target="_blank" rel="noopener noreferrer">
-            <img src={deridealBanner} alt="Derideal Banner" className="h-auto max-w-full" />
+            <motion.img
+              src={deridealBanner}
+              alt="Derideal Banner"
+              className="h-auto max-w-full rounded"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.97, transition: { duration: 0.2 } }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+            />
           </a>
         </div>
       </div>

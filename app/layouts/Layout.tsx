@@ -14,7 +14,7 @@ export default function Layout() {
         <motion.a
           href="#top"
           className="absolute bottom-0 left-1/2 -translate-x-1/2 transform"
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 8, 0], opacity: [0.5, 0.8, 0.5] }}
           transition={{
             duration: 2,
             ease: 'easeInOut',

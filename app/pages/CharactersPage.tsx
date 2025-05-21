@@ -35,7 +35,7 @@ function CharactersPage() {
       <div className="flex w-full flex-col items-center justify-center">
         <div className="flex w-full flex-col items-center justify-between px-4">
           <div>
-            <h1 className="text-primary text-5xl font-bold">{character.name}</h1>
+            <h1 className="text-5xl font-bold text-gray-400">{character.name}</h1>
           </div>
 
           <div className="relative w-3/4 pt-[100%]">

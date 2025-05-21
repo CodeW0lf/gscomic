@@ -29,7 +29,7 @@ export function PatreonLink() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{
           type: 'spring',
-          delay: 2,
+          delay: 1,
           duration: 0.8,
           bounce: 0.5,
           stiffness: 120,
