@@ -7,7 +7,7 @@ import type { Sketch as SketchItem } from '~/types/apiTypes';
 import { motion, AnimatePresence } from 'motion/react';
 import Spinner from '~/components/Spinner';
 
-const SKETCHES_TO_ADD = 3;
+const SKETCHES_TO_ADD = 6;
 
 export function SketchesPage() {
   const [sketchList, setSketchList] = useState<SketchItem[]>([]);
@@ -58,14 +58,16 @@ export function SketchesPage() {
 
     setIsLoadingMore(true);
 
-    // Preload next sketch
-    const nextSketch = sketches[sketchList.length];
-    if (nextSketch) {
-      const img = new window.Image();
-      img.src = `/img/sketch_files/${nextSketch.src}`;
+    // Preload the next batch of sketches
+    for (let i = 0; i < Math.min(SKETCHES_TO_ADD, sketches.length - nextIndex); i++) {
+      const nextSketch = sketches[nextIndex + i];
+      if (nextSketch) {
+        const img = new window.Image();
+        img.src = `/img/sketch_files/${nextSketch.src}`;
+      }
     }
 
-    // Add more sketches after a small delay for smoother UX
+    // Add more sketches after a small delay for a smoother UX
     const timer = setTimeout(() => {
       if (sketches) {
         addSketches(sketches, nextIndex);
@@ -92,16 +94,15 @@ export function SketchesPage() {
   }
 
   return (
-    <section className="mt-8">
-      <div className="space-y-8">
+    <section className="mt-8 px-4">
+      <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
         <AnimatePresence>
           {sketchList.map((sketch) => (
             <motion.div
               key={sketch.src}
-              className="mx-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
               layout
             >
