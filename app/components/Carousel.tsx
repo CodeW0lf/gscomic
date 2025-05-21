@@ -1,5 +1,5 @@
 import { type ReactNode, useState, useCallback } from 'react';
-import { AnimatePresence, motion, type Variants } from 'framer-motion';
+import { AnimatePresence, motion, type Variants } from 'motion/react';
 import { PiPlayFill } from 'react-icons/pi';
 import { Tooltip } from './Tooltip';
 

@@ -22,24 +22,24 @@ export function SiteNav() {
   return (
     <nav id="top" className="my-2 flex w-full flex-col items-center justify-between px-4 lg:flex-row">
       <PatreonLink />
-      <div className="text-size-md text-primary mt-4 text-center font-bold lg:mt-0">
+      <div className="text-size-md text-primary mt-4 flex flex-wrap justify-center gap-2 font-bold lg:mt-0">
         <Link className="hover:text-white" to="/">
           Comic
         </Link>
-        <span className="px-2 text-gray-600">|</span>
+        <span className="text-gray-600">|</span>
         <Link className="hover:text-white" to="/rileycomic">
           Riley Comic
         </Link>
-        <span className="px-2 text-gray-600">|</span>
+        <span className="text-gray-600">|</span>
         <Link className="group relative hover:text-white" to="/characters">
           Characters
           {isCharactersBadgeEnabled && <NewBadge />}
         </Link>
-        <span className="px-2 text-gray-600">|</span>
+        <span className="text-gray-600">|</span>
         <Link className="hover:text-white" to="/sketches">
           Sketches
         </Link>
-        <span className="px-2 text-gray-600">|</span>
+        <span className="text-gray-600">|</span>
         <Link className="group relative hover:text-white" to="/links">
           Links
         </Link>

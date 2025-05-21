@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import Spinner from '~/components/Spinner';
 import { getCharacters } from '~/services/comicsService';
 import Carousel from '~/components/Carousel';
+import SafeHtml from '~/components/SafeHtml';
 
 const getImageUrl = (imageName: string) => {
   return `/images/characters/${imageName}` as const;
@@ -75,9 +76,10 @@ function CharactersPage() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="prose h-full w-full overflow-y-auto p-4 text-center text-gray-400"
-                  dangerouslySetInnerHTML={{ __html: portrait?.text || '' }}
-                />
+                  className="h-full w-full overflow-y-auto"
+                >
+                  <SafeHtml html={portrait?.text || ''} className="prose p-4 text-center text-gray-400" />
+                </motion.div>
               </AnimatePresence>
             </div>
           </div>
