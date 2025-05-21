@@ -11,7 +11,7 @@
     "lint:fix": "eslint --fix \"app/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"app/**/*.{js,jsx,ts,tsx,css,md}\"",
     "format:fix": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
