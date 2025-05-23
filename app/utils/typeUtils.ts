@@ -1,5 +1,3 @@
-import { type ComicPath } from '~/types/comicTypes';
-
 /**
  * Helper function to ensure exhaustive checking of a discriminated union.
  * This will cause a TypeScript error if any case is not handled.
