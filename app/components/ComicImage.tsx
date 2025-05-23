@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useComicNav } from '~/hooks/useComicNav';
 import Spinner from './Spinner';
-import type { ComicPath } from '~/stores/comicUiStore';
 import { useSwipeDrag } from '~/hooks/useSwipeDrag';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { AnimatePresence, motion } from 'motion/react';
+import type { ComicPath } from '~/types/comicTypes';
 
 interface ComicImageProps {
   imgPath: string;

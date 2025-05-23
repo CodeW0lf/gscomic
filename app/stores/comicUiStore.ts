@@ -1,6 +1,5 @@
 import { create } from 'zustand';
-
-export type ComicPath = 'comic' | 'rileycomic';
+import type { ComicPath } from '~/types/comicTypes';
 
 interface ComicUiState {
   comicId: number;
