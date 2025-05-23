@@ -4,7 +4,7 @@ import type { ComicPath } from '~/types/comicTypes';
 
 export function useComicPathUtils(
   comicPath: ComicPath,
-  comicList: Record<string, string>,
+  comicList: Record<string, string | number>,
   comicId: number | undefined,
   latestComicId: number,
 ) {
@@ -23,13 +23,10 @@ export function useComicPathUtils(
     }
   }, [comicPath]);
 
-  // Helper for getting the current comic filename
-  function getComicFileName() {
-    return comicList[comicId ?? latestComicId] ?? '';
-  }
+  const comicFileName = comicList[comicId ?? latestComicId] ?? '';
 
   return {
     comicImgPath,
-    getComicFileName,
+    comicFileName,
   };
 }

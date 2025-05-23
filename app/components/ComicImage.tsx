@@ -13,7 +13,7 @@ interface ComicImageProps {
 }
 
 export default function ComicImage({ imgPath, comicPath, version }: ComicImageProps) {
-  const { getComicFileName, prevComic, nextComic } = useComicNav({ comicPath, version });
+  const { comicFileName, prevComic, nextComic } = useComicNav({ comicPath, version });
   const { dragX, onTouchStart, onTouchMove, onTouchEnd } = useSwipeDrag(
     (direction) => {
       if (direction === 'left') {
@@ -24,7 +24,7 @@ export default function ComicImage({ imgPath, comicPath, version }: ComicImagePr
     },
     { threshold: 150 },
   );
-  const src = imgPath + (getComicFileName() ?? '');
+  const src = imgPath + comicFileName;
   const [loading, setLoading] = useState(true);
 
   // Handle image loading state

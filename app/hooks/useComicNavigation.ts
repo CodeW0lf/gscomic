@@ -5,7 +5,7 @@ import type { ComicPath } from '~/types/comicTypes';
 
 export function useComicNavigation(
   comicPath: ComicPath,
-  comicList: Record<string, string>,
+  comicList: Record<string, string | number>,
   chapters: number[],
   latestComicId: number,
   isFetched: boolean,

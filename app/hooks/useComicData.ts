@@ -20,7 +20,7 @@ export function useComicData(comicPath: ComicPath, version?: RileyComicVersion) 
     },
   });
 
-  const comicList = data?.comics ?? [];
+  const comicList = (data?.comics ?? []) as Record<string, string | number>;
   const chapters = data?.chapters ?? [];
   const latestComicId = data?.latest ? Number(data.latest) : 1;
 
