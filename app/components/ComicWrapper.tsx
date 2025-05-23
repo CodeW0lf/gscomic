@@ -1,7 +1,7 @@
 import React from 'react';
 import ComicImage from '~/components/ComicImage';
 import ComicNav from '~/components/ComicNav';
-import { useComicNavContext } from '~/contexts/ComicNavContext';
+import { useComicControllerContext } from '~/contexts/ComicControllerContext';
 
 export interface ComicWrapperProps {
   children?: React.ReactNode;
@@ -9,7 +9,7 @@ export interface ComicWrapperProps {
 }
 
 export function ComicWrapper({ children, footer }: ComicWrapperProps) {
-  const nav = useComicNavContext();
+  const nav = useComicControllerContext();
   return (
     <section className="relative w-full text-center">
       <ComicImage imgPath={nav.comicImgPath} comicPath={nav.comicPath} version={nav.version} />

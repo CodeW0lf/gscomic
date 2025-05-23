@@ -1,10 +1,10 @@
 import { ComicWrapper } from '~/components/ComicWrapper';
 import { Link } from 'react-router';
-import { ComicNavProvider } from '~/contexts/ComicNavContext';
+import { ComicControllerProvider } from '~/contexts/ComicControllerContext';
 
 export function SolipsusComicPage() {
   return (
-    <ComicNavProvider comicPath="solipsus">
+    <ComicControllerProvider comicPath="solipsus">
       <ComicWrapper
         footer={
           <div>
@@ -14,6 +14,6 @@ export function SolipsusComicPage() {
           </div>
         }
       />
-    </ComicNavProvider>
+    </ComicControllerProvider>
   );
 }

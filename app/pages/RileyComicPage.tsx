@@ -3,7 +3,7 @@ import { ComicWrapper } from '~/components/ComicWrapper';
 import grinImg from '~/assets/grin.png';
 import { AnimatePresence, motion } from 'motion/react';
 import type { RileyComicVersion } from '~/types/comicTypes';
-import { ComicNavProvider } from '~/contexts/ComicNavContext';
+import { ComicControllerProvider } from '~/contexts/ComicControllerContext';
 
 export function RileyComicPage() {
   const [version, setVersion] = useState<RileyComicVersion>('a');
@@ -15,7 +15,7 @@ export function RileyComicPage() {
   };
 
   return (
-    <ComicNavProvider comicPath="rileycomic" version={version}>
+    <ComicControllerProvider comicPath="rileycomic" version={version}>
       <ComicWrapper>
         <div className="flex flex-col items-center justify-center">
           <div className="switch-button">
@@ -46,6 +46,6 @@ export function RileyComicPage() {
           </div>
         </div>
       </ComicWrapper>
-    </ComicNavProvider>
+    </ComicControllerProvider>
   );
 }

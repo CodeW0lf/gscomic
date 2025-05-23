@@ -4,7 +4,7 @@ import { useComicNavigation } from './useComicNavigation';
 import { useComicPathUtils } from './useComicPathUtils';
 import type { ComicPath, RileyComicVersion } from '~/types/comicTypes';
 
-export function useComicNav({ comicPath, version }: { comicPath: ComicPath; version?: RileyComicVersion }) {
+export function useComicController({ comicPath, version }: { comicPath: ComicPath; version?: RileyComicVersion }) {
   // Fetch comic data
   const { data, comicList, chapters, latestComicId, isFetched } = useComicData(comicPath, version);
 

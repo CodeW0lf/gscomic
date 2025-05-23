@@ -1,10 +1,10 @@
 import { ComicWrapper } from '~/components/ComicWrapper';
 import { Link } from 'react-router';
-import { ComicNavProvider } from '~/contexts/ComicNavContext';
+import { ComicControllerProvider } from '~/contexts/ComicControllerContext';
 
 export function ComicPage() {
   return (
-    <ComicNavProvider comicPath="comic">
+    <ComicControllerProvider comicPath="comic">
       <ComicWrapper
         footer={
           <div>
@@ -14,6 +14,6 @@ export function ComicPage() {
           </div>
         }
       />
-    </ComicNavProvider>
+    </ComicControllerProvider>
   );
 }

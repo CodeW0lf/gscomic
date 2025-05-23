@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useComicNav } from '~/hooks/useComicNav';
+import { useComicController } from '~/hooks/useComicController';
 import Spinner from './Spinner';
 import { useSwipeDrag } from '~/hooks/useSwipeDrag';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
@@ -13,7 +13,7 @@ interface ComicImageProps {
 }
 
 export default function ComicImage({ imgPath, comicPath, version }: ComicImageProps) {
-  const { comicFileName, prevComic, nextComic } = useComicNav({ comicPath, version });
+  const { comicFileName, prevComic, nextComic } = useComicController({ comicPath, version });
   const { dragX, onTouchStart, onTouchMove, onTouchEnd } = useSwipeDrag(
     (direction) => {
       if (direction === 'left') {
