@@ -1,13 +1,14 @@
 import { api } from './api';
 import type { BadgesResponse, ComicsResponse, SketchesResponse } from '~/types/apiTypes';
 import type { CharacterList } from '~/types/characterTypes';
+import type { RileyComicVersion } from '~/types/comicTypes';
 
 export const getComics = async (): Promise<ComicsResponse> => {
   const res = await api.get<ComicsResponse>('/get-comics.php');
   return res.data;
 };
 
-export const getRileyComics = async (version: string): Promise<ComicsResponse> => {
+export const getRileyComics = async (version: RileyComicVersion): Promise<ComicsResponse> => {
   const res = await api.get<ComicsResponse>(`/get-riley-comics.php?version=${version}`);
   return res.data;
 };

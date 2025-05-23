@@ -2,13 +2,13 @@ import { ComicWrapper } from '~/components/ComicWrapper';
 import { Link } from 'react-router';
 import { ComicNavProvider } from '~/contexts/ComicNavContext';
 
-export function ComicPage() {
+export function SolipsusComicPage() {
   return (
-    <ComicNavProvider comicPath="comic">
+    <ComicNavProvider comicPath="solipsus">
       <ComicWrapper
         footer={
           <div>
-            <Link className="text-size-md text-primary font-bold hover:text-white" to="/archive">
+            <Link className="text-size-md text-primary font-bold hover:text-white" to="/third-archive">
               Archive
             </Link>
           </div>
