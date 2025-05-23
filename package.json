@@ -11,6 +11,7 @@
     "lint:fix": "eslint --fix \"app/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"app/**/*.{js,jsx,ts,tsx,css,md}\"",
     "format:fix": "lint-staged",
+    "deps": "npx npm-check --skip-unused -u",
     "prepare": "husky"
   },
   "lint-staged": {
