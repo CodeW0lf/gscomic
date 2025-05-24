@@ -3,6 +3,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import type { Route } from './+types/root';
 import './app.css';
+import React from 'react';
+import { RouteTracker } from '~/components/RouteTracker';
+import { LoadingScreen } from '~/components/LoadingScreen';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -18,6 +21,9 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const GA_ID = 'G-ZRYB0LC9SG';
+  const disable = import.meta.env.DEV;
+
   return (
     <html lang="en">
       <head>
@@ -29,6 +35,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta property="og:description" content="God Slayers Web Comic" />
         <meta property="og:url" content="https://www.godslayerscomic.com" />
         <meta property="og:image" content="https://www.godslayerscomic.com/patreon/PromotionalKivaFace.png" />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              ${disable ? `window[ga-disable-${GA_ID}] = true;` : ``}
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}', {send_page_view: false});
+            `,
+          }}
+        />
         <Meta />
         <Links />
       </head>
@@ -41,11 +59,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+export function HydrateFallback() {
+  return <LoadingScreen />;
+}
+
 const queryClient = new QueryClient();
 
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <RouteTracker />
       <Outlet />
     </QueryClientProvider>
   );

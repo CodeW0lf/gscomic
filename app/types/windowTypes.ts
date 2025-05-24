@@ -1,6 +1,8 @@
+/// <reference types="gtag.js" />
+
 declare global {
   interface Window {
-    gtag?: (...args: unknown[]) => void;
+    gtag?: Gtag.Gtag;
   }
 }
 
