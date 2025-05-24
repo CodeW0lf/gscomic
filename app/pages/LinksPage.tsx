@@ -8,7 +8,7 @@ export function LinksPage() {
         <div className="prose">
           <h2 className="text-gray-400">Recommended Comics</h2>
         </div>
-        <div>
+        <div className="m-4">
           <a href="https://derideal.com/" target="_blank" rel="noopener noreferrer">
             <motion.img
               src={deridealBanner}
@@ -24,5 +24,3 @@ export function LinksPage() {
     </section>
   );
 }
-
-export default LinksPage;

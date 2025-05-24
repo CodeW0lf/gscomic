@@ -9,5 +9,6 @@ export default [
     route('characters', 'routes/characters.tsx'),
     route('archive', 'routes/archive.tsx'),
     route('links', 'routes/links.tsx'),
+    route('solipsus/:id?', 'routes/solipsus.tsx'),
   ]),
 ] satisfies RouteConfig;

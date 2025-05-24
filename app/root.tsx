@@ -39,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              ${disable ? `window[ga-disable-${GA_ID}] = true;` : ``}
+              ${disable ? `window['ga-disable-${GA_ID}'] = true;` : ``}
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());

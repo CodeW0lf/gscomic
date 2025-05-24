@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getComics, getRileyComics } from '~/services/comicsService';
+import { getComics, getRileyComics, getSolipsusComics } from '~/services/comicsService';
 import { assertNever } from '~/utils/typeUtils';
 import type { ComicPath, RileyComicVersion } from '~/types/comicTypes';
 
@@ -13,7 +13,7 @@ export function useComicData(comicPath: ComicPath, version?: RileyComicVersion) 
         case 'rileycomic':
           return getRileyComics(version || 'a');
         case 'solipsus':
-          return getComics();
+          return getSolipsusComics();
         default:
           assertNever(comicPath);
       }

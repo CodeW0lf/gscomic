@@ -4,6 +4,6 @@ export function meta() {
   return [{ title: 'God Slayers Comic - Riley' }];
 }
 
-export default function RileyComic() {
+export default function RileyComicRoute() {
   return <RileyComicPage />;
 }
