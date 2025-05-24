@@ -22,7 +22,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const GA_ID = 'G-ZRYB0LC9SG';
-  const disable = import.meta.env.DEV;
+  const disable = import.meta.env.DEV ?? (typeof window !== 'undefined' && window.location.hostname === 'localhost');
 
   return (
     <html lang="en">

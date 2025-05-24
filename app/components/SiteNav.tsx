@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router';
 import { PatreonLink } from './PatreonLink';
 import { NewBadge } from './NewBadge';
 import { useQuery } from '@tanstack/react-query';
@@ -23,26 +23,46 @@ export function SiteNav() {
     <nav id="top" className="my-2 flex w-full flex-col items-center justify-between px-4 lg:flex-row">
       <PatreonLink />
       <div className="text-size-md text-primary mt-4 flex flex-wrap justify-center gap-2 font-bold lg:mt-0">
-        <Link className="hover:text-white" to="/">
+        <NavLink
+          className={({ isActive }) => (isActive ? 'text-white' : 'hover:text-white')}
+          to="/comic"
+          viewTransition
+        >
           Comic
-        </Link>
+        </NavLink>
         <span className="text-gray-600">|</span>
-        <Link className="hover:text-white" to="/rileycomic">
+        <NavLink
+          className={({ isActive }) => (isActive ? 'text-white' : 'hover:text-white')}
+          to="/rileycomic"
+          viewTransition
+        >
           Riley Comic
-        </Link>
+        </NavLink>
         <span className="text-gray-600">|</span>
-        <Link className="group relative hover:text-white" to="/characters">
+        <NavLink
+          className={({ isActive }) => (isActive ? 'text-white' : 'hover:text-white')}
+          to="/characters"
+          viewTransition
+        >
           Characters
           {isCharactersBadgeEnabled && <NewBadge />}
-        </Link>
+        </NavLink>
         <span className="text-gray-600">|</span>
-        <Link className="hover:text-white" to="/sketches">
+        <NavLink
+          className={({ isActive }) => (isActive ? 'text-white' : 'hover:text-white')}
+          to="/sketches"
+          viewTransition
+        >
           Sketches
-        </Link>
+        </NavLink>
         <span className="text-gray-600">|</span>
-        <Link className="group relative hover:text-white" to="/links">
+        <NavLink
+          className={({ isActive }) => (isActive ? 'text-white' : 'hover:text-white')}
+          to="/links"
+          viewTransition
+        >
           Links
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );

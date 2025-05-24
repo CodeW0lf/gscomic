@@ -6,13 +6,15 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
+    "api": "php -S localhost:8088 -t public/api",
     "typecheck": "react-router typegen && tsc",
     "lint": "eslint \"app/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"app/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"app/**/*.{js,jsx,ts,tsx,css,md}\"",
     "format:fix": "lint-staged",
     "deps": "npx npm-check --skip-unused -u",
-    "prepare": "husky"
+    "prepare": "husky",
+    "local": "concurrently --names \"FRONTEND,API\" --prefix-colors \"blue,green\" \"npm run dev\" \"npm run api\""
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -51,6 +53,7 @@
     "@types/react-dom": "^19.1.2",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
+    "concurrently": "^9.1.2",
     "dompurify": "^3.0.9",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",

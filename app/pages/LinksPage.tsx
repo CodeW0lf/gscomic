@@ -16,8 +16,6 @@ export function LinksPage() {
               className="h-auto max-w-full rounded"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              whileTap={{ scale: 0.97, transition: { duration: 0.2 } }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
             />
           </a>
