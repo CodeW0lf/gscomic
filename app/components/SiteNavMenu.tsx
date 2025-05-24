@@ -56,7 +56,7 @@ export function SiteNavMenu({ defaultLinkName, defaultPath, navLinks }: SiteNavM
         className={`relative flex cursor-pointer items-center gap-2 ${isMenuPathActive ? 'text-white' : 'text-primary'}`}
         onClick={() => {
           if (!isMenuPathActive) {
-            navigate(defaultPath ?? '/');
+            navigate(defaultPath ?? '/', { replace: true });
             setIsOpen(false);
           } else {
             setIsOpen(!isOpen);
