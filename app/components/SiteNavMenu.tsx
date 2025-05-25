@@ -17,7 +17,9 @@ export interface SiteNavMenuProps {
 export function SiteNavMenu({ defaultLinkName, defaultPath, navLinks }: SiteNavMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [buttonText, setButtonText] = useState(defaultLinkName ?? 'Menu');
+  const [ignoreNextClick, setIgnoreNextClick] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const ignoreClickTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -45,19 +47,43 @@ export function SiteNavMenu({ defaultLinkName, defaultPath, navLinks }: SiteNavM
     }
   }, [location.pathname, navLinks, defaultLinkName]);
 
+  useEffect(() => {
+    return () => {
+      clearTimeout(ignoreClickTimeoutRef.current);
+    };
+  }, []);
+
   return (
     <div
       ref={dropdownRef}
       className="relative h-fit w-fit cursor-pointer"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={() => {
+        setIsOpen(true);
+        setIgnoreNextClick(true);
+
+        clearTimeout(ignoreClickTimeoutRef.current);
+        ignoreClickTimeoutRef.current = setTimeout(() => {
+          setIgnoreNextClick(false);
+        }, 500);
+      }}
+      onMouseLeave={() => {
+        setIsOpen(false);
+        setIgnoreNextClick(false);
+        clearTimeout(ignoreClickTimeoutRef.current);
+        delete ignoreClickTimeoutRef.current;
+      }}
     >
       <button
         className={`relative flex cursor-pointer items-center gap-2 ${isMenuPathActive ? 'text-white' : 'text-primary'}`}
         onClick={() => {
           if (!isMenuPathActive) {
             navigate(defaultPath ?? '/', { replace: true });
-            setIsOpen(false);
+          }
+
+          if (ignoreNextClick) {
+            setIgnoreNextClick(false);
+            clearTimeout(ignoreClickTimeoutRef.current);
+            delete ignoreClickTimeoutRef.current;
           } else {
             setIsOpen(!isOpen);
           }
@@ -77,12 +103,12 @@ export function SiteNavMenu({ defaultLinkName, defaultPath, navLinks }: SiteNavM
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="absolute top-8 left-1/2 z-10 flex -translate-x-1/2 flex-col gap-4 rounded-md bg-gray-800 px-6 py-4 whitespace-nowrap shadow-lg"
           >
-            <div className="absolute -top-4 right-0 left-0 h-4 bg-transparent" />
+            <div className="absolute -top-3 right-0 left-0 h-4 cursor-auto bg-transparent" />
             {navLinks.map(({ linkName, path, newBadge }) => (
               <NavLink
                 key={linkName}
                 to={path}
-                className={({ isActive }) => (isActive ? 'text-white' : 'text-primary hover:text-white')}
+                className={({ isActive }) => `relative ${isActive ? 'text-white' : 'text-primary hover:text-white'}`}
                 onClick={() => {
                   setIsOpen(false);
                 }}
