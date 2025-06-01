@@ -13,6 +13,7 @@
     "format": "prettier --write \"app/**/*.{js,jsx,ts,tsx,css,md}\"",
     "format:fix": "lint-staged",
     "deps": "npx npm-check --skip-unused -u",
+    "update-deps": "npx npm-check-updates -u",
     "prepare": "husky",
     "local": "concurrently --names \"FRONTEND,API\" --prefix-colors \"blue,green\" \"npm run dev\" \"npm run api\""
   },
