@@ -13,7 +13,10 @@ interface ComicImageProps {
 }
 
 export default function ComicImage({ imgPath, comicPath, version }: ComicImageProps) {
-  const { comicFileName, prevComic, nextComic } = useComicController({ comicPath, version });
+  const { comicFileName, prevComic, nextComic, hasNextComic, hasPrevComic } = useComicController({
+    comicPath,
+    version,
+  });
   const { dragX, onTouchStart, onTouchMove, onTouchEnd } = useSwipeDrag(
     (direction) => {
       if (direction === 'left') {
@@ -40,7 +43,7 @@ export default function ComicImage({ imgPath, comicPath, version }: ComicImagePr
 
   // Calculate visual effects based on drag distance
   const dragPercentage = Math.min(Math.abs(dragX) / 150, 1);
-  const translateX = dragX / 10; // Add subtle movement to the image when dragging
+  const translateX = dragX / 5; // Add subtle movement to the image when dragging
   const dragIndicatorOpacity = dragPercentage * 0.9; // Max opacity of 0.9 for the indicators
 
   return (
@@ -78,31 +81,33 @@ export default function ComicImage({ imgPath, comicPath, version }: ComicImagePr
 
           {/* Swipe Indicators */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-4">
-            {/* Left swipe overlay */}
-            <div
-              className="flex h-full w-1/3 items-center justify-start"
-              style={{
-                opacity: dragX > 0 ? dragIndicatorOpacity : 0,
-                transition: 'opacity 0.15s ease-out',
-              }}
-            >
-              <div className="bg-opacity-30 rounded-full bg-black p-3">
-                <SlArrowLeft className="h-10 w-10 text-white" />
+            {hasPrevComic && (
+              <div
+                className="flex h-full w-1/3 items-center justify-start"
+                style={{
+                  opacity: dragX > 0 ? dragIndicatorOpacity : 0,
+                  transition: 'opacity 0.15s ease-out',
+                }}
+              >
+                <div className="bg-opacity-30 rounded-full bg-black p-3">
+                  <SlArrowLeft className="h-10 w-10 text-white" />
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Right swipe overlay */}
-            <div
-              className="flex h-full w-1/3 items-center justify-end"
-              style={{
-                opacity: dragX < 0 ? dragIndicatorOpacity : 0,
-                transition: 'opacity 0.15s ease-out',
-              }}
-            >
-              <div className="bg-opacity-30 rounded-full bg-black p-3">
-                <SlArrowRight className="h-10 w-10 text-white" />
+            {hasNextComic && (
+              <div
+                className="flex h-full w-1/3 items-center justify-end"
+                style={{
+                  opacity: dragX < 0 ? dragIndicatorOpacity : 0,
+                  transition: 'opacity 0.15s ease-out',
+                }}
+              >
+                <div className="bg-opacity-30 rounded-full bg-black p-3">
+                  <SlArrowRight className="h-10 w-10 text-white" />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}

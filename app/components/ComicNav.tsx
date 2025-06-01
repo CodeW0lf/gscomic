@@ -55,40 +55,36 @@ export default function ComicNav(props: ComicNavProps) {
         </Tooltip>
       </div>
       <div>
-        {!props.isLatestComic && (
-          <>
-            <Tooltip text="Next Comic">
-              <button
-                className={navButtonClass}
-                aria-label="Next Comic"
-                onClick={props.nextComic}
-                disabled={!props.hasNextComic}
-              >
-                <PiPlayFill className="mx-2 h-10 w-10" />
-              </button>
-            </Tooltip>
-            <Tooltip text="Next Chapter">
-              <button
-                className={navButtonClass}
-                aria-label="Next Chapter"
-                onClick={props.nextChapter}
-                disabled={!props.hasNextChapter}
-              >
-                <PiFastForwardFill className="mx-2 h-10 w-10" />
-              </button>
-            </Tooltip>
-            <Tooltip text="Latest Comic">
-              <button
-                className={navButtonClass}
-                aria-label="Latest Comic"
-                onClick={props.latestComic}
-                disabled={!props.hasNextComic}
-              >
-                <PiSkipForwardFill className="mx-2 h-10 w-10" />
-              </button>
-            </Tooltip>
-          </>
-        )}
+        <Tooltip text="Next Comic">
+          <button
+            className={navButtonClass}
+            aria-label="Next Comic"
+            onClick={props.nextComic}
+            disabled={!props.hasNextComic}
+          >
+            <PiPlayFill className="mx-2 h-10 w-10" />
+          </button>
+        </Tooltip>
+        <Tooltip text="Next Chapter">
+          <button
+            className={navButtonClass}
+            aria-label="Next Chapter"
+            onClick={props.nextChapter}
+            disabled={!props.hasNextChapter}
+          >
+            <PiFastForwardFill className="mx-2 h-10 w-10" />
+          </button>
+        </Tooltip>
+        <Tooltip text="Latest Comic">
+          <button
+            className={navButtonClass}
+            aria-label="Latest Comic"
+            onClick={props.latestComic}
+            disabled={!props.hasNextComic}
+          >
+            <PiSkipForwardFill className="mx-2 h-10 w-10" />
+          </button>
+        </Tooltip>
       </div>
     </section>
   );
