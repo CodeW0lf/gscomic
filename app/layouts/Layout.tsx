@@ -1,29 +1,16 @@
 import React from 'react';
-import { Outlet } from 'react-router';
+import { Link, Outlet } from 'react-router';
 import { SiteNav } from '~/components/SiteNav';
 import { SocialLinks } from '~/components/SocialLinks';
 import { SiteFooter } from '~/components/SiteFooter';
-import { motion } from 'motion/react';
-import { RiArrowDownWideFill } from 'react-icons/ri';
 
 export default function Layout() {
   return (
     <div className="h-full">
       <header className="relative mx-auto text-center">
-        <img className="w-screen" src="/images/title_banner.png" alt="God Slayers Comic" />
-        <motion.a
-          href="#top"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 transform"
-          animate={{ y: [0, 8, 0], opacity: [0.5, 0.8, 0.5] }}
-          transition={{
-            duration: 2,
-            ease: 'easeInOut',
-            repeat: Infinity,
-            repeatType: 'loop',
-          }}
-        >
-          <RiArrowDownWideFill className="h-8 w-8 text-white"></RiArrowDownWideFill>
-        </motion.a>
+        <Link to="/">
+          <img className="w-screen" src="/images/title_banner.png" alt="God Slayers Comic" />
+        </Link>
       </header>
       <div
         id="top"
