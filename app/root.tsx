@@ -1,9 +1,8 @@
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import type { ReactNode } from 'react';
 import type { Route } from './+types/root';
 import './app.css';
-import React from 'react';
 import { RouteTracker } from '~/components/RouteTracker';
 import { LoadingScreen } from '~/components/LoadingScreen';
 
@@ -20,7 +19,7 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: ReactNode }) {
   const GA_ID = 'G-ZRYB0LC9SG';
   const disable = import.meta.env.DEV ?? (typeof window !== 'undefined' && window.location.hostname === 'localhost');
 
