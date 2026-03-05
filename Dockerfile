@@ -1,22 +1,30 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
+ARG NODE_VERSION=22
+
+FROM node:${NODE_VERSION}-alpine AS base
 WORKDIR /app
+
+FROM base AS development-dependencies-env
+COPY package.json package-lock.json ./
 RUN npm ci
 
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
-WORKDIR /app
+FROM base AS production-dependencies-env
+COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
-WORKDIR /app
+FROM base AS build-env
+COPY --from=development-dependencies-env /app/node_modules ./node_modules
+COPY . .
 RUN npm run build
 
-FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
-WORKDIR /app
+FROM base AS runtime
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOST=0.0.0.0
+
+COPY --chown=node:node package.json package-lock.json ./
+COPY --from=production-dependencies-env --chown=node:node /app/node_modules ./node_modules
+COPY --from=build-env --chown=node:node /app/build ./build
+
+USER node
+EXPOSE 3000
 CMD ["npm", "run", "start"]
