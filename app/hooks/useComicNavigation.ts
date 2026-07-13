@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import { useAnalytics } from '~/hooks/useAnalytics';
 import type { ComicPath } from '~/types/comicTypes';
 
@@ -11,6 +11,7 @@ export function useComicNavigation(
   isFetched: boolean,
 ) {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { id } = useParams<{ id?: string }>();
   const track = useAnalytics();
 
@@ -21,18 +22,24 @@ export function useComicNavigation(
   // Handle redirects
   useEffect(() => {
     if (isFetched && !id && latestComicId) {
-      navigate(`/${comicPath}/${latestComicId}`, { replace: true, preventScrollReset: true });
+      const targetPath = `/${comicPath}/${latestComicId}`;
+      if (pathname.replace(/\/$/, '') !== targetPath.replace(/\/$/, '')) {
+        navigate(targetPath, { replace: true, preventScrollReset: true });
+      }
     }
-  }, [isFetched, id, latestComicId, comicPath, navigate]);
+  }, [isFetched, id, latestComicId, comicPath, navigate, pathname]);
 
   useEffect(() => {
     if (!isFetched || !id) return;
     const comicId = Number(id);
 
     if (isNaN(comicId) || !comicList[comicId]) {
-      navigate(`/${comicPath}/${latestComicId}`, { replace: true });
+      const targetPath = `/${comicPath}/${latestComicId}`;
+      if (pathname.replace(/\/$/, '') !== targetPath.replace(/\/$/, '') && latestComicId && comicList[latestComicId]) {
+        navigate(targetPath, { replace: true });
+      }
     }
-  }, [id, isFetched, comicList, latestComicId, comicPath, navigate]);
+  }, [id, isFetched, comicList, latestComicId, comicPath, navigate, pathname]);
 
   // Navigation helpers
   function goToComic(newId: number) {
