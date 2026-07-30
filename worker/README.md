@@ -4,10 +4,8 @@ This Worker reads the `gscomic` R2 bucket and writes the catalog to
 `manifest.json` at its root. It has no public fetch handler: the R2 custom
 domain serves both the images and manifest directly.
 
-The scheduled handler runs hourly. It keeps the existing release schedule from
-the former catalog service, so future-dated comic files are not published
-early. Update `collections.comics.latest` and `releaseTime` in `index.js` when
-the release cadence changes.
+The scheduled handler runs hourly. Any matching comic image in R2 is included
+in the next generated manifest, so uploading a file is the publication step.
 
 `sketch-dates.json` is an export of the legacy sketch API made before the R2
 migration. It preserves historical sketch publication dates, since an R2

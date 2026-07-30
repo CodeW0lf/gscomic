@@ -7,33 +7,19 @@ const collections = {
   comics: {
     prefix: 'comics/',
     filenamePattern: /^Page_0*(\d+)\.(?:jpg|png)$/i,
-    latest: 239,
-    releaseTime: '2026-02-27T00:00:00-07:00',
     chapters: [0, 18, 39, 56, 72, 88, 98, 120, 141, 166, 182, 201, 217, 236],
   },
   rileyComics: {
     prefix: 'riley_comics/',
     filenamePattern: /^Page_0*(\d+)([ab])\.(?:jpg|png)$/i,
-    latest: 10,
-    releaseTime: '2022-09-28T00:00:00-07:00',
     chapters: [],
   },
   solipsus: {
     prefix: 'solipsus/',
     filenamePattern: /^Page_0*(\d+)\.(?:jpg|png)$/i,
-    latest: 2,
-    releaseTime: '2025-05-23T00:00:00-07:00',
     chapters: [0],
   },
 };
-
-function isReleased(comicNumber, { latest, releaseTime }) {
-  if (comicNumber <= latest) return true;
-
-  const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000;
-  const releaseDate = Date.parse(releaseTime) + (comicNumber - latest) * millisecondsPerWeek;
-  return Date.now() >= releaseDate;
-}
 
 async function listAll(bucket, prefix) {
   const objects = [];
@@ -61,7 +47,6 @@ async function buildComicCollection(bucket, name) {
 
     const comicNumber = Number(matches[1]);
     const version = matches[2]?.toLowerCase();
-    if (!isReleased(comicNumber, collection)) continue;
 
     if (name === 'rileyComics') {
       if (!comics[version]) comics[version] = { comics: {}, latest: 1, chapters: collection.chapters };
