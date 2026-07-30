@@ -34,20 +34,23 @@ npm run worker:deploy
 ```
 
 Run the initial generation immediately; do not wait for the first cron tick.
-Start the remote development session in one terminal:
+Start local development in one terminal:
 
 ```bash
-npm run worker:dev:remote
+npm run worker:dev
 ```
 
-Then call the URL Wrangler prints, adding
-`/cdn-cgi/handler/scheduled?format=json`. This invokes the scheduled handler
-against the remote `gscomic` binding without exposing a production HTTP route.
+Then trigger the scheduled handler from a second terminal:
+
+```bash
+curl -i 'http://127.0.0.1:8787/__scheduled'
+```
+
+The Worker executes locally, but its R2 binding is configured with
+`remote: true`, so this writes `manifest.json` to the real `gscomic` bucket.
 The Worker exports a 404-only `fetch()` handler solely because Wrangler's
 scheduled-event test endpoint requires one; `workers_dev` is disabled in the
 deployment configuration.
-For a fully local run, use `npm run worker:dev` and upload representative files
-to the local R2 emulator first.
 
 ## Publish the bucket
 

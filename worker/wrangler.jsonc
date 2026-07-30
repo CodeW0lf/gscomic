@@ -10,7 +10,8 @@
   "r2_buckets": [
     {
       "binding": "GSCOMIC_BUCKET",
-      "bucket_name": "gscomic"
+      "bucket_name": "gscomic",
+      "remote": true
     }
   ]
 }
