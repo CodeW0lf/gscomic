@@ -1,9 +1,3 @@
-// getBadges
-export interface BadgesResponse {
-  newLore: boolean;
-  newCharacters: boolean;
-}
-
 // getComics / getRileyComics
 export interface ComicsResponse {
   comics: Record<number | string, string>; // e.g. { "1": "Page_001.jpg", ... }
@@ -17,3 +11,11 @@ export interface Sketch {
   date: number; // epoch timestamp
 }
 export type SketchesResponse = Sketch[];
+
+export interface ComicManifest {
+  generatedAt: string;
+  comics: ComicsResponse;
+  rileyComics: Record<string, ComicsResponse>;
+  solipsus: ComicsResponse;
+  sketches: SketchesResponse;
+}

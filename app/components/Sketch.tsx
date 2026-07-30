@@ -1,4 +1,5 @@
 import type { Sketch as SketchItem } from '~/types/apiTypes';
+import { mediaUrl } from '~/services/api';
 
 const dateOptions: Intl.DateTimeFormatOptions = {
   month: 'long',
@@ -13,7 +14,7 @@ interface SketchProps {
 export function Sketch({ sketch }: SketchProps) {
   const longDate = (timestamp: number): string => new Date(timestamp * 1000).toLocaleDateString('en-US', dateOptions);
 
-  const imageUrl = `/img/sketch_files/${sketch.src}`;
+  const imageUrl = mediaUrl(`sketch_files/${sketch.src}`);
 
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-lg bg-gray-50 shadow-md transition-all duration-300 hover:shadow-lg dark:bg-gray-800">

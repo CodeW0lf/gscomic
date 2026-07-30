@@ -6,6 +6,7 @@ import { getSketches } from '~/services/comicsService';
 import type { Sketch as SketchItem } from '~/types/apiTypes';
 import { motion, AnimatePresence } from 'motion/react';
 import Spinner from '~/components/Spinner';
+import { mediaUrl } from '~/services/api';
 
 const SKETCHES_TO_ADD = 6;
 
@@ -63,7 +64,7 @@ export function SketchesPage() {
       const nextSketch = sketches[nextIndex + i];
       if (nextSketch) {
         const img = new window.Image();
-        img.src = `/img/sketch_files/${nextSketch.src}`;
+        img.src = mediaUrl(`sketch_files/${nextSketch.src}`);
       }
     }
 

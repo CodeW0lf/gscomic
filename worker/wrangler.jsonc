@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gscomic-manifest",
+  "main": "index.js",
+  "compatibility_date": "2026-07-29",
+  "workers_dev": false,
+  "triggers": {
+    "crons": ["0 * * * *"]
+  },
+  "r2_buckets": [
+    {
+      "binding": "GSCOMIC_BUCKET",
+      "bucket_name": "gscomic",
+      "remote": true
+    }
+  ]
+}
