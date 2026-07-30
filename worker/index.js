@@ -1,4 +1,7 @@
+import sketchDates from './sketch-dates.json' with { type: 'json' };
+
 const MANIFEST_KEY = 'manifest.json';
+const historicalSketchDates = new Map(sketchDates.map(({ src, date }) => [src, date]));
 
 const collections = {
   comics: {
@@ -82,10 +85,10 @@ async function buildManifest(bucket) {
   ]);
 
   const sketches = sketchObjects
-    .map((object) => ({
-      src: object.key.slice('sketch_files/'.length),
-      date: Math.floor(object.uploaded.getTime() / 1000),
-    }))
+    .map((object) => {
+      const src = object.key.slice('sketch_files/'.length);
+      return { src, date: historicalSketchDates.get(src) ?? Math.floor(object.uploaded.getTime() / 1000) };
+    })
     .filter((sketch) => sketch.src && !sketch.src.startsWith('.'))
     .sort((a, b) => b.date - a.date);
 

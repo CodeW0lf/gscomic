@@ -9,6 +9,12 @@ the former catalog service, so future-dated comic files are not published
 early. Update `collections.comics.latest` and `releaseTime` in `index.js` when
 the release cadence changes.
 
+`sketch-dates.json` is an export of the legacy sketch API made before the R2
+migration. It preserves historical sketch publication dates, since an R2
+object's upload timestamp cannot be backdated. A sketch not in that file uses
+its R2 upload timestamp, which is correct for new sketches published after the
+migration.
+
 Hourly generation is only about 720 Worker invocations and roughly 3,600 R2
 list/write operations per month (before pagination), so it fits comfortably in
 the current free operation allowances. R2 is not universally free, however:
