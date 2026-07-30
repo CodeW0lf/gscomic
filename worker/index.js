@@ -107,6 +107,10 @@ export async function refreshManifest(bucket) {
 }
 
 export default {
+  fetch() {
+    return new Response('Not found', { status: 404 });
+  },
+
   async scheduled(_controller, env) {
     await refreshManifest(env.GSCOMIC_BUCKET);
   },

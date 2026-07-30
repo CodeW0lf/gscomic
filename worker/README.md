@@ -43,6 +43,9 @@ npm run worker:dev:remote
 Then call the URL Wrangler prints, adding
 `/cdn-cgi/handler/scheduled?format=json`. This invokes the scheduled handler
 against the remote `gscomic` binding without exposing a production HTTP route.
+The Worker exports a 404-only `fetch()` handler solely because Wrangler's
+scheduled-event test endpoint requires one; `workers_dev` is disabled in the
+deployment configuration.
 For a fully local run, use `npm run worker:dev` and upload representative files
 to the local R2 emulator first.
 
