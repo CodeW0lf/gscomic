@@ -5,6 +5,7 @@ import { SlArrowDown } from 'react-icons/sl';
 import { Link } from 'react-router';
 import Spinner from '~/components/Spinner';
 import { getComics } from '~/services/comicsService';
+import { mediaUrl } from '~/services/api';
 import type { ComicsResponse } from '~/types/apiTypes';
 
 type ChapterMap = Map<number, string[]>;
@@ -111,7 +112,7 @@ export function ArchivePage() {
                         >
                           <Link to={`/comic/${comicId}#top`} className="block hover:opacity-70">
                             <img
-                              src={`/img/comics/thumbnails/${comics!.comics[comicId]}`}
+                              src={mediaUrl(`comics/thumbnails/${comics!.comics[comicId]}`)}
                               alt={`Comic ${comicId}`}
                               className="w-full rounded-md shadow-lg"
                               loading="lazy"

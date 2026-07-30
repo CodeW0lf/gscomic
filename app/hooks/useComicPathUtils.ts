@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { mediaUrl } from '~/services/api';
 import { assertNever } from '~/utils/typeUtils';
 import type { ComicPath } from '~/types/comicTypes';
 
@@ -12,11 +13,11 @@ export function useComicPathUtils(
   const comicImgPath = useMemo(() => {
     switch (comicPath) {
       case 'comic':
-        return '/img/comics/';
+        return mediaUrl('comics/');
       case 'rileycomic':
-        return '/img/riley_comics/';
+        return mediaUrl('riley_comics/');
       case 'solipsus':
-        return '/img/solipsus/';
+        return mediaUrl('solipsus/');
       default:
         assertNever(comicPath);
         return '';

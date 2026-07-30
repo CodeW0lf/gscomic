@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gscomic",
+  "compatibility_date": "2026-07-29",
+  "assets": {
+    "directory": "./build/client",
+    "not_found_handling": "single-page-application"
+  }
+}

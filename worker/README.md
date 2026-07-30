@@ -1,0 +1,62 @@
+# R2 manifest Worker
+
+This Worker reads the `gscomic` R2 bucket and writes the catalog to
+`manifest.json` at its root. It has no public fetch handler: the R2 custom
+domain serves both the images and manifest directly.
+
+The scheduled handler runs hourly. It keeps the existing release schedule from
+the former catalog service, so future-dated comic files are not published
+early. Update `collections.comics.latest` and `releaseTime` in `index.js` when
+the release cadence changes.
+
+Hourly generation is only about 720 Worker invocations and roughly 3,600 R2
+list/write operations per month (before pagination), so it fits comfortably in
+the current free operation allowances. R2 is not universally free, however:
+its Standard free tier includes 10 GB-month of storage, 1 million Class A, and
+10 million Class B operations per month. Confirm that the comic library fits
+within the storage allowance or add billing before migrating it.
+
+## Deploy
+
+Authenticate Wrangler, create the bucket if it does not already exist, then
+deploy the Worker:
+
+```bash
+npx wrangler login
+npx wrangler r2 bucket create gscomic
+npm run worker:deploy
+```
+
+Run the initial generation immediately; do not wait for the first cron tick.
+Start the remote development session in one terminal:
+
+```bash
+npm run worker:dev:remote
+```
+
+Then call the URL Wrangler prints, adding
+`/cdn-cgi/handler/scheduled?format=json`. This invokes the scheduled handler
+against the remote `gscomic` binding without exposing a production HTTP route.
+For a fully local run, use `npm run worker:dev` and upload representative files
+to the local R2 emulator first.
+
+## Publish the bucket
+
+In R2, open `gscomic` > **Settings** > **Custom Domains** and connect
+`img.godslayerscomic.com`. Do not use the `r2.dev` URL for production. Add an
+R2 CORS policy allowing `GET` and `HEAD` from the website origins (including
+your local development origin), because the app fetches `manifest.json` from
+the image hostname. For example:
+
+```json
+[
+  {
+    "AllowedOrigins": ["https://godslayerscomic.com", "https://www.godslayerscomic.com", "http://localhost:5173"],
+    "AllowedMethods": ["GET", "HEAD"]
+  }
+]
+```
+
+Create a Cloudflare Cache Rule for `img.godslayerscomic.com` that caches all
+content. The Worker sets a five-minute browser/CDN freshness target for the
+manifest; image objects can use a much longer TTL.

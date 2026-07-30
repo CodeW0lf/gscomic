@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router';
 import { PatreonLink } from './PatreonLink';
-import { useQuery } from '@tanstack/react-query';
-import { getBadges } from '~/services/comicsService';
 import { SiteNavMenu } from '~/components/SiteNavMenu';
 
 export function SiteNav() {
-  const [isCharactersBadgeEnabled, setIsCharactersBadgeEnabled] = useState(false);
-
-  const { data } = useQuery({
-    queryKey: ['characters-badge'],
-    queryFn: getBadges,
-  });
-
-  useEffect(() => {
-    if (data?.newCharacters === true) {
-      setIsCharactersBadgeEnabled(true);
-    }
-  }, [data]);
+  // Change this when publishing new character content. It ships with the static site.
+  const isCharactersBadgeEnabled = false;
 
   return (
     <nav id="top" className="my-2 flex w-full flex-col items-center justify-between px-4 lg:flex-row">
