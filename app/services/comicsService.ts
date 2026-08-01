@@ -7,7 +7,7 @@ let manifestRequest: Promise<ComicManifest> | undefined;
 
 const getManifest = async (): Promise<ComicManifest> => {
   if (!manifestURL) throw new Error('VITE_MANIFEST_URL is required to use the R2 catalog');
-  manifestRequest ??= fetch(manifestURL).then(async (response) => {
+  manifestRequest ??= fetch(manifestURL, { cache: 'no-cache' }).then(async (response) => {
     if (!response.ok) throw new Error(`Failed to fetch comic manifest: ${response.status}`);
     return response.json() as Promise<ComicManifest>;
   });
