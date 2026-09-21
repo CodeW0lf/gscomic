@@ -21,61 +21,68 @@ const collections = {
   },
 };
 
-async function listAll(bucket, prefix) {
-  const objects = [];
+async function buildComicCollection(bucket, name) {
+  const collection = collections[name];
+  const comics = {};
+  let latest = 1;
   let cursor;
 
   do {
-    const page = await bucket.list({ prefix, cursor });
-    objects.push(...page.objects);
+    const page = await bucket.list({ prefix: collection.prefix, cursor });
+
+    for (const object of page.objects) {
+      const filename = object.key.slice(collection.prefix.length);
+      const matches = filename.match(collection.filenamePattern);
+      if (!matches) continue;
+
+      const comicNumber = Number(matches[1]);
+      const version = matches[2]?.toLowerCase();
+
+      if (name === 'rileyComics') {
+        if (!comics[version]) comics[version] = { comics: {}, latest: 1, chapters: collection.chapters };
+        comics[version].comics[comicNumber] = filename;
+        comics[version].latest = Math.max(comics[version].latest, comicNumber);
+      } else {
+        comics[comicNumber] = filename;
+        latest = Math.max(latest, comicNumber);
+      }
+    }
+
     cursor = page.truncated ? page.cursor : undefined;
   } while (cursor);
-
-  return objects;
-}
-
-async function buildComicCollection(bucket, name) {
-  const collection = collections[name];
-  const objects = await listAll(bucket, collection.prefix);
-  const comics = {};
-  let latest = 1;
-
-  for (const object of objects) {
-    const filename = object.key.slice(collection.prefix.length);
-    const matches = filename.match(collection.filenamePattern);
-    if (!matches) continue;
-
-    const comicNumber = Number(matches[1]);
-    const version = matches[2]?.toLowerCase();
-
-    if (name === 'rileyComics') {
-      if (!comics[version]) comics[version] = { comics: {}, latest: 1, chapters: collection.chapters };
-      comics[version].comics[comicNumber] = filename;
-      comics[version].latest = Math.max(comics[version].latest, comicNumber);
-    } else {
-      comics[comicNumber] = filename;
-      latest = Math.max(latest, comicNumber);
-    }
-  }
 
   return name === 'rileyComics' ? comics : { comics, latest, chapters: collection.chapters };
 }
 
+async function listSketches(bucket) {
+  const prefix = 'sketch_files/';
+  const sketches = [];
+  let cursor;
+
+  do {
+    const page = await bucket.list({ prefix, cursor });
+
+    for (const object of page.objects) {
+      const src = object.key.slice(prefix.length);
+      if (!src || src.startsWith('.')) continue;
+      sketches.push({ src, date: historicalSketchDates.get(src) ?? Math.floor(object.uploaded.getTime() / 1000) });
+    }
+
+    cursor = page.truncated ? page.cursor : undefined;
+  } while (cursor);
+
+  return sketches;
+}
+
 async function buildManifest(bucket) {
-  const [comics, rileyComics, solipsus, sketchObjects] = await Promise.all([
+  const [comics, rileyComics, solipsus, sketches] = await Promise.all([
     buildComicCollection(bucket, 'comics'),
     buildComicCollection(bucket, 'rileyComics'),
     buildComicCollection(bucket, 'solipsus'),
-    listAll(bucket, 'sketch_files/'),
+    listSketches(bucket),
   ]);
 
-  const sketches = sketchObjects
-    .map((object) => {
-      const src = object.key.slice('sketch_files/'.length);
-      return { src, date: historicalSketchDates.get(src) ?? Math.floor(object.uploaded.getTime() / 1000) };
-    })
-    .filter((sketch) => sketch.src && !sketch.src.startsWith('.'))
-    .sort((a, b) => b.date - a.date);
+  sketches.sort((a, b) => b.date - a.date);
 
   return { generatedAt: new Date().toISOString(), comics, rileyComics, solipsus, sketches };
 }

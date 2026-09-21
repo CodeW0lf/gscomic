@@ -4,8 +4,9 @@ This Worker reads the `gscomic` R2 bucket and writes the catalog to
 `manifest.json` at its root. It has no public fetch handler: the R2 custom
 domain serves both the images and manifest directly.
 
-The scheduled handler runs hourly. Any matching comic image in R2 is included
-in the next generated manifest, so uploading a file is the publication step.
+The scheduled handler runs every 30 minutes from 9 AM to 11:30 PM MST (fixed
+UTC-7, no DST). Any matching comic image in R2 is included in the next
+generated manifest, so uploading a file is the publication step.
 
 `sketch-dates.json` is an export of the legacy sketch API made before the R2
 migration. It preserves historical sketch publication dates, since an R2
@@ -13,7 +14,7 @@ object's upload timestamp cannot be backdated. A sketch not in that file uses
 its R2 upload timestamp, which is correct for new sketches published after the
 migration.
 
-Hourly generation is only about 720 Worker invocations and roughly 3,600 R2
+This cadence is only about 900 Worker invocations and roughly 4,500 R2
 list/write operations per month (before pagination), so it fits comfortably in
 the current free operation allowances. R2 is not universally free, however:
 its Standard free tier includes 10 GB-month of storage, 1 million Class A, and

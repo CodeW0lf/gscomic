@@ -5,7 +5,7 @@
   "compatibility_date": "2026-07-29",
   "workers_dev": false,
   "triggers": {
-    "crons": ["0 * * * *"]
+    "crons": ["0,30 16-23,0-6 * * *"]
   },
   "r2_buckets": [
     {
