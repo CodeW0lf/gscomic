@@ -7,7 +7,7 @@ import { SiteFooter } from '~/components/SiteFooter';
 export default function Layout() {
   return (
     <div className="h-full">
-      <header className="relative mx-auto text-center">
+      <header className="relative mx-auto mb-4 text-center">
         <Link to="/">
           <img className="w-screen" src="/images/title_banner.png" alt="God Slayers Comic" />
         </Link>
